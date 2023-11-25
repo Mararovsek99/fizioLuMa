@@ -15,3 +15,7 @@ window.addEventListener("scroll",function(){
 
 
 });
+document.querySelector(".menuIcone").addEventListener("click", function(){
+    if
+
+})

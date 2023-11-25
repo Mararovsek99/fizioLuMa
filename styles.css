@@ -14,7 +14,7 @@
      left: 0;
     right: 0;
     z-index: 1000;
-    padding: 0px 300px;
+    padding: 0px 15.5%;
 }
 .greyHeaderLeft{
     display: flex;
@@ -23,7 +23,7 @@
 }
 .phoneLogo
 img{
-    height:40px;
+    height:30px;
     margin-left: 40px;
     align-self: flex-end;
 }
@@ -60,21 +60,22 @@ img{
 }
 .socialLogo{
     margin: 0px 20px;
-    height: 30px;
-    width: 30px;
+    height: 25px;
+    width: 25px;
     background-size: cover;
     transition: background-image 0.1s;
 }
 .navBar{
     display: flex ;
     align-items: center;
+    justify-content: space-between;
     position: fixed;
      top: 36px;
      left: 0;
      right: 0;
      z-index: 1000;
      padding: 0px 17%;
-     background-color: #f1e9de;
+     background-color:rgba(241,233,222,0.3);
     height: 75px;
 }
 .luMaLogo{
@@ -86,22 +87,66 @@ img{
 .mainPagePhoto{
     width: 100%;
 }
+.navButtons{
+    display: flex;
+}
+.navButtons ul{
+    width: 100%;
+    text-align: right;
+}
+.navButtons ul li{
+    display: inline-block;
+    list-style: none;
+    margin: 10px 20px;
+}
+.navButtons ul li a{
+    color: rgb(34, 42, 55);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 20px;
+}
+.appointmentButton{
+    background-color: #386bea;
+    border-radius: 20px;
+    height: 40px;
+    width: 240px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 10%;
+}
+.appointmentButton p{
+    color: #c9cdd1;
+    font-weight: 600;
+    font-family: Heebo,sans-serif;
+}
 
-
-
-
-@media only screen and (max-width: 750px) {
-    
+@media only screen and (max-width: 1200px) {/*----------------------------------tablice 1200px*/
     .greyHeader{
-        flex-direction: column;
-        padding-top: 10px;
-        padding-bottom: 15px;
-      
+        padding: 0px 5px;
     }
-    .headerText{
-        font-size: 15px;
+    .navBar{
+        padding: 0px 10px;
     }
-    .phoneLogo img{
-        margin: 0px;
+    .navButtons ul li{
+        margin: 10px 10px;
     }
+}
+
+@media only screen and (max-width: 750px) {/*----------------------------------telefoni 1200px*/
+    
+   .navButtons{
+    display: none;
+   }
+   .mainPagePhoto{
+    width: 150%;
+    object-position: -70px;
+   }
+   .phoneNumber{
+    display: none;
+   }
+   .phoneLogo img{
+    margin: 10px 10px;
+    object-position: 0px 2px;
+   }
 }

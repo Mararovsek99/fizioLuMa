@@ -16,6 +16,14 @@ window.addEventListener("scroll",function(){
 
 });
 document.querySelector(".menuIcone").addEventListener("click", function(){
-    if
+    
+    const menuShown = document.querySelector(".navButtons");
 
+    if (menuShown.style.display === "none"){
+        menuShown.style.display = "flex";
+    }
+    else{
+        menuShown.style.display = "none";
+    }
+    
 })

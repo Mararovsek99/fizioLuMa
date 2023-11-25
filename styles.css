@@ -45,6 +45,7 @@ img{
 .fbLogo:hover{
     background-image: url(photos/fbcolor.png);
     scale: 1.2;
+    cursor: pointer;
 }
 .igLogo{
     background-image: url("photos/igb&w.png");
@@ -53,6 +54,7 @@ img{
 .igLogo:hover{
     background-image: url(photos/igcolor.png);
     scale: 1.2;
+    cursor: pointer;
 }
 .greyHeaderRight{
     display: flex;
@@ -147,7 +149,7 @@ img{
         display: none;
     }
    .navButtons{
-    display: flex;
+    display: none;
     position: fixed;
     top: 120px;
     right: 10px;
@@ -197,5 +199,6 @@ img{
     display:block;
     height: 30px;
     margin-right: 30px;
+    cursor: pointer;
    }
 }

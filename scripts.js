@@ -19,7 +19,7 @@ document.querySelector(".menuIcone").addEventListener("click", function(){
     
     const menuShown = document.querySelector(".navButtons");
 
-    if (menuShown.style.display === "none"){
+    if (menuShown.style.display === "none" || menuShown.style.display === ""){
         menuShown.style.display = "flex";
     }
     else{

@@ -72,12 +72,12 @@ img{
     align-items: center;
     justify-content: space-between;
     position: fixed;
-     top: 36px;
-     left: 0;
-     right: 0;
-     z-index: 1000;
-     padding: 0px 17%;
-     background-color:rgba(241,233,222,0.3);
+    top: 36px;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    padding: 0px 17%;
+    background-color:rgba(241,233,222,0.3);
     height: 75px;
 }
 .luMaLogo{
@@ -99,7 +99,7 @@ img{
 .navButtons ul li{
     display: inline-block;
     list-style: none;
-    margin: 10px 20px;
+    margin: 10px 1%;
 }
 .navButtons ul li a{
     color: rgb(34, 42, 55);
@@ -117,7 +117,7 @@ img{
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-left: 10%;
+    margin-left: 8%;
 }
 .appointmentButton p{
     color: #c9cdd1;
@@ -132,7 +132,7 @@ img{
     border-radius: 10px;
 }
 
-@media only screen and (max-width: 1200px) {/*----------------------------------tablice 1200px*/
+@media only screen and (max-width: 1250px) {/*----------------------------------tablice 1200px*/
     .greyHeader{
         padding: 0px 5px;
     }
@@ -144,7 +144,7 @@ img{
     }
 }
 
-@media only screen and (max-width: 750px) {/*----------------------------------telefoni 1200px*/
+@media only screen and (max-width: 850px) {/*----------------------------------telefoni 1200px*/
     .navButtons .appointmentButton{
         display: none;
     }

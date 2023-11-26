@@ -33,6 +33,14 @@ img{
     text-decoration: none;
     color: inherit;
 }
+.phoneNumberMenu a{
+    text-decoration: none;
+    color: inherit;
+    font-size: 20dpx;
+}
+.phoneNumberMenu{
+    display: none;
+}
 .headerText{
     color: #a0a9b6;
     font-family: Tahoma;
@@ -110,7 +118,7 @@ img{
     transition: 0.3s;
 }
 .appointmentButton{
-    background-color: #386bea;
+    background-color: #15378d;
     border-radius: 20px;
     height: 40px;
     width: 280px;
@@ -119,6 +127,10 @@ img{
     align-items: center;
     margin-left: 8%;
     cursor: pointer;
+    transition: 0.3s;
+}
+.appointmentButton:hover{
+    background-color: #386bea;
 }
 .appointmentButton p{
     color: #c9cdd1;
@@ -156,14 +168,17 @@ img{
 }
 
 @media only screen and (max-width: 850px) {/*----------------------------------telefoni 1200px*/
-    .navButtons .appointmentButton{
-        display: none;
-    }
-   .navButtons{
+   .appointmentButton{
+    width: 84%;
+    margin-top: 40px; 
+    margin-bottom: 25px;
+ }
+    .navButtons{
     display: none;
     position: fixed;
     top: 120px;
     right: 10px;
+    bottom: 0;
     background-color: rgba(241,233,222,0.8);
     margin: 0px;
     padding: 10px 0px;
@@ -172,6 +187,8 @@ img{
     width: 200px;
     text-align: center;
     justify-items: center;
+    flex-direction: column;
+    z-index: 1000;
 
    }
    .navButtons ul li{
@@ -193,7 +210,7 @@ img{
     margin-top: 30px;
    }
    .phoneNumber{
-    display: none;
+    display: none; 
    }
    .phoneLogo img{
     margin: 10px 10px;

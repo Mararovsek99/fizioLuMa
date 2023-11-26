@@ -18,14 +18,20 @@ window.addEventListener("scroll",function(){
 document.querySelector(".menuIcone").addEventListener("click", function(){
     const screenDarknes = document.querySelector(".overlay");
     const menuShown = document.querySelector(".navButtons");
+    const numMenuShown = document.querySelector(".phoneNumberMenu")
+    
 
     if (menuShown.style.display === "none" || menuShown.style.display === ""){
         menuShown.style.display = "flex";
         screenDarknes.style.display = "block";
+        numMenuShown.style.display = "block";
+       
+
     }
     else{
         menuShown.style.display = "none";
         screenDarknes.style.display = "none";
+        numMenuShown.style.display = "none";
     }
     
 })

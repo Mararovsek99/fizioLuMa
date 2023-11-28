@@ -205,6 +205,7 @@ img{
     transition: 1s;
     margin: 0px 40px;
     margin-left: 20%;
+    margin-bottom: 30px;
     height: max-content;
 }
 .giftCard img:hover{

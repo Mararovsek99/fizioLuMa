@@ -33,5 +33,4 @@ document.querySelector(".menuIcone").addEventListener("click", function(){
         screenDarknes.style.display = "none";
         numMenuShown.style.display = "none";
     }
-    
 })

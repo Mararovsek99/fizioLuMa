@@ -100,6 +100,9 @@ img{
     object-fit: cover;
     overflow: hidden;
 }
+.mainPagePhotoDiv{
+    height: 950px;
+   }
 .navButtons{
     display: flex;
 }
@@ -171,7 +174,7 @@ img{
 .photoButton{
     position: relative;
     left: 20%;
-    bottom: 700px;
+    bottom: 400px;
     margin: 40px;
     height: 50px;
     width: 240px;
@@ -190,6 +193,37 @@ img{
 .massageButton a{
     color: rgba(241,233,222);
 }
+.giftCard{
+    position: absolute;
+    top: 1000px;
+    display: flex;
+    align-items: center;
+}
+.giftCard img{
+    width: 30%;
+    border-radius: 20px;
+    transition: 1s;
+    margin: 0px 40px;
+    margin-left: 20%;
+    height: max-content;
+}
+.giftCard img:hover{
+    box-shadow: 5px 5px pink;
+}
+.giftCardText{
+    width: 50%;
+    margin-right: 20%;
+}
+h1{
+    text-align: center;
+    font-family: Garamond;
+    font-size: 40px;
+}
+p{
+    text-align: center;
+    margin: 20px 0px;
+    font-size:larger;
+}
 @media only screen and (max-width: 1250px) {/*----------------------------------tablice 1200px*/
     .greyHeader{
         padding: 0px 5px;
@@ -199,6 +233,17 @@ img{
     }
     .navButtons ul li{
         margin: 10px 10px;
+    }
+    .giftCard img{
+        margin: 0px 10%;
+        width: 40%;
+    }
+    p{
+        font-size: medium;
+    }
+    .giftCardText{
+        width: 40%;
+        margin-right: 10%;
     }
 }
 
@@ -213,7 +258,7 @@ img{
     position: fixed;
     top: 120px;
     right: 10px;
-    bottom: 0;
+    bottom: 30%;
     background-color: rgba(241,233,222,0.8);
     margin: 0px;
     padding: 10px 0px;
@@ -244,6 +289,7 @@ img{
     overflow: hidden;
     margin-top: 30px;
    }
+
    .phoneNumber{
     display: none; 
    }
@@ -266,9 +312,35 @@ img{
    }
    .photoButton{
     left: 5%;
-    bottom: 230px;
-    
-    
-    
+    bottom: 230px; 
+}
+.giftCard{
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    top: 550px;
+    margin: 0px 5%;
+}
+.giftCard img{
+    align-self: center;
+    width: 80%;
+    border-radius: 20px;
+    margin: 0px 20px;
+}
+.giftCardText{
+    align-self: center;
+    width: 80%;
+    margin: 0px 10%;
+    text-align: center;
+}
+h1{
+    align-self: center;
+    text-align: center;
+    font-family: Garamond;
+    font-size: 25px;
+    margin-top: 10px;
+}
+p{
+    margin: 10px 0px;
 }
 }

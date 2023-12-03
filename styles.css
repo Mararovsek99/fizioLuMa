@@ -174,12 +174,31 @@ img{
 .photoButton{
     position: relative;
     left: 20%;
-    bottom: 400px;
+    bottom: 600px;
     margin: 40px;
     height: 50px;
     width: 240px;
     text-align: center;
     border-radius: 12px;
+}
+.mainPagePhotoDiv h2{
+    font-size: 50px;
+    font-family:Georgia, 'Times New Roman', Times, serif;
+    font-weight: 400;
+    margin-bottom: 100px;
+    color: #eaf0ff;
+    text-shadow: 2px 2px 4px rgb(0, 0, 0);
+}
+.mainPagePhotoDiv p{
+    font-size: 20px;
+    font-family:Georgia, 'Times New Roman', Times, serif;
+    font-weight: 500;
+    margin-bottom: 100px;
+    color: #f4d7d7;
+    width: 350px;
+    margin-left: 0px;
+    left: 19%;
+    text-shadow: 2px 2px 4px rgb(0, 0, 0);
 }
 .fizioButton{
     background-color: rgba(241,233,222);
@@ -313,7 +332,16 @@ p{
    }
    .photoButton{
     left: 5%;
-    bottom: 230px; 
+    bottom: 370px; 
+}
+.mainPagePhotoDiv p{
+    margin: 0px;
+    left: 5%;
+    font-size: 15px;
+}
+.mainPagePhotoDiv h2{
+    margin-bottom: 0px;
+    font-size: 30px;
 }
 .giftCard{
     flex-direction: column;

@@ -34,3 +34,6 @@ document.querySelector(".menuIcone").addEventListener("click", function(){
         numMenuShown.style.display = "none";
     }
 })
+window.onload = function() {
+    document.body.style.visibility = 'visible';
+  };

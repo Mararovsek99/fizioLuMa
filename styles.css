@@ -122,6 +122,7 @@ img{
     font-size: 20px;
     padding: 10px 15px ;
     transition: 0.3s;
+    text-shadow: 1px 1px 3px rgb(255, 255, 255);
 }
 .appointmentButton{
     background-color: #15378d;
@@ -180,6 +181,10 @@ img{
     width: 240px;
     text-align: center;
     border-radius: 12px;
+    transition: 0.3s;
+}
+.photoButton:hover{
+    transform: translate(3px, -3px);
 }
 .mainPagePhotoDiv h2{
     font-size: 50px;
@@ -217,6 +222,7 @@ img{
     top: 1000px;
     display: flex;
     align-items: center;
+    margin-bottom: 60px;
 }
 .giftCard img{
     width: 30%;
@@ -233,6 +239,7 @@ img{
 .giftCardText{
     width: 50%;
     margin-right: 20%;
+    color: #323233;
 }
 h1{
     text-align: center;
@@ -333,10 +340,16 @@ p{
    .photoButton{
     left: 5%;
     bottom: 370px; 
+    width: 160px;
+}
+
+.photoButton a{
+        font-size: 15px;
 }
 .mainPagePhotoDiv p{
     margin: 5px;
-    left: 5%;
+    margin-top: 40px;
+    left: 3%;
     font-size: 15px;
     height: 30px;
 }
@@ -349,7 +362,7 @@ p{
     align-items: center;
     justify-content: center;
     top: 550px;
-    margin: 0px 5%;
+    margin: 0px 5% 50px 5%;
 }
 .giftCard img{
     align-self: center;

@@ -335,9 +335,10 @@ p{
     bottom: 370px; 
 }
 .mainPagePhotoDiv p{
-    margin: 0px;
+    margin: 5px;
     left: 5%;
     font-size: 15px;
+    height: 30px;
 }
 .mainPagePhotoDiv h2{
     margin-bottom: 0px;

@@ -9,13 +9,16 @@ window.addEventListener("scroll",function(){
     const navBarOpacity = document.querySelector(".navBar");
     const maxScroll =200;
 
-    const opacity = Math.min(1, window.scrollY / maxScroll + 0.4);
+    const opacity = Math.min(1, window.scrollY / maxScroll + 0.6);
 
     navBarOpacity.style.backgroundColor = `rgba(241,233,222, ${opacity - 0.1})`;
 
 
 });
-document.querySelector(".menuIcone").addEventListener("click", function(){
+document.querySelector(".menuIcone").addEventListener("click",showMenu); 
+document.querySelector(".overlay").addEventListener("click",showMenu);
+
+function showMenu(){
     const screenDarknes = document.querySelector(".overlay");
     const menuShown = document.querySelector(".navButtons");
     const numMenuShown = document.querySelector(".phoneNumberMenu")
@@ -33,7 +36,4 @@ document.querySelector(".menuIcone").addEventListener("click", function(){
         screenDarknes.style.display = "none";
         numMenuShown.style.display = "none";
     }
-})
-window.onload = function() {
-    document.body.style.visibility = 'visible';
-  };
+}

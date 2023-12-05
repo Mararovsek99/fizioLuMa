@@ -85,7 +85,7 @@ img{
     right: 0;
     z-index: 1000;
     padding: 0px 17%;
-    background-color:rgba(241,233,222,0.3);
+    background-color:rgba(241,233,222,0.5);
     height: 75px;
 }
 .luMaLogo{
@@ -118,6 +118,7 @@ img{
 .navButtons ul li a{
     color: rgb(34, 42, 55);
     text-decoration: none;
+    font-family: "Roboto",sans-serif;
     font-weight: 500;
     font-size: 20px;
     padding: 10px 15px ;

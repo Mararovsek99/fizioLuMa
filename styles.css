@@ -96,12 +96,12 @@ img{
 }
 .mainPagePhoto{
     width: 100%;
-    height: 900px;
+    height: 100vh;
     object-fit: cover;
     overflow: hidden;
 }
 .mainPagePhotoDiv{
-    height: 950px;
+    height: 600px;
    }
 .navButtons{
     display: flex;
@@ -219,39 +219,56 @@ img{
     color: rgba(241,233,222);
 }
 .giftCard{
-    position: absolute;
-    top: 1000px;
     display: flex;
+    justify-content: space-between;
     align-items: center;
-    margin-bottom: 60px;
+    margin: 60px 18% ;
+    background-color: #eaf0ff;
+    padding: 20px;
 }
 .giftCard img{
-    width: 30%;
+    width: 60%;
     border-radius: 20px;
-    transition: 1s;
-    margin: 0px 40px;
-    margin-left: 20%;
     margin-bottom: 30px;
-    height: max-content;
-}
-.giftCard img:hover{
-    box-shadow: 5px 5px pink;
 }
 .giftCardText{
-    width: 50%;
-    margin-right: 20%;
-    color: #323233;
+    margin: 0px 10px;
+    width: 360px;
 }
 h1{
     text-align: center;
     font-family: Garamond;
-    font-size: 40px;
+    font-size: 2.5rem;
+    font-weight: 500;
+    line-height: 120%;
 }
 p{
     text-align: center;
     margin: 20px 0px;
     font-size:larger;
 }
+.mainPagePhotoDiv #title{
+    font-size: 100px;
+    width: 100%;
+    left: 0px;
+    height: auto;
+    margin: 0px;
+}
+.domZdravja{
+    display: flex;
+    justify-content: space-between;
+    margin: 450px 18% 100px 18%;
+    align-items: center;
+
+}
+.domZdravja img{
+    width: 80%;
+    border-radius: 20px;
+}.domZdravjaText{
+    margin: 0px 10px;
+    width: 360px;
+}
+
 @media only screen and (max-width: 1250px) {/*----------------------------------tablice 1200px*/
     .greyHeader{
         padding: 0px 5px;
@@ -263,15 +280,28 @@ p{
         margin: 10px 10px;
     }
     .giftCard img{
-        margin: 0px 10%;
-        width: 40%;
+        width: 70%;
+    }
+    .giftCard{
+        flex-direction: column;
+        margin: 60px 13%;
+
     }
     p{
         font-size: medium;
     }
     .giftCardText{
-        width: 40%;
+        width: 360px;
         margin-right: 10%;
+    }
+    .domZdravja{
+        flex-direction: column;
+        align-items: center;
+        margin: 410px 10% 10px 10%;
+    }
+    .domZdravjaPhoto{
+        display: flex;
+        justify-content: center;
     }
 }
 
@@ -342,49 +372,69 @@ p{
     left: 5%;
     bottom: 370px; 
     width: 160px;
-}
+    }
 
-.photoButton a{
+    .photoButton a{
+            font-size: 15px;
+    }
+    .mainPagePhotoDiv {
+        height: 550px;
+    }
+    .mainPagePhotoDiv p{
+        margin: 5px;
+        margin-top: 40px;
+        left: 3%;
         font-size: 15px;
-}
-.mainPagePhotoDiv p{
-    margin: 5px;
-    margin-top: 40px;
-    left: 3%;
-    font-size: 15px;
-    height: 30px;
-}
-.mainPagePhotoDiv h2{
-    margin-bottom: 0px;
-    font-size: 30px;
-}
-.giftCard{
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    top: 550px;
-    margin: 0px 5% 50px 5%;
-}
-.giftCard img{
-    align-self: center;
-    width: 80%;
-    border-radius: 20px;
-    margin: 0px 20px;
-}
-.giftCardText{
-    align-self: center;
-    width: 80%;
-    margin: 0px 10%;
-    text-align: center;
-}
-h1{
-    align-self: center;
-    text-align: center;
-    font-family: Garamond;
-    font-size: 25px;
-    margin-top: 10px;
-}
-p{
-    margin: 10px 0px;
-}
+        height: 30px;
+    }
+    .mainPagePhotoDiv h2{
+        margin-bottom: 0px;
+        font-size: 30px;
+    }
+    .giftCard{
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        top: 550px;
+        margin: 570px 5% 60px 5%;
+        background-color: #eaf0ff;
+        width: 90vw;
+        padding-bottom: 40px;
+    }
+    .giftCard img{
+        align-self: center;
+        width: 80%;
+        border-radius: 20px;
+        margin: 0px 20px;
+    }
+    .giftCardText{
+        align-self: center;
+        width: 80%;
+        margin: 0px 10%;
+        text-align: center;
+    }
+    h1{
+        align-self: center;
+        text-align: center;
+        font-family: Garamond;
+        font-size: 25px;
+        margin-top: 10px;
+    }
+    p{
+        margin: 10px 0px;
+    }
+    .mainPagePhotoDiv #title{
+        font-size: 50px;
+        margin-top: 50px;
+        
+    }
+    .domZdravja{
+        margin: 0px;
+        flex-direction: column;
+        position: absolute;
+        top: 550px;
+    }
+    .domZdravjaText{
+        width: 300px;
+    }
 }

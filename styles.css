@@ -184,9 +184,6 @@ img{
     border-radius: 12px;
     transition: 0.3s;
 }
-.photoButton:hover{
-    transform: translate(3px, -3px);
-}
 .mainPagePhotoDiv h2{
     font-size: 50px;
     font-family:Georgia, 'Times New Roman', Times, serif;
@@ -254,6 +251,16 @@ p{
     height: auto;
     margin: 0px;
 }
+.mainPagePhotoDiv #pTitle{
+    font-size: 20px;
+    width: 50%;
+    left: 25%;
+    height: auto;
+    margin: 0px;
+    background-color: rgba(0, 0, 0, 0.3);
+    margin-top: 20px;
+    padding: 5px;
+}
 .domZdravja{
     display: flex;
     justify-content: space-between;
@@ -275,6 +282,22 @@ p{
     align-self: center;
     justify-content: center;
     color:#eaf0ff;
+}
+.contactsBox{
+    width: 240px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 1);
+    margin: 5px;
+    margin-top: 100px;
+    padding: 10px;
+}
+.contacts{
+    margin-top: 5px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
 }
 @media only screen and (max-width: 1250px) {/*----------------------------------tablice 1200px*/
     .greyHeader{
@@ -307,6 +330,19 @@ p{
         margin: 410px 10% 10px 10%;
     }
     .domZdravjaPhoto{
+        display: flex;
+        flex-direction: column;
+    }
+    .mainPagePhotoDiv #pTitle{
+        font-size: 20px;
+        width: 80%;
+        left: 10%;
+        background-color: rgba(0, 0, 0, 0.3);
+        margin-top: 20px;
+        padding: 5px;
+    }
+    .contacts{
+        margin-top: 5px;
         display: flex;
         justify-content: center;
     }
@@ -431,7 +467,7 @@ p{
         margin: 10px 0px;
     }
     .mainPagePhotoDiv #title{
-        font-size: 50px;
+        font-size: 40px;
         margin-top: 50px;
         
     }
@@ -443,5 +479,22 @@ p{
     }
     .domZdravjaText{
         width: 300px;
+    }
+    .mainPagePhotoDiv #pTitle{
+        font-size: 15px;
+        width: 80%;
+        left: 10%;
+        background-color: rgba(0, 0, 0, 0.3);
+        margin-top: 20px;
+        padding: 5px;
+    }
+    .bottomGrey p{
+        font-size: 10px;
+    }
+    .bottomGrey {
+        height: 30px;    
+    }
+    .contactsBox{
+        margin-top: 50px;
     }
 }

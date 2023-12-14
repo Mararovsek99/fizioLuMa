@@ -102,6 +102,7 @@ img{
 }
 .mainPagePhotoDiv{
     height: 600px;
+    background-color: #ebcbbd;
    }
 .navButtons{
     display: flex;
@@ -257,9 +258,10 @@ p{
     left: 25%;
     height: auto;
     margin: 0px;
-    background-color: rgba(0, 0, 0, 0.3);
-    margin-top: 20px;
-    padding: 5px;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 15px;
+    color: #eaf0ff;
+    border-radius: 0px;
 }
 .domZdravja{
     display: flex;
@@ -271,7 +273,9 @@ p{
 .domZdravja img{
     width: 80%;
     border-radius: 20px;
-}.domZdravjaText{
+    align-self: center;
+}
+.domZdravjaText{
     margin: 0px 10px;
     width: 360px;
 }
@@ -292,6 +296,7 @@ p{
     margin: 5px;
     margin-top: 100px;
     padding: 10px;
+    border-radius: 10px;
 }
 .contacts{
     margin-top: 5px;
@@ -299,6 +304,11 @@ p{
     justify-content: center;
     flex-wrap: wrap;
 }
+.mainPagePhotoDiv h2 #titleOnColor{
+    top: 10px;
+    bottom: 0px;
+}
+
 @media only screen and (max-width: 1250px) {/*----------------------------------tablice 1200px*/
     .greyHeader{
         padding: 0px 5px;
@@ -337,9 +347,7 @@ p{
         font-size: 20px;
         width: 80%;
         left: 10%;
-        background-color: rgba(0, 0, 0, 0.3);
-        margin-top: 20px;
-        padding: 5px;
+        padding: 15px;
     }
     .contacts{
         margin-top: 5px;
@@ -484,9 +492,7 @@ p{
         font-size: 15px;
         width: 80%;
         left: 10%;
-        background-color: rgba(0, 0, 0, 0.3);
-        margin-top: 20px;
-        padding: 5px;
+        padding: 15px;
     }
     .bottomGrey p{
         font-size: 10px;

@@ -268,7 +268,14 @@ p{
     margin: 0px 10px;
     width: 360px;
 }
-
+.bottomGrey{
+    height: 50px;
+    background-color:rgb(34, 42, 55);
+    display: flex;
+    align-self: center;
+    justify-content: center;
+    color:#eaf0ff;
+}
 @media only screen and (max-width: 1250px) {/*----------------------------------tablice 1200px*/
     .greyHeader{
         padding: 0px 5px;
@@ -396,7 +403,7 @@ p{
         align-items: center;
         justify-content: center;
         top: 550px;
-        margin: 570px 5% 60px 5%;
+        margin: 570px 0% 60px 0%;
         background-color: #eaf0ff;
         width: 90vw;
         padding-bottom: 40px;
@@ -409,7 +416,7 @@ p{
     }
     .giftCardText{
         align-self: center;
-        width: 80%;
+        width: 300px;
         margin: 0px 10%;
         text-align: center;
     }

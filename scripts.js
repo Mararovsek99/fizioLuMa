@@ -37,3 +37,14 @@ function showMenu(){
         numMenuShown.style.display = "none";
     }
 }
+document.querySelector(".scrollTerapije").addEventListener("click", scrollToStoritve);
+function scrollToStoritve(){
+        
+        const targetElement = document.getElementById("storitve");
+        const targetposition = targetElement.getBoundingClientRect().top - 200;
+
+        window.scrollTo({
+            top: targetposition,
+            behavior: "smooth"
+        })
+}

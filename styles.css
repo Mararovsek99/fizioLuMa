@@ -205,12 +205,20 @@ img{
 }
 .fizioButton{
     background-color: rgba(241,233,222);
+    border:2px solid #15378d;
+}
+.fizioButton:hover{
+    scale: 1.1;
 }
 .fizioButton a{
     color: rgb(60, 68, 80);
 }
 .massageButton{
     background-color: rgb(60, 68, 80);
+    border:2px solid #15378d;
+}
+.massageButton:hover{
+    scale: 1.1;
 }
 .massageButton a{
     color: rgba(241,233,222);
@@ -329,17 +337,39 @@ p{
 .storitve{
     font-size: 60px;
     position: relative;
-    top: 400px;
+    top: 490px;
+    left: 50%;
+    transform: translate(-50%,0%);
+    z-index: 999;
+    background-color: #cda25c;
+    width: 230px;
+    border-radius: 12px;
 }
 #storitveContent{
     position: relative;
-    top: 400px;
-    background-color: #7c8591;
+    top: 450px;
+    background-color: #dbce8f;
 
 }
 #storitveContent .contactsBox{
-    background-color: #8eadd8;
-    margin:30px 10px 100px 10px;
+    background-color: #F1E9DE;
+    margin:100px 10px 100px 10px;
+    border: 3px solid  #9a6464;
+    transition: 0.3s;
+}
+#storitveContent .contactsBox img{
+    height: 70px;
+}
+#storitveContent .contactsBox p{
+    margin: 6px;
+}
+#storitveContent .contactsBox:hover{
+    scale: 1.3;
+    background-color: #F1E9DE;
+    border: 3px solid brown;
+}
+#mainPageFirstContent{
+    margin-top: 600px;
 }
 @media only screen and (max-width: 1250px) {/*----------------------------------tablice 1200px*/
     .greyHeader{
@@ -403,6 +433,9 @@ p{
     #mzText{
         width: 70%;
         margin: 50px 0px;
+    }
+    #storitveContent .contactsBox{
+        margin:100px 1px 100px 1px;
     }
 }
 
@@ -526,14 +559,14 @@ p{
     }
     .mainPagePhotoDiv #title{
         font-size: 40px;
-        margin-top: 50px;
+        margin: 50px 0px;
         
     }
     .domZdravja{
         margin: 0px;
         flex-direction: column;
         position: absolute;
-        top: 550px;
+        top: 1200px;
     }
     .domZdravjaText{
         width: 300px;
@@ -555,5 +588,24 @@ p{
     }
     #mzDomacaAmbulanta{
         margin: 0px;
+    }
+    #storitveContent{
+        top: -185px;
+        padding: 50px 0px;
+        margin-top: 200px;
+    flex-direction: column;
+    }
+    #storitveContent .contactsBox{
+        position: relative;
+        left: 50%;
+        transform: translate(-50%,0px);
+        margin: 10px;
+    }
+    #storitveContent .contactsBox:hover{
+        scale: 1.05;
+    }
+    .storitve{
+        top: 50px;
+        font-size: 40px;
     }
 }

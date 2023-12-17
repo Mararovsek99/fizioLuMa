@@ -102,7 +102,6 @@ img{
 }
 .mainPagePhotoDiv{
     height: 600px;
-    background-color: #ebcbbd;
    }
 .navButtons{
     display: flex;
@@ -304,9 +303,25 @@ p{
     justify-content: center;
     flex-wrap: wrap;
 }
-.mainPagePhotoDiv h2 #titleOnColor{
-    top: 10px;
+.mainPagePhotoDiv .TextOnColor{
+    top: 200px;
     bottom: 0px;
+    height: 30%;
+    left: 50%;
+    transform: translate(-50%, 0%);
+    width: 70%;
+    font-size: 100px;
+    
+}
+#oMeni{
+    margin-top: 50px;
+    position: static;
+}
+#mzText{
+    width: 100%;
+}
+#mzColor{
+    height: 400px;
 }
 
 @media only screen and (max-width: 1250px) {/*----------------------------------tablice 1200px*/
@@ -353,6 +368,24 @@ p{
         margin-top: 5px;
         display: flex;
         justify-content: center;
+    }
+    .mainPagePhotoDiv .TextOnColor{
+        top: 150px;
+        bottom: 0px;
+        height: 30%;
+        left: 50%;
+        transform: translate(-50%, 0%);
+        width: 90%;
+        font-size: 70px;
+        margin: 0px;
+        
+    }
+    #mzColor{
+        height: 340px;
+    }
+    #mzText{
+        width: 70%;
+        margin: 50px 0px;
     }
 }
 
@@ -502,5 +535,8 @@ p{
     }
     .contactsBox{
         margin-top: 50px;
+    }
+    #mzDomacaAmbulanta{
+        margin: 0px;
     }
 }

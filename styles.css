@@ -323,7 +323,24 @@ p{
 #mzColor{
     height: 400px;
 }
+#domacaAmbulantaPhoto{
+    width: 50%;
+}
+.storitve{
+    font-size: 60px;
+    position: relative;
+    top: 400px;
+}
+#storitveContent{
+    position: relative;
+    top: 400px;
+    background-color: #7c8591;
 
+}
+#storitveContent .contactsBox{
+    background-color: #8eadd8;
+    margin:30px 10px 100px 10px;
+}
 @media only screen and (max-width: 1250px) {/*----------------------------------tablice 1200px*/
     .greyHeader{
         padding: 0px 5px;

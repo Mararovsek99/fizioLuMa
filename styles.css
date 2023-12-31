@@ -186,7 +186,7 @@ img{
 }
 .mainPagePhotoDiv h2{
     font-size: 50px;
-    font-family:Georgia, 'Times New Roman', Times, serif;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     font-weight: 400;
     margin-bottom: 100px;
     color: #eaf0ff;
@@ -194,11 +194,11 @@ img{
 }
 .mainPagePhotoDiv p{
     font-size: 20px;
-    font-family:Georgia, 'Times New Roman', Times, serif;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     font-weight: 500;
     margin-bottom: 100px;
-    color: #f4d7d7;
-    width: 350px;
+    color: #eaf0ff;
+    width: 170px;
     margin-left: 0px;
     left: 19%;
     text-shadow: 2px 2px 4px rgb(0, 0, 0);
@@ -376,6 +376,9 @@ p{
 #mainPageFirstContent{
     margin-top: 600px;
 }
+h3{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
 @media only screen and (max-width: 1250px) {/*----------------------------------tablice 1200px*/
     .greyHeader{
         padding: 0px 5px;
@@ -508,7 +511,7 @@ p{
     cursor: pointer;
    }
    .photoButton{
-    left: 5%;
+    left: -1%;
     bottom: 370px; 
     width: 160px;
     }
@@ -583,7 +586,8 @@ p{
     .mainPagePhotoDiv #pTitle{
         font-size: 15px;
         width: 80%;
-        left: 10%;
+        left: 50%;
+        transform: translate(-50%,0px);
         padding: 15px;
     }
     .bottomGrey p{

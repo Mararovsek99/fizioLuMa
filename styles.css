@@ -198,7 +198,7 @@ img{
     font-weight: 500;
     margin-bottom: 100px;
     color: #eaf0ff;
-    width: 170px;
+    width: 380px;
     margin-left: 0px;
     left: 19%;
     text-shadow: 2px 2px 4px rgb(0, 0, 0);
@@ -528,6 +528,7 @@ h3{
         left: 3%;
         font-size: 15px;
         height: 30px;
+        width: 170px;
     }
     .mainPagePhotoDiv h2{
         margin-bottom: 0px;

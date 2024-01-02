@@ -99,6 +99,7 @@ img{
     height: 100vh;
     object-fit: cover;
     overflow: hidden;
+    filter: brightness(0.7);
 }
 .mainPagePhotoDiv{
     height: 600px;
@@ -114,6 +115,7 @@ img{
     display: inline-block;
     list-style: none;
     margin: 10px 1%;
+    
 }
 .navButtons ul li a{
     color: rgb(34, 42, 55);
@@ -176,7 +178,7 @@ img{
 .photoButton{
     position: relative;
     left: 20%;
-    bottom: 600px;
+    bottom: 730px;
     margin: 40px;
     height: 50px;
     width: 240px;
@@ -188,14 +190,14 @@ img{
     font-size: 50px;
     font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     font-weight: 400;
-    margin-bottom: 100px;
+    margin-bottom: 170px;
     color: #eaf0ff;
     text-shadow: 2px 2px 4px rgb(0, 0, 0);
 }
 .mainPagePhotoDiv p{
     font-size: 20px;
     font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    font-weight: 500;
+    font-weight: 300;
     margin-bottom: 100px;
     color: #eaf0ff;
     width: 380px;
@@ -250,6 +252,7 @@ h1{
     font-weight: 500;
     letter-spacing: -1.5px;
     text-align: center;
+    margin: 20px 0px;
 }
 p{
     text-align: center;
@@ -374,7 +377,7 @@ p{
     scale: 1.3;
 }
 #mainPageFirstContent{
-    margin-top: 600px;
+    margin-top: 500px;
 }
 h3{
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -431,12 +434,12 @@ h3{
         left: 50%;
         transform: translate(-50%, 0%);
         width: 90%;
-        font-size: 70px;
+        font-size: 40px;
         margin: 0px;
         
     }
     #mzColor{
-        height: 340px;
+        height: 230px;
     }
     #mzText{
         width: 70%;
@@ -511,9 +514,11 @@ h3{
     cursor: pointer;
    }
    .photoButton{
-    left: -1%;
+    left: 50%;
     bottom: 370px; 
     width: 160px;
+    margin: 40px 0px 0px 0px;
+    transform: translate(-50%, 0px);
     }
 
     .photoButton a{
@@ -523,16 +528,20 @@ h3{
         height: 550px;
     }
     .mainPagePhotoDiv p{
-        margin: 5px;
-        margin-top: 40px;
-        left: 3%;
+        margin:40px 0px 0px 0px;
+        left: 50%;
         font-size: 15px;
         height: 30px;
-        width: 170px;
+        width: 300px;
+        transform: translate(-50%, 0px);
+
     }
     .mainPagePhotoDiv h2{
         margin-bottom: 0px;
         font-size: 30px;
+        margin: 40px 0px 0px 0px;
+        left: 50%;
+        transform: translate(-50%, 0px);
     }
     .giftCard{
         flex-direction: column;
@@ -573,7 +582,8 @@ h3{
     .mainPagePhotoDiv #title{
         font-size: 40px;
         margin: 50px 0px;
-        
+        left: 50%;
+            
     }
     .domZdravja{
         margin: 0px;
@@ -621,5 +631,8 @@ h3{
     .storitve{
         top: 50px;
         font-size: 40px;
+    }
+    #mainPageFirstContent{
+        margin-top: 300px;
     }
 }

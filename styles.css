@@ -85,7 +85,7 @@ img{
     right: 0;
     z-index: 1000;
     padding: 0px 17%;
-    background-color:rgba(241,233,222,0.5);
+    background-color:rgba(241,233,222,0.8);
     height: 75px;
 }
 .luMaLogo{
@@ -137,15 +137,26 @@ img{
     align-items: center;
     margin-left: 8%;
     cursor: pointer;
-    transition: 0.3s;
+    transition: background-color 0.3s;
+    
 }
 .appointmentButton:hover{
     background-color: #386bea;
 }
 .appointmentButton p{
-    color: #c9cdd1;
+    margin: 0px;
+}
+.appointmentButton p a{
+    color: #f0f7ff;
     font-weight: 600;
     font-family: Heebo,sans-serif;
+    text-decoration: none;
+    background-color: transparent;
+    padding: 4px;
+    
+}
+.appointmentButton p a:hover{
+    background-color: transparent;
 }
 .menuIcone{
     display: none;
@@ -267,6 +278,7 @@ p{
     left: 0px;
     height: auto;
     margin: 0px;
+    margin-bottom: 100px;
 }
 .mainPagePhotoDiv #pTitle{
     font-size: 20px;
@@ -302,6 +314,8 @@ p{
     align-self: center;
     justify-content: center;
     color:#eaf0ff;
+    position: relative;
+    z-index: 1001;
 }
 .contactsBox{
     width: 240px;
@@ -309,10 +323,10 @@ p{
     flex-direction: column;
     align-items: center;
     background-color: rgba(255, 255, 255, 1);
-    margin: 5px;
-    margin-top: 100px;
+    margin: 100px 5px 20px 5px;
     padding: 10px;
     border-radius: 10px;
+    z-index: 999;
 }
 .contacts{
     margin-top: 5px;
@@ -375,7 +389,7 @@ p{
     margin: 6px;
 }
 #storitveContent .contactsBox:hover{
-    scale: 1.3;
+    scale: 1.1;
 }
 #mainPageFirstContent{
     margin-top: 500px;

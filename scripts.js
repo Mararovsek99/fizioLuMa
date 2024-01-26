@@ -9,7 +9,7 @@ window.addEventListener("scroll",function(){
     const navBarOpacity = document.querySelector(".navBar");
     const maxScroll =200;
 
-    const opacity = Math.min(1, window.scrollY / maxScroll + 0.6);
+    const opacity = Math.min(1, window.scrollY / maxScroll + 0.9);
 
     navBarOpacity.style.backgroundColor = `rgba(241,233,222, ${opacity - 0.1})`;
 

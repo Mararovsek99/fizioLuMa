@@ -21,13 +21,14 @@ document.querySelector(".overlay").addEventListener("click",showMenu);
 function showMenu(){
     const screenDarknes = document.querySelector(".overlay");
     const menuShown = document.querySelector(".navButtons");
-    const numMenuShown = document.querySelector(".phoneNumberMenu")
-    
+    const numMenuShown = document.querySelector(".phoneNumberMenu");
+    const menuLogo = document.querySelector(".menuLogo");
 
     if (menuShown.style.display === "none" || menuShown.style.display === ""){
         menuShown.style.display = "flex";
         screenDarknes.style.display = "block";
         numMenuShown.style.display = "block";
+        menuLogo.style.display = "block";
        
 
     }
@@ -35,6 +36,7 @@ function showMenu(){
         menuShown.style.display = "none";
         screenDarknes.style.display = "none";
         numMenuShown.style.display = "none";
+        menuLogo.style.display = "none";
     }
 }
 document.querySelector(".scrollTerapije").addEventListener("click", scrollToStoritve);

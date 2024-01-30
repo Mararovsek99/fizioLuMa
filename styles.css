@@ -129,8 +129,8 @@ img{
 }
 .appointmentButton{
     background-color: #15378d;
-    border-radius: 20px;
-    height: 40px;
+    border-radius: 10px;
+    height: 50px;
     width: 280px;
     display: flex;
     justify-content: center;
@@ -147,8 +147,10 @@ img{
     margin: 0px;
 }
 .appointmentButton p a{
+    letter-spacing: 0.5px;
+    font-size: 18px;
     color: #f0f7ff;
-    font-weight: 600;
+    font-weight: 500;
     font-family: Heebo,sans-serif;
     text-decoration: none;
     background-color: transparent;
@@ -397,6 +399,11 @@ p{
 h3{
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-size: medium;
+}
+.menuLogo{
+    width: 80%;
+    align-self: center;
+    display: none;
 }
 @media only screen and (max-width: 1250px) {/*----------------------------------tablice 1200px*/
     .greyHeader{

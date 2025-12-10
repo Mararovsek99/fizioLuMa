@@ -9,8 +9,10 @@ import { PopupWidget } from "@/components/PopupWidget";
 
 const inter = Inter({ subsets: ["latin"] });
 const cormorant = Cormorant_Garamond({
+  style: "normal",
   subsets: ["latin"],
   weight: "700",
+  variable: "--font-cormorant",
 });
 
 export const metadata: Metadata = {
@@ -23,8 +25,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <body className={(inter.className, cormorant.className)}>
+    <html
+      lang="en"
+      suppressHydrationWarning
+      className={`${cormorant.variable}`}
+    >
+      <body className={inter.className}>
         <ThemeProvider attribute="class">
           <Navbar />
           <div>{children}</div>

@@ -35,19 +35,18 @@ export default function Home() {
 
       <Video videoId="fZ0D0cnR88E" />
 
-      <SectionTitle
-        preTitle="Testimonials"
-        title="Here's what our customers said"
-      >
-        Testimonials is a great way to increase the brand trust and awareness.
-        Use this section to highlight your popular customers.
+      <SectionTitle preTitle="Mnenja strank" title="Kaj pravijo naše stranke">
+        Preberite izkušnje naših zadovoljnih strank — njihove zgodbe o napredku,
+        zaupanju in izboljšanem počutju. Resnične ocene, ki govorijo o
+        strokovnosti in prijaznem pristopu.
       </SectionTitle>
 
       <Testimonials />
 
-      <SectionTitle preTitle="FAQ" title="Frequently Asked Questions">
-        Answer your customers possible questions here, it will increase the
-        conversion rate as well as support or chat requests.
+      <SectionTitle preTitle="HITRA POMOČ" title="Najpogostejša vprašanja">
+        Tukaj so odgovori na najpogostejša vprašanja o storitvah, poteku terapij
+        in rezervacijah. Če ne najdete odgovora, nas prosimo kontaktirajte — z
+        veseljem pomagamo.
       </SectionTitle>
 
       <Faq />

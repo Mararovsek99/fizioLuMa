@@ -1,89 +1,90 @@
 import Image from "next/image";
 import { Container } from "@/components/Container";
 import heroImg from "../../public/img/hero.jpeg";
-
 export const Hero = () => {
   return (
     <>
       <Container className="flex flex-wrap ">
         <div className="flex items-center w-full lg:w-1/2">
           <div className="max-w-2xl mb-8">
-            <h1 className=" text-mainblack text-4xl md:text-5xl lg:text-6xl font-semibold text-foreground leading-tight mb-6 cormorant">
+            <h1 className=" text-mainblack text-4xl md:text-5xl lg:text-8xl font-bold text-foreground leading-tight mb-6 font-serif">
               Vaša pot do <span className="text-themecolor">boljšega</span>{" "}
               počutja
             </h1>
-            <p className="py-5 text-xl leading-normal text-gray-500 lg:text-xl xl:text-2xl dark:text-gray-300">
+            <p className="py-5 text-xl leading-normal text-gray-500 lg:text-xl xl:text-2xl">
               Individualen pristop k vašemu zdravju. Strokovne fizioterapevtske
               storitve v prijetnem in sproščenem okolju.
             </p>
 
             <div className="flex flex-col items-start space-y-3 sm:space-x-4 sm:space-y-0 sm:items-center sm:flex-row">
               <a
-                href="https://web3templates.com/templates/nextly-landing-page-template-for-startups"
                 target="_blank"
                 rel="noopener"
-                className="px-8 py-4 text-lg font-medium text-center text-white bg-indigo-600 rounded-md "
+                className="px-8 py-4 text-lg font-medium text-center text-white bg-themecolor rounded-md transition filter duration-200 hover:brightness-110 cursor-pointer"
               >
                 Rezerviraj termin
               </a>
               <a
-                href="https://github.com/web3templates/nextly-template/"
                 target="_blank"
                 rel="noopener"
-                className="flex items-center space-x-2 text-gray-500 dark:text-gray-400"
+                className="box-border px-8 py-4 text-lg font-medium text-center text-themecolor bg-white rounded-md transition-colors duration-200 hover:bg-themecolor hover:text-white ring-2 ring-themecolor ring-inset cursor-pointer"
               >
-                <svg
-                  role="img"
-                  width="24"
-                  height="24"
-                  className="w-5 h-5"
-                  viewBox="0 0 24 24"
-                  fill="currentColor"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <title>GitHub</title>
-                </svg>
+                Več o storitvah
               </a>
             </div>
           </div>
         </div>
         <div className="flex items-center justify-center w-full lg:w-1/2">
-          <div
-            className="overflow-hidden rounded-2xl"
-            style={{ boxShadow: "-30px 30px 10px 10px rgba(244,192,168,0.95)" }}
-          >
-            <Image
-              src={heroImg}
-              width={616}
-              height={617}
-              className="object-cover rounded-2xl"
-              alt="Hero Illustration"
-              loading="eager"
-              placeholder="blur"
+          <div className="relative" style={{ width: 616 }}>
+            {/* shadow layer you can rotate/scale independently */}
+            <div
+              aria-hidden
+              className="absolute  rounded-2xl bg-themecolor"
+              style={{
+                width: 500,
+                height: 400,
+                filter: "blur(8px)",
+                top: "180px",
+                transform: "rotate(-6deg) scale(1.3)",
+                zIndex: 0,
+              }}
             />
+
+            {/* image on top */}
+            <div className="overflow-hidden rounded-2xl relative z-10">
+              <Image
+                src={heroImg}
+                width={500}
+                height={500}
+                className="object-cover rounded-2xl"
+                alt="Hero Illustration"
+                loading="eager"
+                placeholder="blur"
+              />
+            </div>
           </div>
         </div>
       </Container>
       <Container>
         <div className="flex flex-col justify-center">
-          <div className="text-xl text-center text-gray-700 dark:text-white">
+          <div className="text-xl text-center text-gray-700">
             Več kot <span className="text-indigo-600">10+</span> certifikatov
           </div>
 
           <div className="flex flex-wrap justify-center gap-5 mt-10 md:justify-around">
-            <div className="pt-2 text-gray-400 dark:text-gray-400">
+            <div className="pt-2 text-gray-400 ">
               <AmazonLogo />
             </div>
-            <div className="text-gray-400 dark:text-gray-400">
+            <div className="text-gray-400 ">
               <VerizonLogo />
             </div>
-            <div className="text-gray-400 dark:text-gray-400">
+            <div className="text-gray-400 ">
               <MicrosoftLogo />
             </div>
-            <div className="pt-1 text-gray-400 dark:text-gray-400">
+            <div className="pt-1 text-gray-400">
               <NetflixLogo />
             </div>
-            <div className="pt-2 text-gray-400 dark:text-gray-400">
+            <div className="pt-2 text-gray-400">
               <SonyLogo />
             </div>
           </div>

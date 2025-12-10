@@ -22,7 +22,7 @@ export function PopupWidget() {
   const [isSuccess, setIsSuccess] = useState(false);
   const [Message, setMessage] = useState("");
 
-  const userName = useWatch({ control, name: "name", defaultValue: "Someone" });
+  const userName = useWatch({ control, name: "name", defaultValue: "Nekdo" });
 
   const onSubmit = async (data: any, e: any) => {
     console.log(data);
@@ -48,7 +48,7 @@ export function PopupWidget() {
       })
       .catch((error) => {
         setIsSuccess(false);
-        setMessage("Client Error. Please check the console.log for more info");
+        setMessage("Napaka na odjemalcu. Za več informacij preverite konzolo");
         console.log(error);
       });
   };
@@ -58,8 +58,7 @@ export function PopupWidget() {
       <Disclosure>
         {({ open }) => (
           <>
-            <DisclosureButton className="fixed z-40 flex items-center justify-center transition duration-300 bg-indigo-500 rounded-full shadow-lg right-5 bottom-5 w-14 h-14 focus:outline-none hover:bg-indigo-600 focus:bg-indigo-600 ease">
-              <span className="sr-only">Open Contact form Widget</span>
+            <DisclosureButton className="fixed z-40 flex items-center justify-center transition duration-300 bg-themecolor rounded-full shadow-lg right-5 bottom-5 w-14 h-14 focus:outline-none hover:bg-themecolorhover  focus:bg-themecolorhover ease">
               <Transition
                 show={!open}
                 enter="transition duration-200 transform ease"
@@ -117,11 +116,13 @@ export function PopupWidget() {
               leaveTo="opacity-0 translate-y-5"
               as="div"
             >
-              <DisclosurePanel className=" flex flex-col  overflow-hidden left-0 h-full w-full sm:w-[350px] min-h-[250px] sm:h-[600px] border border-gray-300 dark:border-gray-800 bg-white shadow-2xl rounded-md sm:max-h-[calc(100vh-120px)]">
-                <div className="flex flex-col items-center justify-center h-32 p-5 bg-indigo-600">
-                  <h3 className="text-lg text-white">How can we help?</h3>
+              <DisclosurePanel className=" flex flex-col  overflow-hidden left-0 h-full w-full sm:w-[350px] min-h-[250px] sm:h-[600px] border border-gray-300 bg-white shadow-2xl rounded-md sm:max-h-[calc(100vh-120px)]">
+                <div className="flex flex-col items-center justify-center h-32 p-5 bg-themecolor">
+                  <h3 className="text-lg text-white">
+                    Kako vam lahko pomagam?
+                  </h3>
                   <p className="text-white opacity-50">
-                    We usually respond in a few hours
+                    Običajno odgovorim v nekaj urah
                   </p>
                 </div>
                 <div className="flex-grow h-full p-6 overflow-auto bg-gray-50 ">
@@ -129,17 +130,17 @@ export function PopupWidget() {
                     <form onSubmit={handleSubmit(onSubmit)} noValidate>
                       <input
                         type="hidden"
-                        value="YOUR_ACCESS_KEY_HERE"
+                        value="5f660508-d5d5-45f4-927a-be6e851bf405"
                         {...register("apikey")}
                       />
                       <input
                         type="hidden"
-                        value={`${userName} sent a message from Nextly`}
+                        value={`${userName} je poslal sporočilo iz Nextly`}
                         {...register("subject")}
                       />
                       <input
                         type="hidden"
-                        value="Nextly Template"
+                        value="Nextly Predloga"
                         {...register("from_name")}
                       />
                       <input
@@ -152,22 +153,22 @@ export function PopupWidget() {
                       <div className="mb-4">
                         <label
                           htmlFor="full_name"
-                          className="block mb-2 text-sm text-gray-600 dark:text-gray-400"
+                          className="block mb-2 text-sm text-gray-600"
                         >
-                          Full Name
+                          Ime, Priimek:
                         </label>
                         <input
                           type="text"
                           id="full_name"
-                          placeholder="John Doe"
+                          placeholder="Janez Novak"
                           {...register("name", {
-                            required: "Full name is required",
+                            required: "Ime in priimek je obvezno",
                             maxLength: 80,
                           })}
                           className={`w-full px-3 py-2 text-gray-600 placeholder-gray-300 bg-white border border-gray-300 rounded-md focus:outline-none focus:ring   ${
                             errors.name
                               ? "border-red-600 focus:border-red-600 ring-red-100"
-                              : "border-gray-300 focus:border-indigo-600 ring-indigo-100"
+                              : "border-gray-300 focus:border-themecolor ring-indigo-100"
                           }`}
                         />
                         {errors.name && (
@@ -180,25 +181,25 @@ export function PopupWidget() {
                       <div className="mb-4">
                         <label
                           htmlFor="email"
-                          className="block mb-2 text-sm text-gray-600 dark:text-gray-400"
+                          className="block mb-2 text-sm text-gray-600 "
                         >
-                          Email Address
+                          Email:
                         </label>
                         <input
                           type="email"
                           id="email"
                           {...register("email", {
-                            required: "Enter your email",
+                            required: "Vnesite svoj email",
                             pattern: {
                               value: /^\S+@\S+$/i,
-                              message: "Please enter a valid email",
+                              message: "Vnesite veljaven e-poštni naslov",
                             },
                           })}
-                          placeholder="you@company.com"
+                          placeholder="janeznovak@gmail.com"
                           className={`w-full px-3 py-2 text-gray-600 placeholder-gray-300 bg-white border border-gray-300 rounded-md focus:outline-none focus:ring   ${
                             errors.email
                               ? "border-red-600 focus:border-red-600 ring-red-100"
-                              : "border-gray-300 focus:border-indigo-600 ring-indigo-100"
+                              : "border-gray-300 focus:border-themecolor ring-indigo-100"
                           }`}
                         />
 
@@ -212,22 +213,22 @@ export function PopupWidget() {
                       <div className="mb-4">
                         <label
                           htmlFor="message"
-                          className="block mb-2 text-sm text-gray-600 dark:text-gray-400"
+                          className="block mb-2 text-sm text-gray-600"
                         >
-                          Your Message
+                          Sporočilo:
                         </label>
 
                         <textarea
                           rows={4}
                           id="message"
                           {...register("message", {
-                            required: "Enter your Message",
+                            required: "Vnesite svoje sporočilo",
                           })}
-                          placeholder="Your Message"
+                          placeholder="Potrebujem pomoč pri ..."
                           className={`w-full px-3 py-2 text-gray-600 placeholder-gray-300 bg-white border border-gray-300 rounded-md h-28 focus:outline-none focus:ring   ${
                             errors.message
                               ? "border-red-600 focus:border-red-600 ring-red-100"
-                              : "border-gray-300 focus:border-indigo-600 ring-indigo-100"
+                              : "border-gray-300 focus:border-themecolor ring-indigo-100"
                           }`}
                           required
                         ></textarea>
@@ -240,7 +241,7 @@ export function PopupWidget() {
                       <div className="mb-3">
                         <button
                           type="submit"
-                          className="w-full px-3 py-4 text-white bg-indigo-500 rounded-md focus:bg-indigo-600 focus:outline-none"
+                          className="w-full px-3 py-4 text-white bg-themecolor rounded-md focus:bg-themecolorhover focus:outline-none"
                         >
                           {isSubmitting ? (
                             <svg
@@ -264,26 +265,10 @@ export function PopupWidget() {
                               ></path>
                             </svg>
                           ) : (
-                            "Send Message"
+                            "Pošlji sporočilo"
                           )}
                         </button>
                       </div>
-                      <p
-                        className="text-xs text-center text-gray-400"
-                        id="result"
-                      >
-                        <span>
-                          Powered by{" "}
-                          <a
-                            href="https://Web3Forms.com"
-                            className="text-gray-600"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                          >
-                            Web3Forms
-                          </a>
-                        </span>
-                      </p>
                     </form>
                   )}
 
@@ -304,14 +289,14 @@ export function PopupWidget() {
                         />
                       </svg>
                       <h3 className="py-5 text-xl text-green-500">
-                        Message sent successfully
+                        Sporočilo je bilo uspešno poslano
                       </h3>
                       <p className="text-gray-700 md:px-3">{Message}</p>
                       <button
-                        className="mt-6 text-indigo-600 focus:outline-none"
+                        className="mt-6 text-themecolor focus:outline-none"
                         onClick={() => reset()}
                       >
-                        Go back
+                        Nazaj
                       </button>
                     </div>
                   )}
@@ -334,14 +319,14 @@ export function PopupWidget() {
                       </svg>
 
                       <h3 className="text-xl text-red-400 py-7">
-                        Oops, Something went wrong!
+                        Ups, nekaj je šlo narobe!
                       </h3>
                       <p className="text-gray-700 md:px-3">{Message}</p>
                       <button
-                        className="mt-6 text-indigo-600 focus:outline-none"
+                        className="mt-6 text-themecolor focus:outline-none"
                         onClick={() => reset()}
                       >
-                        Go back
+                        Nazaj
                       </button>
                     </div>
                   )}

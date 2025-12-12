@@ -36,26 +36,11 @@ export const Hero = () => {
         </div>
         <div className="flex items-center justify-center w-full lg:w-1/2">
           <div className="relative" style={{ width: 616 }}>
-            {/* shadow layer you can rotate/scale independently */}
-            <div
-              aria-hidden
-              className="absolute  rounded-2xl bg-themecolor"
-              style={{
-                width: 500,
-                height: 400,
-                filter: "blur(8px)",
-                top: "180px",
-                transform: "rotate(-6deg) scale(1.3)",
-                zIndex: 0,
-              }}
-            />
-
-            {/* image on top */}
             <div className="overflow-hidden rounded-2xl relative z-10">
               <Image
                 src={heroImg}
-                width={500}
-                height={500}
+                width={485}
+                height={450}
                 className="object-cover rounded-2xl"
                 alt="Hero Illustration"
                 loading="eager"
@@ -68,7 +53,7 @@ export const Hero = () => {
       <Container>
         <div className="flex flex-col justify-center">
           <div className="text-xl text-center text-gray-700">
-            Več kot <span className="text-indigo-600">10+</span> certifikatov
+            Več kot <span className="text-themecolor">10+</span> certifikatov
           </div>
 
           <div className="flex flex-wrap justify-center gap-5 mt-10 md:justify-around">

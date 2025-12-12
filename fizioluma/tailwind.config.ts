@@ -10,7 +10,6 @@ const config: Config = {
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
-  darkMode: "class", // or 'media' or 'class'
   theme: {
     extend: {
       colors: {
@@ -18,7 +17,7 @@ const config: Config = {
         navbg: "rgba(250, 248, 245, 0.95)",
         border: "rgba(226, 218, 207, 1)",
         themecolor: "rgba(190, 114, 60, 1)",
-        themecolor2: "rgba(189, 117, 129, 1)",
+        themebg: "rgba(234, 230, 227, 1)",
         themecolorhover: "rgba(176, 133, 140, 1)",
         navbtn: "rgba(134, 114, 98, 1)",
         navbtnfocus: "rgba(87, 75, 65, 1)",

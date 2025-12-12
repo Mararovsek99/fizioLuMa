@@ -25,13 +25,13 @@ export const Benefits = (props: Readonly<BenefitsProps>) => {
           props.imgPos === "right" ? "lg:order-1" : ""
         }`}
       >
-        <div>
+        <div className="rounded-2xl">
           <Image
             src={data.image}
             width={521}
             height={521}
-            alt="Benefits"
-            className={"object-cover"}
+            alt="Aboutmw"
+            className={"object-cover overflow-hidden rounded-2xl"}
             placeholder="blur"
             blurDataURL={data.image.src}
           />
@@ -70,7 +70,7 @@ export const Benefits = (props: Readonly<BenefitsProps>) => {
 function Benefit(props: any) {
   return (
     <div className="flex items-start mt-8 space-x-3">
-      <div className="flex items-center justify-center flex-shrink-0 mt-1 bg-indigo-500 rounded-md w-11 h-11 ">
+      <div className="flex items-center justify-center flex-shrink-0 mt-1 bg-themecolor rounded-md w-11 h-11 ">
         {React.cloneElement(props.icon, {
           className: "w-7 h-7 text-indigo-50",
         })}

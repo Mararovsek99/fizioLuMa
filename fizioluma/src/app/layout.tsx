@@ -30,7 +30,7 @@ export default function RootLayout({
       suppressHydrationWarning
       className={`${cormorant.variable}`}
     >
-      <body className={inter.className}>
+      <body className={`${inter.className} bg-themebg`}>
         <ThemeProvider attribute="class">
           <Navbar />
           <div>{children}</div>

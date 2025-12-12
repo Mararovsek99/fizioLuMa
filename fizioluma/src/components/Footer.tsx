@@ -15,7 +15,7 @@ export function Footer() {
               {" "}
               <Link
                 href="/"
-                className="flex items-center space-x-2 text-2xl font-medium text-indigo-500 "
+                className="flex items-center space-x-2 text-2xl font-medium text-themecolor "
               >
                 <Image
                   src="/img/logo.svg"
@@ -195,7 +195,7 @@ const Backlink = () => {
         />
       </svg>
 
-      <span>Web3Templates</span>
+      <span>MarovšekDesign</span>
     </a>
   );
 };

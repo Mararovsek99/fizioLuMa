@@ -6,42 +6,61 @@ import { Video } from "@/components/Video";
 import { Testimonials } from "@/components/Testimonials";
 import { Faq } from "@/components/Faq";
 import { Cta } from "@/components/Cta";
+import { MapComponent } from "@/components/MapComponent";
 
 import { benefitOne, benefitTwo } from "@/components/data";
 export default function Home() {
   return (
     <Container>
-      <Hero />
+      <section id="home">
+        <Hero />
+      </section>
       <SectionTitle
-        preTitle="Nextly Benefits"
-        title=" Why should you use this landing page"
+        preTitle="Naj se predstavim"
+        title=" Zakaj izbrati fizioterapijo LuMa?"
       >
         Pri LuMa vam nudim individualno obravnavo, prilagojeno vašim težavam,
         naprednim terapijam ter realnim ciljem. Učinkovito, strokovno in
         prijazno – za vaše boljše gibanje.
       </SectionTitle>
 
-      <Benefits data={benefitOne} />
-      <Benefits imgPos="right" data={benefitTwo} />
+      <section id="aboutme">
+        <Benefits data={benefitOne} />
+      </section>
+      <section id="therapy">
+        <Benefits imgPos="right" data={benefitTwo} />
+      </section>
 
       <SectionTitle
-        preTitle="Watch a video"
-        title="Learn how to fullfil your needs"
+        preTitle="POGLEJ VIDEO"
+        title="Na hitro o moji fizioterapiji"
       >
-        This section is to highlight a promo or demo video of your product.
-        Analysts says a landing page with video has 3% more conversion rate. So,
-        don&apos;t forget to add one. Just like this.
+        V fizioluma verjamemo v moč gibanja in individualen pristop k
+        zdravljenju. Oglejte si kratek video, kjer vam predstavim svoje metode
+        dela, vrednote in kako lahko skupaj dosežemo vaše cilje za boljše
+        počutje in gibljivost.
       </SectionTitle>
 
       <Video videoId="fZ0D0cnR88E" />
 
-      <SectionTitle preTitle="Mnenja strank" title="Kaj pravijo naše stranke">
-        Preberite izkušnje naših zadovoljnih strank — njihove zgodbe o napredku,
-        zaupanju in izboljšanem počutju. Resnične ocene, ki govorijo o
-        strokovnosti in prijaznem pristopu.
-      </SectionTitle>
+      <section id="Testimonials">
+        <SectionTitle preTitle="Mnenja strank" title="Kaj pravijo naše stranke">
+          Preberite izkušnje naših zadovoljnih strank — njihove zgodbe o
+          napredku, zaupanju in izboljšanem počutju. Resnične ocene, ki govorijo
+          o strokovnosti in prijaznem pristopu.
+        </SectionTitle>
+      </section>
 
       <Testimonials />
+
+      <section id="contact">
+        <SectionTitle preTitle="kontakt" title="Kje nas najdete">
+          Fizioterapija LuMa se nahaja 2 minuti od avtocestnega izvoza Celje
+          center.
+        </SectionTitle>
+      </section>
+
+      <MapComponent />
 
       <SectionTitle preTitle="HITRA POMOČ" title="Najpogostejša vprašanja">
         Tukaj so odgovori na najpogostejša vprašanja o storitvah, poteku terapij

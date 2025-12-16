@@ -97,7 +97,17 @@ export const Navbar = () => {
     <div className="w-full bg-navbg border-b-2 border-border sticky top-0 z-50 backdrop-blur-sm">
       <nav className="container relative flex flex-wrap items-center justify-between p-5 mx-auto lg:justify-between xl:px-1">
         {/* Logo Link to Home */}
-        <Link href="/">{/* ... Logo Image ... */}</Link>
+        <Link href="/">
+          {
+            <Image
+              src="/img/logo.png"
+              width={200}
+              height={50}
+              alt="Fizio Luma Logo"
+              className="h-auto"
+            />
+          }
+        </Link>
 
         {/* 'Book Now' Button (visible on desktop) */}
         <div className="gap-3 nav__item mr-2 lg:flex ml-auto lg:ml-0 lg:order-2">

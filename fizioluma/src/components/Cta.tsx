@@ -1,7 +1,12 @@
+"use client";
 import React from "react";
 import { Container } from "@/components/Container";
 
-export const Cta = () => {
+interface CtaProps {
+  onOpenPopup: () => void;
+}
+
+export const Cta = ({ onOpenPopup }: CtaProps) => {
   return (
     <Container>
       <div className="flex flex-wrap items-center justify-between w-full max-w-4xl gap-5 mx-auto text-white bg-themecolor px-7 py-7 lg:px-12 lg:py-12 lg:flex-nowrap rounded-xl">
@@ -14,14 +19,12 @@ export const Cta = () => {
           </p>
         </div>
         <div className="flex-shrink-0 w-full text-center lg:w-auto">
-          <a
-            href="https://github.com/web3templates"
-            target="_blank"
-            rel="noopener"
+          <button
+            onClick={onOpenPopup}
             className="inline-block py-3 mx-auto text-lg font-medium text-center text-themecolor bg-white rounded-md px-7 lg:px-10 lg:py-5 "
           >
             Želim termin
-          </a>
+          </button>
         </div>
       </div>
     </Container>

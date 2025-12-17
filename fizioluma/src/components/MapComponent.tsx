@@ -87,7 +87,7 @@ export function MapComponent() {
     <APIProvider apiKey={apiKey} language="sl" solutionChannel="LumaFizioWeb">
       <Container>
         {/* Contact Block */}
-        <div className="max-w-7xl mx-auto mb-10 md:mb-16 p-6 md:p-8">
+        <div className="max-w-7xl mx-auto mb-10 md:mb-16 pb-6">
           <h2 className="text-3xl font-bold text-gray-900 text-center mb-10">
             Kontaktni podatki
           </h2>
@@ -98,7 +98,7 @@ export function MapComponent() {
             <ContactItem
               href={mapsUrl}
               icon={MapPinIcon}
-              title="Kje nas najdete"
+              title="Kje me najdete"
               value={locationAddress}
               iconColor="text-red-600"
               target="_blank"
@@ -108,7 +108,7 @@ export function MapComponent() {
             <ContactItem
               href={`tel:${phoneNumber.replace(/-/g, "")}`}
               icon={PhoneIcon}
-              title="Pokličite nas"
+              title="Pokličite me"
               value={phoneNumber}
               iconColor="text-green-600"
             />
@@ -117,7 +117,7 @@ export function MapComponent() {
             <ContactItem
               href={`mailto:${emailAddress}`}
               icon={EnvelopeIcon}
-              title="Pišite nam"
+              title="Pišite mi"
               value={emailAddress}
               iconColor="text-gray-600"
             />

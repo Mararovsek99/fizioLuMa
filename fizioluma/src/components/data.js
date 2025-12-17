@@ -20,7 +20,7 @@ const benefitOne = {
       icon: <AcademicCapIcon />,
     },
     {
-      title: "Dodatna znanja",
+      title: "Specialna znanja",
       desc: "Stalno izobraževanje in specializacije",
       icon: <BookOpenIcon />,
     },
@@ -34,7 +34,7 @@ const benefitOne = {
 
 const benefitTwo = {
   title: "Terapije in šolanja",
-  desc: "Ves dodatni čas vlagam v najnovejša šolanja in izpopolnjevanja s področja fizioterapije, da vam lahko ponudim najbolj učinkovite in sodobne metode zdravljenja. Trenutno sem se specializirala tudi za izvajanje limfne drenaže, saj je to ena izmed ključnih tehnik za izboljšanje celotnega počutja.",
+  desc: "Ves dodatni čas vlagam v najnovejša šolanja in izpopolnjevanja s področja fizioterapije, da vam lahko ponudim najbolj učinkovite in sodobne metode zdravljenja. Nazadnje sem se specializirala tudi za izvajanje limfne drenaže, saj je to ena izmed ključnih tehnik za izboljšanje celotnega počutja.",
   image: certificatesImg, // Uporabljam originalno referenco za sliko/certifikate
   bullets: [
     {

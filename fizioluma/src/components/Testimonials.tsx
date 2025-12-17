@@ -12,23 +12,49 @@ import WomanImg from "../../public/img/Woman_Icon.png";
 export const Testimonials = () => {
   return (
     <Container>
+      {/* Opozorilo za podrsanje (vidno in utripajoče) */}
+      <div className="text-center mb-6">
+        <p className="text-lg font-semibold text-themecolor animate-pulse">
+          &lt;— Podrsaj —&gt;
+        </p>
+      </div>
+
       <Swiper
         modules={[Autoplay, FreeMode]}
         loop={true}
         freeMode={true}
         autoplay={{
-          delay: 500, // počasi
-          disableOnInteraction: false, // da autoplay NE preneha, ko ročno skrolaš
-          pauseOnMouseEnter: false, // da se ustavi, ko greš z miško čez (po želji)
+          delay: 500,
+          disableOnInteraction: false,
+          pauseOnMouseEnter: false,
         }}
-        speed={4000} // kako gladko in dolgo naj drsi (višje = bolj smooth)
-        slidesPerView={3}
-        spaceBetween={50}
+        speed={4000}
+        // Privzeto za zelo majhne zaslone (pod 640px): nastavljeno na 1.5, da se vidijo 2 slajda
+        slidesPerView={1}
+        spaceBetween={5} // Zmanjšan spaceBetween
+        breakpoints={{
+          // Sm (640px in več): 2 slida (za tablice)
+          640: {
+            slidesPerView: 2,
+            spaceBetween: 20,
+          },
+          // Md (768px in več): 2.5 slida (širše tablice)
+          768: {
+            slidesPerView: 2,
+            spaceBetween: 30,
+          },
+          // Lg (1024px in več): 3 slidi (za namizne računalnike)
+          1024: {
+            slidesPerView: 3,
+            spaceBetween: 40,
+          },
+        }}
       >
         <SwiperSlide>
-          <div className="">
-            <div className="flex flex-col justify-between w-full h-full bg-gray-100 px-14 rounded-2xl py-14 ">
-              <p className="text-2xl leading-normal text-trueGray-700">
+          <div className="h-full">
+            {/* Zmanjšan padding in velikost besedila za mobilne naprave */}
+            <div className="flex flex-col justify-between w-full h-full bg-gray-100 px-4 py-4 sm:px-6 sm:py-8 lg:px-10 lg:py-10 rounded-2xl">
+              <p className="text-xs leading-relaxed sm:text-sm lg:text-lg text-trueGray-700">
                 ej neznam ti povedat kok je hrbet boljse. Sem ti full full
                 hvalezen ker sem se herniacije res utrašu. In hvala da si me
                 <Mark>takoj</Mark>
@@ -44,9 +70,9 @@ export const Testimonials = () => {
           </div>
         </SwiperSlide>
         <SwiperSlide>
-          <div className="">
-            <div className="flex flex-col justify-between w-full h-full bg-gray-100 px-14 rounded-2xl py-14">
-              <p className="text-2xl leading-normal text-trueGray-700">
+          <div className="h-full">
+            <div className="flex flex-col justify-between w-full h-full bg-gray-100 px-4 py-4 sm:px-6 sm:py-8 lg:px-10 lg:py-10 rounded-2xl">
+              <p className="text-xs leading-relaxed sm:text-base lg:text-lg text-trueGray-700">
                 ti pa morem povedat, da so noge veliko boljše.{" "}
                 <Mark>Niso več boleče</Mark>, mravlinčenja na podpaltu ni več!
                 Hvalaa tiii, še pridem 🥰
@@ -57,9 +83,9 @@ export const Testimonials = () => {
           </div>
         </SwiperSlide>
         <SwiperSlide>
-          <div className="">
-            <div className="flex flex-col justify-between w-full h-full bg-gray-100 px-14 rounded-2xl py-14">
-              <p className="text-2xl leading-normal text-trueGray-700">
+          <div className="h-full">
+            <div className="flex flex-col justify-between w-full h-full bg-gray-100 px-4 py-4 sm:px-6 sm:py-8 lg:px-10 lg:py-10 rounded-2xl">
+              <p className="text-xs leading-relaxed sm:text-base lg:text-lg text-trueGray-700">
                 Lucija jaz ne morem vrjet. Po 3 mesecih{" "}
                 <Mark>spet mirno spim!</Mark>
                 Mravlincenja po roki ni vec, oziroma je se tako minimalnoo.
@@ -76,9 +102,9 @@ export const Testimonials = () => {
           </div>
         </SwiperSlide>
         <SwiperSlide>
-          <div className="">
-            <div className="flex flex-col justify-between w-full h-full bg-gray-100 px-14 rounded-2xl py-14">
-              <p className="text-2xl leading-normal text-trueGray-700">
+          <div className="h-full">
+            <div className="flex flex-col justify-between w-full h-full bg-gray-100 px-4 py-4 sm:px-6 sm:py-8 lg:px-10 lg:py-10 rounded-2xl">
+              <p className="text-xs leading-relaxed sm:text-base lg:text-lg text-trueGray-700">
                 Suuuper sem, ful <Mark>majn bolii</Mark>. Hvalaa ti. Mami je tut
                 ful bolje!
               </p>
@@ -88,9 +114,9 @@ export const Testimonials = () => {
           </div>
         </SwiperSlide>
         <SwiperSlide>
-          <div className="">
-            <div className="flex flex-col justify-between w-full h-full bg-gray-100 px-14 rounded-2xl py-14">
-              <p className="text-2xl leading-normal text-trueGray-700">
+          <div className="h-full">
+            <div className="flex flex-col justify-between w-full h-full bg-gray-100 px-4 py-4 sm:px-6 sm:py-8 lg:px-10 lg:py-10 rounded-2xl">
+              <p className="text-xs leading-relaxed sm:text-base lg:text-lg text-trueGray-700">
                 Lucija jaz zdaj zaupam <Mark>samo še tebi</Mark>, mojih težav z
                 glavobolj in bolečinah v vratu po 5 letih sploh ni več. Nism si
                 mogla vrjet da je to možno🤩
@@ -105,9 +131,9 @@ export const Testimonials = () => {
           </div>
         </SwiperSlide>
         <SwiperSlide>
-          <div className="">
-            <div className="flex flex-col justify-between w-full h-full bg-gray-100 px-14 rounded-2xl py-14">
-              <p className="text-2xl leading-normal text-trueGray-700">
+          <div className="h-full">
+            <div className="flex flex-col justify-between w-full h-full bg-gray-100 px-4 py-4 sm:px-6 sm:py-8 lg:px-10 lg:py-10 rounded-2xl">
+              <p className="text-xs leading-relaxed sm:text-base lg:text-lg text-trueGray-700">
                 Ojjj Lucija☺️ so far, so good! Za enkrat je pocutje top. Vceri
                 me je sicer neki "stihnalo" v krizu, ampak je blo pomoje ker sm
                 mal pretiravala na legpressu, sm pol s konjskim mazilom resla.
@@ -120,9 +146,9 @@ export const Testimonials = () => {
           </div>
         </SwiperSlide>
         <SwiperSlide>
-          <div className="">
-            <div className="flex flex-col justify-between w-full h-full bg-gray-100 px-14 rounded-2xl py-14">
-              <p className="text-2xl leading-normal text-trueGray-700">
+          <div className="h-full">
+            <div className="flex flex-col justify-between w-full h-full bg-gray-100 px-4 py-4 sm:px-6 sm:py-8 lg:px-10 lg:py-10 rounded-2xl">
+              <p className="text-xs leading-relaxed sm:text-base lg:text-lg text-trueGray-700">
                 Lucija, zdravo. Kaj ste naredila mojemu kolenu..?{" "}
                 <Mark>Ni več bolečin</Mark>, nič ne pika in kljuva 🙂 Res sem
                 vam hvaležna 👏 sem vas naprej pohvalila in so za vas rekli same
@@ -135,9 +161,9 @@ export const Testimonials = () => {
           </div>
         </SwiperSlide>
         <SwiperSlide>
-          <div className="lg:col-span-2 xl:col-auto">
-            <div className="flex flex-col justify-between w-full h-full bg-gray-100 px-14 rounded-2xl py-14">
-              <p className="text-2xl leading-normal text-trueGray-700">
+          <div className="h-full">
+            <div className="flex flex-col justify-between w-full h-full bg-gray-100 px-4 py-4 sm:px-6 sm:py-8 lg:px-10 lg:py-10 rounded-2xl">
+              <p className="text-xs leading-relaxed sm:text-base lg:text-lg text-trueGray-700">
                 nism si mislu da je lahk roka tok boljse, hvala ker si si vzela
                 čas in mi rešla še <Mark>teniški komolc</Mark> poleg hrbta. Bi
                 pa prišu vseeno še enkrat.
@@ -148,9 +174,9 @@ export const Testimonials = () => {
           </div>
         </SwiperSlide>
         <SwiperSlide>
-          <div className="lg:col-span-2 xl:col-auto">
-            <div className="flex flex-col justify-between w-full h-full bg-gray-100 px-14 rounded-2xl py-14">
-              <p className="text-2xl leading-normal text-trueGray-700">
+          <div className="h-full">
+            <div className="flex flex-col justify-between w-full h-full bg-gray-100 px-4 py-4 sm:px-6 sm:py-8 lg:px-10 lg:py-10 rounded-2xl">
+              <p className="text-xs leading-relaxed sm:text-base lg:text-lg text-trueGray-700">
                 Zdravo Lucija še enkrat hvala za <Mark>strokovno pomoč</Mark> v
                 prejšnjem tednu. Zelo si mi pomagala pri mojih težavah v križu.
                 Ta teden že normalno hodim v službo. P.S. vsak dan delam vaje za
@@ -162,9 +188,9 @@ export const Testimonials = () => {
           </div>
         </SwiperSlide>
         <SwiperSlide>
-          <div className="lg:col-span-2 xl:col-auto">
-            <div className="flex flex-col justify-between w-full h-full bg-gray-100 px-14 rounded-2xl py-14">
-              <p className="text-2xl leading-normal text-trueGray-700">
+          <div className="h-full">
+            <div className="flex flex-col justify-between w-full h-full bg-gray-100 px-4 py-4 sm:px-6 sm:py-8 lg:px-10 lg:py-10 rounded-2xl">
+              <p className="text-xs leading-relaxed sm:text-base lg:text-lg text-trueGray-700">
                 Zadnič je bil moj partner pri tebi na terapiji res HVALA!
                 Naslednji dan je bil veliko boljši! Sedaj pa bi jaz potrebovala
                 en <Mark>darilni bon</Mark>.
@@ -174,7 +200,6 @@ export const Testimonials = () => {
             </div>
           </div>
         </SwiperSlide>
-        ...
       </Swiper>
       <div className="grid gap-10 lg:grid-cols-2 xl:grid-cols-3"></div>
     </Container>
@@ -189,8 +214,10 @@ interface AvatarProps {
 
 function Avatar(props: Readonly<AvatarProps>) {
   return (
-    <div className="flex items-center mt-8 space-x-3">
-      <div className="flex-shrink-0 overflow-hidden rounded-full w-14 h-14">
+    // Prilagajanje velikosti ikone in besedila za mobilne naprave
+    <div className="flex items-center mt-4 space-x-2 sm:mt-6">
+      {/* Zmanjšana ikona za mobilne naprave */}
+      <div className="flex-shrink-0 overflow-hidden rounded-full w-8 h-8 sm:w-10 sm:h-10">
         <Image
           src={props.image}
           width="40"
@@ -200,10 +227,12 @@ function Avatar(props: Readonly<AvatarProps>) {
         />
       </div>
       <div>
-        <div className="text-lg font-medium text-trueGray-700">
+        {/* Zmanjšano ime za mobilne naprave */}
+        <div className="text-sm font-medium text-trueGray-700 sm:text-base">
           {props.name}
         </div>
-        <div className="text-gray-600 ">{props.title}</div>
+        {/* Zmanjšan naslov za mobilne naprave */}
+        <div className="text-gray-600 text-xs sm:text-sm">{props.title}</div>
       </div>
     </div>
   );

@@ -15,7 +15,7 @@ export const Navbar = ({ onOpenPopup }: NavbarProps) => {
     { name: "Domov", href: "home" },
     { name: "O meni", href: "aboutme" },
     { name: "Terapije", href: "therapy" },
-    { name: "Mnenja strank", href: "Testimonials" },
+    { name: "Popusti", href: "Testimonials" },
     { name: "Kontakt", href: "contact" },
   ];
 

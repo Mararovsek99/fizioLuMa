@@ -85,7 +85,7 @@ export function MapComponent() {
 
   return (
     <APIProvider apiKey={apiKey} language="sl" solutionChannel="LumaFizioWeb">
-      <Container>
+      <Container className="bg-softgrey/15">
         {/* Contact Block */}
         <div className="max-w-7xl mx-auto mb-10 md:mb-16 pb-6">
           <h2 className="text-3xl font-bold text-gray-900 text-center mb-10">
@@ -125,29 +125,42 @@ export function MapComponent() {
         </div>
         {/* End Contact Block */}
 
-        <div
-          className="relative w-full h-[500px] max-w-4xl mx-auto overflow-hidden lg:mb-20 rounded-2xl 
-                    shadow-xl border-4 border-themecolor"
-        >
-          <Map
-            defaultCenter={LUMA_LOCATION}
-            defaultZoom={15}
-            gestureHandling={"greedy"}
-            disableDefaultUI={false}
-            mapId="YOUR_MAP_ID_HERE"
-            style={{ width: "100%", height: "100%" }}
+        <div className="flex flex-col lg:flex-row gap-6 max-w-6xl mx-auto lg:mb-20">
+          {/* Map */}
+          <div
+            className="relative w-full lg:w-1/2 h-[500px] overflow-hidden rounded-2xl 
+                shadow-xl border-4 border-themecolor"
           >
-            <AdvancedMarker
-              position={LUMA_LOCATION}
-              title={"Fizioterapija LuMa"}
+            <Map
+              defaultCenter={LUMA_LOCATION}
+              defaultZoom={15}
+              gestureHandling={"greedy"}
+              disableDefaultUI={false}
+              mapId="YOUR_MAP_ID_HERE"
+              style={{ width: "100%", height: "100%" }}
             >
-              <Pin
-                background={"#4F46E5"}
-                borderColor={"#1E293B"}
-                glyphColor={"#FFFFFF"}
-              />
-            </AdvancedMarker>
-          </Map>
+              <AdvancedMarker
+                position={LUMA_LOCATION}
+                title={"Fizioterapija LuMa"}
+              >
+                <Pin
+                  background={"#4F46E5"}
+                  borderColor={"#1E293B"}
+                  glyphColor={"#FFFFFF"}
+                />
+              </AdvancedMarker>
+            </Map>
+          </div>
+
+          {/* Photo */}
+          <div className="relative w-full lg:w-4/5 h-[500px] overflow-hidden rounded-2xl shadow-xl border-4 border-themecolor bg-gray-200">
+            {/* Add your photo here */}
+            <img
+              src={"/img/location_outside.jpeg"}
+              alt="Fizioterapija LuMa"
+              className="w-full h-full object-cover"
+            />
+          </div>
         </div>
       </Container>
     </APIProvider>

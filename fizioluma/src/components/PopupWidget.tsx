@@ -50,7 +50,7 @@ export function PopupWidget({ open, setOpen }: PopupWidgetProps) {
       ...data,
       subject: `${userName} želi rezervirati termin`,
       from_name: "FizioLuma Obrazec",
-      apikey: "5f660508-d5d5-45f4-927a-be6e851bf405",
+      apikey: "df971b7e-5822-4964-998c-a8d8e8ad88cf",
     };
 
     await fetch("https://api.web3forms.com/submit", {
@@ -178,7 +178,7 @@ export function PopupWidget({ open, setOpen }: PopupWidgetProps) {
               <div className="flex flex-row items-center justify-between h-32 p-6 bg-themecolor">
                 <div>
                   <h3 className="text-2xl text-white font-semibold">
-                    Rezervacija termina
+                    Pošlji Vprašanje
                   </h3>
                   <p className="text-white opacity-90">
                     Običajno odgovorim v nekaj urah

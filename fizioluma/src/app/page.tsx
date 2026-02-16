@@ -44,7 +44,7 @@ export default function Home() {
           <Benefits data={benefitOne} />
         </section>
 
-        <section id="therapy">
+        <section id="therapy" className="bg-softgrey/10">
           <Benefits imgPos="right" data={benefitTwo} />
         </section>
 

@@ -45,8 +45,9 @@ export const Testimonials = () => {
           },
           // Lg (1024px in več): 3 slidi (za namizne računalnike)
           1024: {
-            slidesPerView: 3,
+            slidesPerView: 3.5,
             spaceBetween: 40,
+            centeredSlides: true,
           },
         }}
       >

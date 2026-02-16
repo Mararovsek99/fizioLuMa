@@ -34,12 +34,12 @@ const benefitOne = {
 
 const benefitTwo = {
   title: "Terapije in šolanja",
-  desc: "Ves dodatni čas vlagam v najnovejša šolanja in izpopolnjevanja s področja fizioterapije, da vam lahko ponudim najbolj učinkovite in sodobne metode zdravljenja. Nazadnje sem se specializirala tudi za izvajanje limfne drenaže, saj je to ena izmed ključnih tehnik za izboljšanje celotnega počutja.",
+  desc: "Ves dodatni čas vlagam v najnovejša šolanja in izpopolnjevanja s področja fizioterapije, da vam lahko ponudim najbolj učinkovite in sodobne metode zdravljenja.",
   image: certificatesImg, // Uporabljam originalno referenco za sliko/certifikate
   bullets: [
     {
-      title: "Uporaba najnovejših tehnik",
-      desc: "S stalnim izpopolnjevanjem zagotavljam, da pri svojem delu uporabljam preverjene, sodobne in učinkovite metode fizioterapije.",
+      title: "Specializirana Manualna terapija",
+      desc: "Specializacija na področju manualne terapije za zdravljenje mišično-skeletnih težav.",
       icon: <ChartBarIcon />, // Simbol za mobilno napravo (uporabljam kot nadomestek za splošno tehniko)
     },
     {

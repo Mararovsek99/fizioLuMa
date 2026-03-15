@@ -12,6 +12,7 @@ import { Cta } from "@/components/Cta";
 import { MapComponent } from "@/components/MapComponent";
 import { Navbar } from "@/components/Navbar";
 import { PopupWidget } from "@/components/PopupWidget";
+import { LearnMoreSection } from "@/components/LearnMoreSection";
 
 import { benefitOne, benefitTwo } from "@/components/data";
 
@@ -46,6 +47,13 @@ export default function Home() {
 
         <section id="benefits" className="bg-softgrey/10">
           <Benefits imgPos="right" data={benefitTwo} />
+        </section>
+        <section id="therapy">
+          <SectionTitle preTitle="IZVEDITE VEČ" title="Terapije">
+            Izberite temo, ki vas zanima, in izvedite več o težavah, terapijah,
+            poteku obravnave ter mojem načinu dela.
+          </SectionTitle>
+          <LearnMoreSection />
         </section>
 
         <SectionTitle

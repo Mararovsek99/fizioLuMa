@@ -1,33 +1,19 @@
 "use client";
 import { Container } from "@/components/Container";
-import {
-  APIProvider,
-  Map,
-  AdvancedMarker,
-  Pin,
-} from "@vis.gl/react-google-maps";
-import { useState } from "react";
-
-// Import Heroicons
 import { MapPinIcon, PhoneIcon, EnvelopeIcon } from "@heroicons/react/24/solid";
 
-// LuMa location details
-const LUMA_LOCATION = {
-  lat: 46.261409,
-  lng: 15.282128,
-};
-
-// Mock Contact Data
+// Contact Data
 const phoneNumber = "041-823-843";
 const emailAddress = "fizioluma@gmail.com";
 const locationAddress = "Mariborska cesta 197 - Škofja vas";
 
-// Encode the address for the URL
 const encodedAddress = encodeURIComponent(locationAddress);
-// Google Maps URL structure
 const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodedAddress}`;
 
-// TypeScript Interface for ContactItemProps
+// Google Maps Embed URL
+const embedMapUrl =
+  "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2758.4359923942425!2d15.281839600000001!3d46.2614391!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47657082f7d2ddaf%3A0xdfb7742fa8c2ce0f!2sMariborska%20cesta%20197%2C%203211%20%C5%A0kofja%20vas!5e0!3m2!1ssl!2ssi!4v1773589134830!5m2!1ssl!2ssi";
+
 interface ContactItemProps {
   href: string;
   icon: React.ElementType;
@@ -37,7 +23,6 @@ interface ContactItemProps {
   target?: "_self" | "_blank";
 }
 
-// Contact Item Component
 const ContactItem = ({
   href,
   icon: Icon,
@@ -50,16 +35,13 @@ const ContactItem = ({
     href={href}
     target={target}
     rel={target === "_blank" ? "noopener noreferrer" : undefined}
-    // Card/Button styling for clear clickability
     className="flex items-center p-4 bg-gray-50 rounded-xl transition-all duration-300 shadow-sm 
                hover:bg-gray-100 hover:shadow-md active:scale-[0.98] focus:outline-none focus:ring-2 focus:ring-gray-300 flex-1 min-w-[250px] cursor-pointer"
   >
-    {/* Icon container */}
     <div className={`flex-shrink-0 mr-4 ${iconColor}`}>
       <Icon className="w-7 h-7" />
     </div>
 
-    {/* Text container, vertically centered */}
     <div className="flex flex-col justify-center w-full text-center">
       <h3 className="text-base font-medium text-gray-800 mb-1">{title}</h3>
       <p className="text-lg font-semibold text-gray-900 break-words">{value}</p>
@@ -67,102 +49,63 @@ const ContactItem = ({
   </a>
 );
 
-// API Key from .env.local
-const apiKey = process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY;
-
 export function MapComponent() {
-  const [center, setCenter] = useState(LUMA_LOCATION);
-
-  if (!apiKey) {
-    return (
-      <Container>
-        <div className="text-red-500 p-4 text-center">
-          ERROR: Google Maps API key is not set in .env.local.
-        </div>
-      </Container>
-    );
-  }
-
   return (
-    <APIProvider apiKey={apiKey} language="sl" solutionChannel="LumaFizioWeb">
-      <Container className="bg-softgrey/15">
-        {/* Contact Block */}
-        <div className="max-w-7xl mx-auto mb-10 md:mb-16 pb-6">
-          <h2 className="text-3xl font-bold text-gray-900 text-center mb-10">
-            Kontaktni podatki
-          </h2>
+    <Container className="bg-softgrey/15">
+      <div className="max-w-7xl mx-auto mb-10 md:mb-16 pb-6">
+        <h2 className="text-3xl font-bold text-gray-900 text-center mb-10">
+          Kontaktni podatki
+        </h2>
 
-          {/* Contact details container (Flexbox) */}
-          <div className="flex flex-wrap justify-center gap-6">
-            {/* LOCATION */}
-            <ContactItem
-              href={mapsUrl}
-              icon={MapPinIcon}
-              title="Kje me najdete"
-              value={locationAddress}
-              iconColor="text-red-600"
-              target="_blank"
-            />
+        <div className="flex flex-wrap justify-center gap-6">
+          <ContactItem
+            href={mapsUrl}
+            icon={MapPinIcon}
+            title="Kje me najdete"
+            value={locationAddress}
+            iconColor="text-red-600"
+            target="_blank"
+          />
 
-            {/* PHONE */}
-            <ContactItem
-              href={`tel:${phoneNumber.replace(/-/g, "")}`}
-              icon={PhoneIcon}
-              title="Pokličite me"
-              value={phoneNumber}
-              iconColor="text-green-600"
-            />
+          <ContactItem
+            href={`tel:${phoneNumber.replace(/-/g, "")}`}
+            icon={PhoneIcon}
+            title="Pokličite me"
+            value={phoneNumber}
+            iconColor="text-green-600"
+          />
 
-            {/* EMAIL */}
-            <ContactItem
-              href={`mailto:${emailAddress}`}
-              icon={EnvelopeIcon}
-              title="Pišite mi"
-              value={emailAddress}
-              iconColor="text-gray-600"
-            />
-          </div>
+          <ContactItem
+            href={`mailto:${emailAddress}`}
+            icon={EnvelopeIcon}
+            title="Pišite mi"
+            value={emailAddress}
+            iconColor="text-gray-600"
+          />
         </div>
-        {/* End Contact Block */}
+      </div>
 
-        <div className="flex flex-col lg:flex-row gap-6 max-w-6xl mx-auto lg:mb-20">
-          {/* Map */}
-          <div
-            className="relative w-full lg:w-1/2 h-[500px] overflow-hidden rounded-2xl 
-                shadow-xl border-4 border-themecolor"
-          >
-            <Map
-              defaultCenter={LUMA_LOCATION}
-              defaultZoom={15}
-              gestureHandling={"greedy"}
-              disableDefaultUI={false}
-              mapId="YOUR_MAP_ID_HERE"
-              style={{ width: "100%", height: "100%" }}
-            >
-              <AdvancedMarker
-                position={LUMA_LOCATION}
-                title={"Fizioterapija LuMa"}
-              >
-                <Pin
-                  background={"#4F46E5"}
-                  borderColor={"#1E293B"}
-                  glyphColor={"#FFFFFF"}
-                />
-              </AdvancedMarker>
-            </Map>
-          </div>
-
-          {/* Photo */}
-          <div className="relative w-full lg:w-4/5 h-[500px] overflow-hidden rounded-2xl shadow-xl border-4 border-themecolor bg-gray-200">
-            {/* Add your photo here */}
-            <img
-              src={"/img/location_outside.jpeg"}
-              alt="Fizioterapija LuMa"
-              className="w-full h-full object-cover "
-            />
-          </div>
+      <div className="flex flex-col lg:flex-row gap-6 max-w-6xl mx-auto lg:mb-20">
+        {/* Map */}
+        <div className="relative w-full lg:w-1/2 h-[500px] overflow-hidden rounded-2xl shadow-xl border-4 border-themecolor">
+          <iframe
+            src={embedMapUrl}
+            className="w-full h-full border-0"
+            loading="lazy"
+            allowFullScreen
+            referrerPolicy="no-referrer-when-downgrade"
+          />
         </div>
-      </Container>
-    </APIProvider>
+
+        {/* Photo */}
+        <div className="relative w-full lg:w-4/5 h-[500px] overflow-hidden rounded-2xl shadow-xl border-4 border-themecolor bg-gray-200">
+          <img
+            src="/img/location_outside.jpeg"
+            alt="Fizioterapija LuMa"
+            className="w-full h-full object-cover"
+          />
+        </div>
+      </div>
+    </Container>
   );
 }

@@ -44,7 +44,7 @@ export default function Home() {
           <Benefits data={benefitOne} />
         </section>
 
-        <section id="therapy" className="bg-softgrey/10">
+        <section id="benefits" className="bg-softgrey/10">
           <Benefits imgPos="right" data={benefitTwo} />
         </section>
 
@@ -58,7 +58,7 @@ export default function Home() {
           počutje in gibljivost.
         </SectionTitle>
 
-        <Video videoId="fZ0D0cnR88E" />
+        <Video src="/video/Presentation.mp4" poster="/img/VideoPreview.jpeg" />
 
         <section id="Testimonials">
           <SectionTitle

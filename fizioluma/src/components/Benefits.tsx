@@ -25,7 +25,7 @@ export const Benefits = (props: Readonly<BenefitsProps>) => {
           props.imgPos === "right" ? "lg:order-1" : ""
         }`}
       >
-        <div className="rounded-2xl">
+        <div className="rounded-2xl shadow-2xl">
           <Image
             src={data.image}
             width={521}

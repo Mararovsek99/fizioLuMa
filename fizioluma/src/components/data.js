@@ -3,11 +3,14 @@ import {
   BookOpenIcon,
   UserIcon,
   ChartBarIcon,
-  AdjustmentsHorizontalIcon,
+  ChatBubbleLeftRightIcon,
+  ClockIcon,
+  SparklesIcon,
+  CheckBadgeIcon,
 } from "@heroicons/react/24/solid";
 
 import aboutmeImg from "../../public/img/aboutme.jpeg";
-import certificatesImg from "../../public/img/certificates.png";
+import couponsImg from "../../public/img/benefits.jpeg";
 
 const benefitOne = {
   title: "O meni",
@@ -33,19 +36,34 @@ const benefitOne = {
 };
 
 const benefitTwo = {
-  title: "Terapije in šolanja",
-  desc: "Ves dodatni čas vlagam v najnovejša šolanja in izpopolnjevanja s področja fizioterapije, da vam lahko ponudim najbolj učinkovite in sodobne metode zdravljenja.",
-  image: certificatesImg, // Uporabljam originalno referenco za sliko/certifikate
+  title: "Ugodnosti in popusti",
+  desc: "V fizioterapiji LuMa imajo pacienti na voljo več dodatnih ugodnosti, ki omogočajo boljšo obravnavo, več podpore med terapijo in boljše rezultate zdravljenja.",
+  image: couponsImg,
   bullets: [
     {
-      title: "Specializirana Manualna terapija",
-      desc: "Specializacija na področju manualne terapije za zdravljenje mišično-skeletnih težav.",
-      icon: <ChartBarIcon />, // Simbol za mobilno napravo (uporabljam kot nadomestek za splošno tehniko)
+      title: "Brezplačen uvodni posvet",
+      desc: "Prvih 30 minut je namenjenih pogovoru, pregledu težav in načrtovanju terapije.",
+      icon: <ChatBubbleLeftRightIcon />,
     },
     {
-      title: "Specializacija Limfna drenaža",
-      desc: "Najnovejše izpopolnjevanje je usmerjeno v tehniko limfne drenaže, ki je ključna za zmanjšanje oteklin in pospeševanje regeneracije.",
-      icon: <AdjustmentsHorizontalIcon />, // Simbol za nastavitve/prilagoditve (uporabljam kot nadomestek za splošno prilagoditev)
+      title: "Dodatni čas pri prvi obravnavi",
+      desc: "Pri prvi terapiji je dodanih 15–30 minut, da lahko temeljito analiziramo težavo.",
+      icon: <ClockIcon />,
+    },
+    {
+      title: "Akcijski paket 5 + 1",
+      desc: "Ob nakupu paketa 5 terapij ali masaž prejmete eno dodatno terapijo brezplačno.",
+      icon: <SparklesIcon />,
+    },
+    {
+      title: "Stalno spremljanje napredka",
+      desc: "Med terapijami poteka sprotno spremljanje napredka in prilagajanje terapije.",
+      icon: <ChartBarIcon />,
+    },
+    {
+      title: "Brez čakalnih vrst",
+      desc: "Termine organiziramo tako, da se izognemo čakanju in zagotovimo kakovostno obravnavo.",
+      icon: <CheckBadgeIcon />,
     },
   ],
 };

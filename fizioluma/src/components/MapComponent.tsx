@@ -158,7 +158,7 @@ export function MapComponent() {
             <img
               src={"/img/location_outside.jpeg"}
               alt="Fizioterapija LuMa"
-              className="w-full h-full object-cover"
+              className="w-full h-full object-cover "
             />
           </div>
         </div>

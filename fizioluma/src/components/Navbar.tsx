@@ -15,13 +15,13 @@ export const Navbar = ({ onOpenPopup }: NavbarProps) => {
     { name: "Domov", href: "home" },
     { name: "O meni", href: "aboutme" },
     { name: "Terapije", href: "therapy" },
-    { name: "Popusti", href: "Testimonials" },
+    { name: "Popusti", href: "benefits" },
     { name: "Kontakt", href: "contact" },
   ];
 
   const handleClick = (
     e: React.MouseEvent<HTMLAnchorElement>,
-    targetId: string
+    targetId: string,
   ) => {
     e.preventDefault();
 
@@ -51,7 +51,7 @@ export const Navbar = ({ onOpenPopup }: NavbarProps) => {
       {
         rootMargin: "-50% 0px -50% 0px",
         threshold: 0,
-      }
+      },
     );
 
     navigation.forEach((item) => {

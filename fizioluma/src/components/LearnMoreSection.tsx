@@ -3,12 +3,11 @@
 import Image, { StaticImageData } from "next/image";
 import Link from "next/link";
 import { Container } from "@/components/Container";
-
-// Začasne slike - zamenjaj kasneje s svojimi
-import tileOneImg from "../../public/img/hero.jpeg";
-import tileTwoImg from "../../public/img/hero.jpeg";
-import tileThreeImg from "../../public/img/hero.jpeg";
-import tileFourImg from "../../public/img/hero.jpeg";
+// slike za posamezne tile-e
+import tileOneImg from "../../public/img/frequentProblems.jpeg";
+import tileTwoImg from "../../public/img/courseOfTherapy.jpeg";
+import tileThreeImg from "../../public/img/approch.jpeg";
+import tileFourImg from "../../public/img/knoweledge.jpeg";
 
 interface LearnMoreItem {
   title: string;
@@ -52,7 +51,7 @@ export const LearnMoreSection = () => {
           <Link
             key={item.title}
             href={item.href}
-            className="group relative block min-h-[340px] overflow-hidden rounded-2xl shadow-lg"
+            className="group relative block min-h-[240px] overflow-hidden rounded-2xl shadow-lg"
           >
             <Image
               src={item.image}
@@ -61,10 +60,10 @@ export const LearnMoreSection = () => {
               className="object-cover transition duration-500 group-hover:scale-105"
             />
 
-            <div className="absolute inset-0 bg-black/35 transition duration-300 group-hover:bg-black/45" />
+            <div className="absolute inset-0 bg-black/50 transition duration-300 group-hover:bg-black/45" />
 
             <div className="absolute inset-0 flex flex-col p-6">
-              <h3 className="text-white text-3xl font-bold leading-tight drop-shadow-md">
+              <h3 className="text-white text-3xl font-bold leading-tight ">
                 {item.title}
               </h3>
 

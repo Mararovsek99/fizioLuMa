@@ -17,7 +17,7 @@ export const Faq = () => {
             <Disclosure>
               {({ open }) => (
                 <>
-                  <DisclosureButton className="flex items-center justify-between w-full px-4 py-4 text-lg text-left text-gray-800 rounded-lg bg-gray-50 hover:bg-gray-100 focus:outline-none focus-visible:ring focus-visible:ring-indigo-100 focus-visible:ring-opacity-75">
+                  <DisclosureButton className="flex items-center justify-between w-full px-4 py-4 text-lg text-left text-gray-800 rounded-lg bg-gray-50 hover:bg-gray-100 focus:outline-none focus-visible:ring focus-visible:ring-indigo-100 focus-visible:ring-opacity-75 shadow-md">
                     <span>{item.question}</span>
                     <ChevronUpIcon
                       className={`${
@@ -40,33 +40,28 @@ export const Faq = () => {
 
 const faqdata = [
   {
-    question: "Kako poteka prva obravnava?",
+    question: "Katere težave rešuješ?",
     answer:
-      "Ob prvem obisku opravimo kratek pogovor o težavah, oceno gibljivosti in funkcije ter fizični pregled. Na podlagi tega pripravimo individualni načrt zdravljenja in dogovorimo cilje terapije.",
+      "Rešujem težave z mišično-skeletnim sistemom, kot so bolečine v hrbtu, vratu, sklepih, športne poškodbe, rehabilitacija po operacijah in izboljšanje gibljivosti ter držo.",
   },
   {
-    question: "Ali potrebujem zdravniško napotnico?",
+    question: "Ali je moje stanje sploh lahko še kaj bolje?",
     answer:
-      "Napotnica ni vedno obvezna. Napotnica lahko omogoči delno povračilo stroškov preko ZZZS; priporočamo, da preverite pri svojem zdravniku ali nas kontaktirate za informacije o kritjih in možnostih povračila.",
+      "Da, večina stanj se lahko izboljša z ustrezno terapijo, vadbo in spremembami življenjskega sloga. Ocena vašega stanja mi pomaga določiti potencial za izboljšanje.",
   },
   {
-    question: "Koliko časa traja ena terapija?",
+    question: "Kakšne so čakalne dobe?",
     answer:
-      "Standardni obisk običajno traja 45–60 minut, odvisno od vrste težave in obsega obravnave. Ob prvem obisku lahko traja nekoliko dlje zaradi uvodne ocene.",
+      "Čakalne dobe so odvisne od termina. Običajno lahko dobite termin v 2-4 dneh, za nujne primere pa tudi prej. Kontaktirajte me za trenutne razpoložljivosti.",
   },
   {
-    question: "Katere metode uporabljate?",
+    question: "Kako se naročim?",
     answer:
-      "Uporabljamo manualno terapijo, terapevtske vaje, vadbo za stabilnost in držo, elektroterapijo ter druge individualno izbrane tehnike. Terapevtski načrt je prilagojen vašim potrebam.",
+      "Naročite se lahko preko telefona, e-pošte ali našega spletnega obrazca. Pokličite me na enega od zgornjih kontaktov.",
   },
   {
-    question: "Ali bo terapija boleča?",
+    question: "Koliko obravnav je potrebnih?",
     answer:
-      "Nekatere tehnike lahko povzročijo kratkotrajno nelagodje ali začasno povečanje bolečine, vendar terapevt prilagodi intenzivnost. Cilj je dolgoročno zmanjšanje bolečine in izboljšanje funkcije.",
-  },
-  {
-    question: "Kdaj bom opazil prve rezultate?",
-    answer:
-      "Odvisno od narave težave. Pri akutnih težavah so izboljšave pogosto opazne po nekaj obravnavah, pri kroničnih stanjih pa je potreben daljši program in dosledna domača vadba.",
+      "Število obravnav je odvisno od vaše težave. Običajno priporočam 4-6 obiskov, vendar to določim po prvi oceni. Nekateri potrebujejo več, drugi manj.",
   },
 ];

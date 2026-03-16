@@ -45,7 +45,7 @@ export default function Home() {
           <Benefits data={benefitOne} />
         </section>
 
-        <section id="benefits" className="bg-softgrey/10">
+        <section id="benefits" className="bg-softgrey/10 scroll-mt-32">
           <Benefits imgPos="right" data={benefitTwo} />
         </section>
         <section id="therapy">
@@ -81,15 +81,14 @@ export default function Home() {
 
         <Testimonials />
 
-        <section id="contact">
+        <section id="contact" className="bg-softgrey/20 pt-2 scroll-mt-5">
           <SectionTitle preTitle="kontakt" title="Kje me najdete">
             Fizioterapija LuMa se nahaja 2 minuti od avtocestnega izvoza Celje
             center. Nasproti pekarne Šmarjeta.
           </SectionTitle>
+
+          <MapComponent />
         </section>
-
-        <MapComponent />
-
         <SectionTitle preTitle="HITRA POMOČ" title="Najpogostejša vprašanja">
           Tukaj so odgovori na najpogostejša vprašanja o storitvah, poteku
           terapij in rezervacijah. Če ne najdete odgovora, me prosimo

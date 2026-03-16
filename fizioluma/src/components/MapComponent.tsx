@@ -51,40 +51,7 @@ const ContactItem = ({
 
 export function MapComponent() {
   return (
-    <Container className="bg-softgrey/15">
-      <div className="max-w-7xl mx-auto mb-10 md:mb-16 pb-6">
-        <h2 className="text-3xl font-bold text-gray-900 text-center mb-10">
-          Kontaktni podatki
-        </h2>
-
-        <div className="flex flex-wrap justify-center gap-6">
-          <ContactItem
-            href={mapsUrl}
-            icon={MapPinIcon}
-            title="Kje me najdete"
-            value={locationAddress}
-            iconColor="text-red-600"
-            target="_blank"
-          />
-
-          <ContactItem
-            href={`tel:${phoneNumber.replace(/-/g, "")}`}
-            icon={PhoneIcon}
-            title="Pokličite me"
-            value={phoneNumber}
-            iconColor="text-green-600"
-          />
-
-          <ContactItem
-            href={`mailto:${emailAddress}`}
-            icon={EnvelopeIcon}
-            title="Pišite mi"
-            value={emailAddress}
-            iconColor="text-gray-600"
-          />
-        </div>
-      </div>
-
+    <Container>
       <div className="flex flex-col lg:flex-row gap-6 max-w-6xl mx-auto lg:mb-20">
         {/* Map */}
         <div className="relative w-full lg:w-1/2 h-[500px] overflow-hidden rounded-2xl shadow-xl border-4 border-themecolor">
@@ -103,6 +70,38 @@ export function MapComponent() {
             src="/img/location_outside.jpeg"
             alt="Fizioterapija LuMa"
             className="w-full h-full object-cover"
+          />
+        </div>
+      </div>
+      <div className="max-w-7xl mx-auto mb-10 md:mb-16 pb-6">
+        <h2 className="text-3xl font-bold text-gray-900 text-center mb-10">
+          Kontaktni podatki
+        </h2>
+
+        <div className="flex flex-wrap justify-center gap-6">
+          <ContactItem
+            href={mapsUrl}
+            icon={MapPinIcon}
+            title="Naslov"
+            value={locationAddress}
+            iconColor="text-red-600"
+            target="_blank"
+          />
+
+          <ContactItem
+            href={`tel:${phoneNumber.replace(/-/g, "")}`}
+            icon={PhoneIcon}
+            title="Telefon"
+            value={phoneNumber}
+            iconColor="text-green-600"
+          />
+
+          <ContactItem
+            href={`mailto:${emailAddress}`}
+            icon={EnvelopeIcon}
+            title="E-pošta"
+            value={emailAddress}
+            iconColor="text-gray-600"
           />
         </div>
       </div>

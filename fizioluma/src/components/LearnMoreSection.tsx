@@ -38,7 +38,7 @@ const items: LearnMoreItem[] = [
   {
     title: "Znanje in izkušnje",
     subtitle: "Preberite več o mojem delu, izobraževanjih in pristopu.",
-    href: "/o-meni",
+    href: "/znanje-in-izkusnje",
     image: tileFourImg,
   },
 ];

@@ -11,7 +11,7 @@ import { LearnMoreSection } from "@/components/LearnMoreSection";
 const experienceSections = [
   {
     title: "Izobraževanje in certifikati",
-    image: "/img/sample-education.jpeg",
+    image: "/img/knoweledge.jpeg",
     description:
       "Redno obiskujem specializirane tečaje in delavnice, da ostajam na tekočem z najnovejšimi tehnikami, pristopi in terapevtskimi napravami. Svoje znanje nenehno nadgrajujem na področju fizioterapije, rehabilitacije in sodobnih terapij, kot so TECAR terapija, K-Laser, Normatec, TENS in druge metode, ki omogočajo še učinkovitejšo obravnavo pacientov.",
     points: [
@@ -101,7 +101,7 @@ export default function ZnanjeInIzkusnjePage() {
                   </div>
 
                   <div
-                    className={`relative min-h-[280px] overflow-hidden rounded-2xl shadow-lg ${
+                    className={`relative h-[320px] md:h-[380px] lg:h-[440px] overflow-hidden rounded-2xl shadow-lg ${
                       isReversed ? "md:order-1" : "md:order-2"
                     }`}
                   >
@@ -109,7 +109,7 @@ export default function ZnanjeInIzkusnjePage() {
                       src={section.image}
                       alt={section.title}
                       fill
-                      className="object-cover"
+                      className="object-cover object-center"
                     />
                   </div>
                 </article>
@@ -172,12 +172,12 @@ export default function ZnanjeInIzkusnjePage() {
                 </p>
               </div>
 
-              <div className="relative min-h-[320px] overflow-hidden rounded-2xl shadow-lg md:order-2">
+              <div className="relative h-[360px] md:h-[420px] lg:h-[650px] overflow-hidden rounded-2xl shadow-lg md:order-2">
                 <Image
-                  src="/img/sample-owner.jpeg"
+                  src="/img/aboutme.jpeg"
                   alt="Lucija Marovšek"
                   fill
-                  className="object-cover"
+                  className="object-cover object-center"
                 />
               </div>
             </article>

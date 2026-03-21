@@ -22,7 +22,7 @@ const experienceSections = [
   },
   {
     title: "Praktične izkušnje",
-    image: "/img/sample-experience.jpeg",
+    image: "/img/practicalExperience.jpeg",
     description:
       "Imam približno 5 let praktičnih izkušenj, pridobljenih v različnih okoljih – od bolnišnic in zdravilišč do privatnih ambulant. Vsakodnevno delam z različnimi pacienti, od športnikov do ljudi s kroničnimi težavami, po operacijah ali poškodbah, zato znam terapijo prilagoditi posamezniku in njegovim dejanskim potrebam.",
     points: [

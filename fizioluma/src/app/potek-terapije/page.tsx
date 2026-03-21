@@ -100,12 +100,12 @@ export default function PotekTerapijePage() {
                   <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-themecolor text-white text-lg font-bold">
                     {step.number}
                   </div>
-                  <h2 className="text-2xl md:text-3xl font-bold leading-tight text-navbtn">
+                  <h2 className="text-2xl md:text-3xl font-bold leading-tight text-black/80">
                     {step.title}
                   </h2>
                 </div>
 
-                <p className="mt-6 text-base md:text-lg leading-relaxed text-navbtn/80">
+                <p className="mt-6 text-base md:text-lg leading-relaxed text-black/80">
                   {step.description}
                 </p>
 
@@ -113,7 +113,7 @@ export default function PotekTerapijePage() {
                   {step.points.map((point) => (
                     <li
                       key={point}
-                      className="text-navbtn/85 text-base md:text-lg leading-relaxed"
+                      className="text-black/80 text-base md:text-lg leading-relaxed"
                     >
                       • {point}
                     </li>

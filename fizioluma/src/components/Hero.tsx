@@ -98,7 +98,7 @@ export const Hero = ({ onOpenPopup }: HeroProps) => {
         </div>
 
         {/* CONTENT */}
-        <Container className="relative z-10 px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-0">
+        <Container className="relative z-10 px-4 py-16 pt-40 sm:px-6 sm:py-20 lg:px-8 lg:py-0 lg:pt-40">
           <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-14">
             {/* BESSEDILO */}
             <div className="order-1 mx-auto flex w-full max-w-md min-w-0 flex-col items-center text-center lg:max-w-xl lg:items-start lg:text-left">
@@ -121,9 +121,9 @@ export const Hero = ({ onOpenPopup }: HeroProps) => {
               <div className="mt-8 p-8 flex w-full max-w-sm flex-col gap-3 sm:mt-10 sm:max-w-none sm:flex-row sm:flex-wrap lg:justify-start">
                 <button
                   onClick={onOpenPopup}
-                  className="inline-flex min-h-[52px] items-center justify-center rounded-md bg-themecolor px-6 py-3 text-base font-medium text-white transition duration-200 hover:brightness-110 sm:px-8 sm:py-4 sm:text-lg"
+                  className="inline-flex min-h-[52px] items-center justify-center rounded-md bg-themecolor px-6 py-3 text-lg font-medium text-white transition duration-200 hover:brightness-110 sm:px-8 sm:py-4 sm:text-lg"
                 >
-                  Rezerviraj termin
+                  Naroči se
                 </button>
 
                 <a

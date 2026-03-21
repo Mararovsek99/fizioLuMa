@@ -4,92 +4,90 @@ import React from "react";
 import { Container } from "@/components/Container";
 
 export function Footer() {
-  const navigation = ["Product", "Features", "Pricing", "Company", "Blog"];
-  const legal = ["Terms", "Privacy", "Legal"];
   return (
-    <div className="relative bg-softgrey/10 border-t border-gray-100">
-      <Container>
-        <div className="grid max-w-screen-xl grid-cols-1 gap-10 pt-10 mx-auto mt-5  lg:grid-cols-4">
+    <footer className="relative border-t border-gray-100 bg-softgrey/10">
+      <Container className="px-4 sm:px-6">
+        <div className="mx-auto mt-6 grid max-w-screen-xl grid-cols-1 gap-8 py-8 text-center lg:grid-cols-4 lg:gap-10 lg:text-left">
+          {/* LOGO */}
           <div className="lg:col-span-2">
-            <div>
-              {" "}
-              <Link
-                href="/"
-                className="flex items-center space-x-2 text-2xl font-medium text-themecolor "
-              >
-                <Image
-                  src="/img/logo.png" // Popravite pot do vaše slike
-                  width={150} // Nastavite ustrezno širino
-                  height={50} // Nastavite ustrezno višino
-                  alt="Fizio Luma Logo"
-                  className="h-auto mr-3" // Opcijsko: dodatni Tailwind razredi
-                />
-              </Link>
-            </div>
+            <Link
+              href="/"
+              className="inline-flex items-center justify-center text-themecolor lg:justify-start"
+            >
+              <Image
+                src="/img/logo.png"
+                width={140}
+                height={45}
+                alt="Fizio Luma Logo"
+                className="h-auto"
+              />
+            </Link>
 
-            <div className="max-w-md mt-4 text-gray-500 ">
-              Kakršna koli vprašanja? Pišite mi na email ali me pokličite. Z
-              veseljem vam bom pomagala!
+            <p className="mx-auto mt-3 max-w-md text-sm leading-6 text-gray-500 lg:mx-0">
+              Kakršna koli vprašanja? Pišite mi na email ali me pokličite.
+            </p>
+          </div>
+
+          {/* PODATKI PODJETJA (KOMPAKTNO) */}
+          <div>
+            <h3 className="text-sm font-semibold text-gray-700 mb-2">
+              Podatki podjetja
+            </h3>
+
+            <div className="text-sm leading-5 text-gray-500 space-y-0.5">
+              <p>Lucija Marovšek s.p.</p>
+              <p>Davčna: 54149860</p>
+              <p>Straža pri Novi Cerkvi 1</p>
+              <p>3203 Nova Cerkev</p>
             </div>
           </div>
 
+          {/* SOCIAL */}
           <div>
-            <div className="text-lg max-w-md mt-4 text-gray-600 ">
-              Podatki Podjetja:
-            </div>
-            <div className="max-w-md text-gray-500 ">Lucija Marovšek s.p.</div>
-            <div className="max-w-md text-gray-500 mb-3">
-              Davčna številka: 54149860
-            </div>
-            <div className="max-w-md text-gray-500 ">
-              Straža pri Novi Cerkvi 1,
-            </div>
-            <div className="max-w-md text-gray-500 ">
-              3203 Nova Cerkev, Slovenija
-            </div>
-          </div>
+            <h3 className="text-sm font-semibold text-gray-700 mb-2">
+              Sledi mi na socialnih omrežjih
+            </h3>
 
-          <div>
-            <div className="text-gray-400">
-              Obišči me na socialnih omrežjih !
-            </div>
-            <div className="flex mt-5 space-x-5 text-gray-400 ">
+            <div className="flex items-center justify-center space-x-4 text-gray-500 lg:justify-start">
               <a
                 href="https://www.facebook.com/p/Fizioterapija-LuMa-61553308209404/?locale=sl_SI"
                 target="_blank"
                 rel="noopener"
+                className="rounded-full p-2 transition hover:bg-white hover:text-themecolor"
               >
-                <span className="sr-only">Facebook</span>
-                <Facebook />
+                <Facebook size={35} />
               </a>
+
               <a
                 href="https://www.instagram.com/fizio_luma/"
                 target="_blank"
                 rel="noopener"
+                className="rounded-full p-2 transition hover:bg-white hover:text-themecolor"
               >
-                <span className="sr-only">Instagram</span>
-                <Instagram />
+                <Instagram size={35} />
               </a>
             </div>
           </div>
         </div>
 
-        <div className="my-10 text-sm text-center text-gray-600 ">
-          Copyright © {new Date().getFullYear()}. Made by{" "}
+        {/* COPYRIGHT */}
+        <div className="border-t border-gray-200 py-4 text-center text-xs text-gray-500">
+          © {new Date().getFullYear()} Fizio Luma · Made by{" "}
           <a
             href="https://www.linkedin.com/in/andrej-marov%C5%A1ek-78b040206/"
             target="_blank"
             rel="noopener"
+            className="text-themecolor hover:underline"
           >
-            AndrejMarovsek
-          </a>{" "}
+            Andrej Marovšek
+          </a>
         </div>
       </Container>
-    </div>
+    </footer>
   );
 }
 
-const Facebook = ({ size = 24 }) => (
+const Facebook = ({ size = 35 }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width={size}
@@ -100,7 +98,8 @@ const Facebook = ({ size = 24 }) => (
     <path d="M24 12.07C24 5.41 18.63 0 12 0S0 5.4 0 12.07C0 18.1 4.39 23.1 10.13 24v-8.44H7.08v-3.49h3.04V9.41c0-3.02 1.8-4.7 4.54-4.7 1.31 0 2.68.24 2.68.24v2.97h-1.5c-1.5 0-1.96.93-1.96 1.89v2.26h3.32l-.53 3.5h-2.8V24C19.62 23.1 24 18.1 24 12.07" />
   </svg>
 );
-const Instagram = ({ size = 24 }) => (
+
+const Instagram = ({ size = 35 }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width={size}

@@ -7,6 +7,7 @@ import { Navbar } from "@/components/Navbar";
 import { SectionTitle } from "@/components/SectionTitle";
 import { PopupWidget } from "@/components/PopupWidget";
 import { LearnMoreSection } from "@/components/LearnMoreSection";
+
 const issueGroups = [
   {
     title: "Hrbtenica",
@@ -73,9 +74,10 @@ export default function TezavePage() {
     <>
       <Navbar onOpenPopup={handleOpenPopup} />
 
-      <main className=" pb-16">
-        <Container>
-          <section className="py-8 md:py-12">
+      <main className="pb-16">
+        <Container className="px-4 sm:px-6">
+          {/* HEADER */}
+          <section className="py-8 sm:py-10 md:py-12">
             <SectionTitle
               preTitle="NAJPOGOSTEJŠE TEŽAVE"
               title="Pri katerih težavah vam lahko pomagam?"
@@ -86,11 +88,12 @@ export default function TezavePage() {
             </SectionTitle>
           </section>
 
-          <section className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+          {/* CARDS */}
+          <section className="mx-auto grid max-w-6xl grid-cols-1 gap-4 sm:gap-6 md:grid-cols-2 md:gap-8">
             {issueGroups.map((group) => (
               <article
                 key={group.title}
-                className="relative min-h-[360px] overflow-hidden rounded-2xl shadow-lg"
+                className="relative overflow-hidden rounded-2xl shadow-lg min-h-[260px] sm:min-h-[300px] md:min-h-[360px]"
               >
                 <Image
                   src={group.image}
@@ -99,18 +102,20 @@ export default function TezavePage() {
                   className="object-cover"
                 />
 
-                <div className="absolute inset-0 bg-black/55" />
+                {/* OVERLAY */}
+                <div className="absolute inset-0 bg-black/60 sm:bg-black/55" />
 
-                <div className="relative z-10 flex h-full flex-col p-6 md:p-8">
-                  <h2 className="text-white text-2xl md:text-3xl font-bold leading-tight">
+                {/* CONTENT */}
+                <div className="relative z-10 flex h-full flex-col p-5 sm:p-6 md:p-8">
+                  <h2 className="text-white text-xl sm:text-2xl md:text-3xl font-bold leading-tight">
                     {group.title}
                   </h2>
 
-                  <ul className="mt-6 space-y-3">
+                  <ul className="mt-4 space-y-2 sm:mt-6 sm:space-y-3">
                     {group.items.map((item) => (
                       <li
                         key={item}
-                        className="text-white/90 text-base md:text-lg leading-relaxed"
+                        className="text-white/90 text-sm leading-6 sm:text-base md:text-lg md:leading-relaxed"
                       >
                         • {item}
                       </li>
@@ -120,18 +125,22 @@ export default function TezavePage() {
               </article>
             ))}
           </section>
-          <section className="mt-20 py-8 md:py-12 bg-softgrey/30">
+
+          {/* INFO BLOCK */}
+          <section className="mt-14 rounded-2xl bg-softgrey/30 px-4 py-8 sm:mt-20 sm:px-6 sm:py-10 md:py-12">
             <SectionTitle
               preTitle="... Ter vrsta drugih težav"
-              title="Če vaše težave ni na seznamu, me
-                kontaktirajte in skupaj bova preverila, kako vam lahko pomagam."
-            ></SectionTitle>
+              title="Če vaše težave ni na seznamu, me kontaktirajte in skupaj bova preverila, kako vam lahko pomagam."
+            />
           </section>
-          <section id="therapy">
+
+          {/* LEARN MORE */}
+          <section id="therapy" className="mt-14 sm:mt-16">
             <SectionTitle preTitle="IZVEDITE VEČ" title="Terapije">
               Izberite temo, ki vas zanima, in izvedite več o težavah,
               terapijah, poteku obravnave ter mojem načinu dela.
             </SectionTitle>
+
             <LearnMoreSection />
           </section>
         </Container>

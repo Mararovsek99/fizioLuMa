@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { Container } from "@/components/Container";
 
 interface VideoProps {
@@ -10,12 +10,39 @@ interface VideoProps {
 
 export function Video({ src, poster }: Readonly<VideoProps>) {
   const [playVideo, setPlayVideo] = useState(false);
+  const videoRef = useRef<HTMLVideoElement | null>(null);
 
   if (!src) return null;
 
+  const handlePlay = async () => {
+    setPlayVideo(true);
+
+    // počakamo, da se video renderira
+    setTimeout(async () => {
+      const video = videoRef.current;
+      if (!video) return;
+
+      try {
+        await video.play();
+      } catch (error) {
+        console.error("Video play failed:", error);
+      }
+
+      try {
+        if (video.requestFullscreen) {
+          await video.requestFullscreen();
+        } else if ((video as any).webkitEnterFullscreen) {
+          (video as any).webkitEnterFullscreen();
+        }
+      } catch (error) {
+        console.error("Fullscreen failed:", error);
+      }
+    }, 50);
+  };
+
   return (
-    <Container>
-      <div className="mx-auto mb-12 w-full max-w-md lg:max-w-lg">
+    <Container className="px-4 sm:px-6">
+      <div className="mx-auto mb-12 w-full max-w-sm sm:max-w-md lg:max-w-lg">
         <div className="relative aspect-[9/16] overflow-hidden rounded-2xl bg-black shadow-2xl">
           {!playVideo ? (
             <>
@@ -29,9 +56,11 @@ export function Video({ src, poster }: Readonly<VideoProps>) {
                 <div className="h-full w-full bg-neutral-900" />
               )}
 
+              <div className="absolute inset-0 bg-black/20" />
+
               <button
-                onClick={() => setPlayVideo(true)}
-                className="absolute left-1/2 top-1/2 z-10 h-16 w-16 -translate-x-1/2 -translate-y-1/2 text-white lg:h-20 lg:w-20"
+                onClick={handlePlay}
+                className="absolute left-1/2 top-1/2 z-10 flex h-16 w-16 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-white/20 text-white backdrop-blur-sm transition hover:bg-white/30 sm:h-18 sm:w-18 lg:h-20 lg:w-20"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -50,7 +79,8 @@ export function Video({ src, poster }: Readonly<VideoProps>) {
             </>
           ) : (
             <video
-              className="h-full w-full object-contain bg-black"
+              ref={videoRef}
+              className="h-full w-full bg-black object-contain"
               controls
               autoPlay
               playsInline

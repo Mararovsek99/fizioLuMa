@@ -77,8 +77,8 @@ export default function PotekTerapijePage() {
       <Navbar onOpenPopup={handleOpenPopup} />
 
       <main className="pb-16">
-        <Container>
-          <section className="py-8 md:py-12">
+        <Container className="px-4 sm:px-6">
+          <section className="py-8 sm:py-10 md:py-12">
             <SectionTitle
               preTitle="POTEK TERAPIJE"
               title="Kako poteka fizioterapevtska obravnava?"
@@ -90,30 +90,31 @@ export default function PotekTerapijePage() {
             </SectionTitle>
           </section>
 
-          <section className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+          <section className="mx-auto grid max-w-6xl grid-cols-1 gap-4 sm:gap-6 md:grid-cols-2 md:gap-8">
             {therapySteps.map((step) => (
               <article
                 key={step.number}
-                className="rounded-2xl border border-border bg-white shadow-lg p-6 md:p-8"
+                className="rounded-2xl border border-border bg-white p-5 shadow-lg sm:p-6 md:p-8"
               >
-                <div className="flex items-center gap-4">
-                  <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-themecolor text-white text-lg font-bold">
+                <div className="flex items-center gap-3 sm:gap-4">
+                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-themecolor text-base font-bold text-white sm:h-12 sm:w-12 sm:text-lg">
                     {step.number}
                   </div>
-                  <h2 className="text-2xl md:text-3xl font-bold leading-tight text-black/80">
+
+                  <h2 className="text-xl font-bold leading-tight text-black/80 sm:text-2xl md:text-3xl">
                     {step.title}
                   </h2>
                 </div>
 
-                <p className="mt-6 text-base md:text-lg leading-relaxed text-black/80">
+                <p className="mt-5 text-sm leading-7 text-black/80 sm:mt-6 sm:text-base md:text-lg md:leading-relaxed">
                   {step.description}
                 </p>
 
-                <ul className="mt-6 space-y-3">
+                <ul className="mt-5 space-y-2 sm:mt-6 sm:space-y-3">
                   {step.points.map((point) => (
                     <li
                       key={point}
-                      className="text-black/80 text-base md:text-lg leading-relaxed"
+                      className="text-sm leading-7 text-black/80 sm:text-base md:text-lg md:leading-relaxed"
                     >
                       • {point}
                     </li>
@@ -123,7 +124,7 @@ export default function PotekTerapijePage() {
             ))}
           </section>
 
-          <section className="mt-20  bg-softgrey/30">
+          <section className="mt-14 rounded-2xl bg-softgrey/30 px-4 py-8 sm:mt-20 sm:px-6 sm:py-10">
             <SectionTitle
               preTitle="INDIVIDUALEN PRISTOP"
               title="Vsaka terapija je prilagojena posamezniku"
@@ -136,7 +137,7 @@ export default function PotekTerapijePage() {
             </SectionTitle>
           </section>
 
-          <section className="mt-12 bg-softgrey/30 ">
+          <section className="mt-8 rounded-2xl bg-softgrey/30 px-4 py-8 sm:mt-12 sm:px-6 sm:py-10">
             <SectionTitle
               preTitle="KAJ LAHKO PRIČAKUJETE"
               title="Jasen načrt in strokovno vodeno obravnavo"
@@ -148,11 +149,12 @@ export default function PotekTerapijePage() {
             </SectionTitle>
           </section>
 
-          <section id="therapy">
+          <section id="therapy" className="mt-14 sm:mt-16">
             <SectionTitle preTitle="IZVEDITE VEČ" title="Terapije">
               Izberite temo, ki vas zanima, in izvedite več o težavah,
               terapijah, poteku obravnave ter mojem načinu dela.
             </SectionTitle>
+
             <LearnMoreSection />
           </section>
         </Container>

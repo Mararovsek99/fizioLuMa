@@ -1,6 +1,11 @@
 "use client";
 import { Container } from "@/components/Container";
-import { MapPinIcon, PhoneIcon, EnvelopeIcon } from "@heroicons/react/24/solid";
+import {
+  MapPinIcon,
+  PhoneIcon,
+  EnvelopeIcon,
+  ArrowTopRightOnSquareIcon,
+} from "@heroicons/react/24/solid";
 
 // Contact Data
 const phoneNumber = "041-823-843";
@@ -20,6 +25,7 @@ interface ContactItemProps {
   title: string;
   value: string;
   iconColor: string;
+  hint: string;
   target?: "_self" | "_blank";
 }
 
@@ -29,35 +35,45 @@ const ContactItem = ({
   title,
   value,
   iconColor,
+  hint,
   target = "_self",
 }: ContactItemProps) => (
   <a
     href={href}
     target={target}
     rel={target === "_blank" ? "noopener noreferrer" : undefined}
-    className="flex items-center p-4 bg-gray-50 rounded-xl transition-all duration-300 shadow-sm 
-               hover:bg-gray-100 hover:shadow-md active:scale-[0.98] focus:outline-none focus:ring-2 focus:ring-gray-300 flex-1 min-w-[250px] cursor-pointer"
+    className="group flex w-full items-center rounded-2xl bg-gray-50 p-4 shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:bg-gray-100 hover:shadow-md active:scale-[0.98] focus:outline-none focus:ring-2 focus:ring-gray-300 sm:p-5 lg:flex-1 lg:min-w-[250px] cursor-pointer"
   >
-    <div className={`flex-shrink-0 mr-4 ${iconColor}`}>
-      <Icon className="w-7 h-7" />
+    <div className={`mr-3 flex-shrink-0 ${iconColor} sm:mr-4`}>
+      <Icon className="h-6 w-6 sm:h-7 sm:w-7" />
     </div>
 
-    <div className="flex flex-col justify-center w-full text-center">
-      <h3 className="text-base font-medium text-gray-800 mb-1">{title}</h3>
-      <p className="text-lg font-semibold text-gray-900 break-words">{value}</p>
+    <div className="min-w-0 flex-1">
+      <h3 className="mb-1 text-sm font-medium text-gray-800 sm:text-base">
+        {title}
+      </h3>
+
+      <p className="break-words text-base font-semibold text-gray-900 sm:text-lg">
+        {value}
+      </p>
+
+      <div className="mt-2 flex items-center gap-2 text-sm font-medium text-themecolor">
+        <span>{hint}</span>
+        <ArrowTopRightOnSquareIcon className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+      </div>
     </div>
   </a>
 );
 
 export function MapComponent() {
   return (
-    <Container>
-      <div className="flex flex-col lg:flex-row gap-6 max-w-6xl mx-auto lg:mb-20">
+    <Container className="px-4 sm:px-6">
+      <div className="mx-auto mb-8 flex max-w-6xl flex-col gap-4 sm:gap-6 lg:mb-20 lg:flex-row">
         {/* Map */}
-        <div className="relative w-full lg:w-1/2 h-[500px] overflow-hidden rounded-2xl shadow-xl border-4 border-themecolor">
+        <div className="relative h-[260px] w-full overflow-hidden rounded-2xl border-4 border-themecolor shadow-xl sm:h-[360px] lg:h-[500px] lg:w-1/2">
           <iframe
             src={embedMapUrl}
-            className="w-full h-full border-0"
+            className="h-full w-full border-0"
             loading="lazy"
             allowFullScreen
             referrerPolicy="no-referrer-when-downgrade"
@@ -65,26 +81,28 @@ export function MapComponent() {
         </div>
 
         {/* Photo */}
-        <div className="relative w-full lg:w-4/5 h-[500px] overflow-hidden rounded-2xl shadow-xl border-4 border-themecolor bg-gray-200">
+        <div className="relative h-[260px] w-full overflow-hidden rounded-2xl border-4 border-themecolor bg-gray-200 shadow-xl sm:h-[360px] lg:h-[500px] lg:w-1/2">
           <img
             src="/img/location_outside.jpeg"
             alt="Fizioterapija LuMa"
-            className="w-full h-full object-cover"
+            className="h-full w-full object-cover"
           />
         </div>
       </div>
-      <div className="max-w-7xl mx-auto mb-10 md:mb-16 pb-6">
-        <h2 className="text-3xl font-bold text-gray-900 text-center mb-10">
+
+      <div className="mx-auto mb-10 max-w-7xl pb-6 md:mb-16">
+        <h2 className="mb-8 text-center text-2xl font-bold text-gray-900 sm:mb-10 sm:text-3xl">
           Kontaktni podatki
         </h2>
 
-        <div className="flex flex-wrap justify-center gap-6">
+        <div className="flex flex-col gap-4 sm:gap-5 lg:flex-row lg:flex-wrap lg:justify-center lg:gap-6">
           <ContactItem
             href={mapsUrl}
             icon={MapPinIcon}
             title="Naslov"
             value={locationAddress}
             iconColor="text-red-600"
+            hint="Odpri v zemljevidu"
             target="_blank"
           />
 
@@ -94,6 +112,7 @@ export function MapComponent() {
             title="Telefon"
             value={phoneNumber}
             iconColor="text-green-600"
+            hint="Tapni za klic"
           />
 
           <ContactItem
@@ -102,6 +121,7 @@ export function MapComponent() {
             title="E-pošta"
             value={emailAddress}
             iconColor="text-gray-600"
+            hint="Tapni za e-pošto"
           />
         </div>
       </div>

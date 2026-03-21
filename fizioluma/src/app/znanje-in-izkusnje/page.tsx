@@ -55,9 +55,9 @@ export default function ZnanjeInIzkusnjePage() {
     <>
       <Navbar onOpenPopup={handleOpenPopup} />
 
-      <main className="pb-16 bg-white">
-        <Container>
-          <section className="py-8 md:py-12">
+      <main className="bg-white pb-16">
+        <Container className=" sm:px-6">
+          <section className="py-8 sm:py-10 md:py-12">
             <SectionTitle
               preTitle="ZNANJE IN IZKUŠNJE"
               title="Strokovno znanje, praktične izkušnje in stalno izpopolnjevanje"
@@ -70,38 +70,18 @@ export default function ZnanjeInIzkusnjePage() {
             </SectionTitle>
           </section>
 
-          <section className="max-w-6xl mx-auto space-y-16 md:space-y-20">
+          <section className="mx-auto max-w-6xl space-y-12 sm:space-y-16 md:space-y-20">
             {experienceSections.map((section, index) => {
               const isReversed = index % 2 === 1;
 
               return (
                 <article
                   key={section.title}
-                  className="grid grid-cols-1 items-center gap-8 md:grid-cols-2 md:gap-12"
+                  className="grid grid-cols-1 md:grid-cols-2 items-center gap-6 md:gap-12"
                 >
-                  <div className={isReversed ? "md:order-2" : "md:order-1"}>
-                    <h2 className="text-2xl font-bold leading-tight text-gray-900 md:text-3xl">
-                      {section.title}
-                    </h2>
-
-                    <p className="mt-5 text-base leading-relaxed text-gray-600 md:text-lg">
-                      {section.description}
-                    </p>
-
-                    <ul className="mt-6 space-y-3">
-                      {section.points.map((point) => (
-                        <li
-                          key={point}
-                          className="text-base leading-relaxed text-gray-700 md:text-lg"
-                        >
-                          • {point}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-
+                  {/* IMAGE - MOBILE FIRST */}
                   <div
-                    className={`relative h-[320px] md:h-[380px] lg:h-[440px] overflow-hidden rounded-2xl shadow-lg ${
+                    className={`relative h-[220px] w-full overflow-hidden md:h-[380px] lg:h-[440px] ${
                       isReversed ? "md:order-1" : "md:order-2"
                     }`}
                   >
@@ -109,15 +89,41 @@ export default function ZnanjeInIzkusnjePage() {
                       src={section.image}
                       alt={section.title}
                       fill
-                      className="object-cover object-center"
+                      className="object-cover object-center md:rounded-2xl"
                     />
+                  </div>
+
+                  {/* TEXT */}
+                  <div
+                    className={`px-4 md:px-0 ${
+                      isReversed ? "md:order-2" : "md:order-1"
+                    }`}
+                  >
+                    <h2 className="text-2xl font-bold text-gray-900 sm:text-2xl md:text-3xl">
+                      {section.title}
+                    </h2>
+
+                    <p className="mt-4 text-base leading-7 text-gray-600 sm:text-base md:text-lg">
+                      {section.description}
+                    </p>
+
+                    <ul className="mt-5 space-y-2 sm:mt-6 sm:space-y-3">
+                      {section.points.map((point) => (
+                        <li
+                          key={point}
+                          className="text-base leading-7 text-gray-700 sm:text-base md:text-lg"
+                        >
+                          • {point}
+                        </li>
+                      ))}
+                    </ul>
                   </div>
                 </article>
               );
             })}
           </section>
 
-          <section className="mt-20 rounded-2xl bg-softgrey/30 py-10 md:py-14">
+          <section className="mt-14 rounded-2xl bg-softgrey/30 px-4 py-8 sm:mt-20 sm:px-6 sm:py-10 md:py-14">
             <SectionTitle
               preTitle="O MENI"
               title="Kdo sem in kako pristopam k svojemu delu"
@@ -132,14 +138,14 @@ export default function ZnanjeInIzkusnjePage() {
             </SectionTitle>
           </section>
 
-          <section className="mt-12 max-w-6xl mx-auto">
-            <article className="grid grid-cols-1 items-center gap-8 md:grid-cols-2 md:gap-12">
+          <section className="p-5 mx-auto mt-12 max-w-6xl">
+            <article className="grid grid-cols-1 items-center gap-5 sm:gap-8 md:grid-cols-2 md:gap-12">
               <div className="md:order-1">
-                <h2 className="text-2xl font-bold leading-tight text-gray-900 md:text-3xl">
+                <h2 className="text-2xl font-bold leading-tight text-gray-900 sm:text-2xl md:text-3xl">
                   Lucija Marovšek, diplomirana fizioterapevtka
                 </h2>
 
-                <p className="mt-5 text-base leading-relaxed text-gray-600 md:text-lg">
+                <p className="mt-4 text-base leading-7 text-gray-600 sm:mt-5 sm:text-base md:text-lg md:leading-relaxed">
                   Fizioterapijo sem študirala v Ljubljani, nato pa izkušnje
                   pridobivala z delom v bolnišnicah, zdraviliščih in privatnih
                   ambulantah. Prav ta raznolikost delovnega okolja mi je
@@ -148,7 +154,7 @@ export default function ZnanjeInIzkusnjePage() {
                   pripomočki.
                 </p>
 
-                <p className="mt-5 text-base leading-relaxed text-gray-600 md:text-lg">
+                <p className="mt-4 text-base leading-7 text-gray-600 sm:mt-5 sm:text-base md:text-lg md:leading-relaxed">
                   Svoje znanje nenehno nadgrajujem z izobraževanji na visoki
                   strokovni ravni, saj želim pacientom ponuditi najučinkovitejše
                   pristope in celovite rešitve za njihove težave. Verjamem, da
@@ -156,7 +162,7 @@ export default function ZnanjeInIzkusnjePage() {
                   tisto, kar omogoča resnične rezultate.
                 </p>
 
-                <p className="mt-5 text-base leading-relaxed text-gray-600 md:text-lg">
+                <p className="mt-4 text-base leading-7 text-gray-600 sm:mt-5 sm:text-base md:text-lg md:leading-relaxed">
                   V prostem času sem aktivna in rada preživljam čas v naravi – v
                   hribih, pri plezanju ali smučanju. Uživam tudi v družbi
                   živali, ko se želim umiriti pa pogosto posežem po knjigah ali
@@ -165,14 +171,14 @@ export default function ZnanjeInIzkusnjePage() {
                   poti.
                 </p>
 
-                <p className="mt-5 text-base leading-relaxed text-gray-600 md:text-lg">
+                <p className="mt-4 text-base leading-7 text-gray-600 sm:mt-5 sm:text-base md:text-lg md:leading-relaxed">
                   Verjamem, da kombinacija strokovnosti, izkušenj, predanosti in
                   strasti do dela pacientom prinese ne le olajšanje, temveč tudi
                   več zaupanja v svoje telo, gibanje in proces okrevanja.
                 </p>
               </div>
 
-              <div className="relative h-[360px] md:h-[420px] lg:h-[650px] overflow-hidden rounded-2xl shadow-lg md:order-2">
+              <div className="relative h-[280px] overflow-hidden rounded-2xl shadow-lg sm:h-[360px] md:order-2 md:h-[420px] lg:h-[650px]">
                 <Image
                   src="/img/aboutme.jpeg"
                   alt="Lucija Marovšek"
@@ -183,7 +189,7 @@ export default function ZnanjeInIzkusnjePage() {
             </article>
           </section>
 
-          <section className="mt-12">
+          <section className="mt-12 rounded-2xl px-4 py-8 sm:px-6 sm:py-10">
             <SectionTitle
               preTitle="MOJE DELO"
               title="Individualen pristop, strokovna podlaga in iskrena predanost"
@@ -195,7 +201,7 @@ export default function ZnanjeInIzkusnjePage() {
             </SectionTitle>
           </section>
 
-          <section id="therapy">
+          <section id="therapy" className="mt-14 sm:mt-16">
             <SectionTitle preTitle="IZVEDITE VEČ" title="Terapije">
               Izberite temo, ki vas zanima, in izvedite več o težavah,
               terapijah, poteku obravnave ter mojem načinu dela.

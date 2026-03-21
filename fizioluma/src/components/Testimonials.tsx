@@ -31,7 +31,7 @@ export const Testimonials = () => {
         speed={4000}
         // Privzeto za zelo majhne zaslone (pod 640px): nastavljeno na 1.5, da se vidijo 2 slajda
         slidesPerView={1}
-        spaceBetween={5} // Zmanjšan spaceBetween
+        spaceBetween={10} // Zmanjšan spaceBetween
         breakpoints={{
           // Sm (640px in več): 2 slida (za tablice)
           640: {
@@ -54,7 +54,7 @@ export const Testimonials = () => {
         <SwiperSlide>
           <div className="h-full">
             {/* Zmanjšan padding in velikost besedila za mobilne naprave */}
-            <div className="flex flex-col justify-between w-full h-full bg-gray-100 px-4 py-4 sm:px-6 sm:py-8 lg:px-10 lg:py-10 rounded-2xl">
+            <div className="flex flex-col justify-between w-full h-full bg-gray-200 px-4 py-4 sm:px-6 sm:py-8 lg:px-10 lg:py-10 rounded-2xl">
               <p className="text-xs leading-relaxed sm:text-sm lg:text-lg text-trueGray-700">
                 ej neznam ti povedat kok je hrbet boljse. Sem ti full full
                 hvalezen ker sem se herniacije res utrašu. In hvala da si me
@@ -72,7 +72,7 @@ export const Testimonials = () => {
         </SwiperSlide>
         <SwiperSlide>
           <div className="h-full">
-            <div className="flex flex-col justify-between w-full h-full bg-gray-100 px-4 py-4 sm:px-6 sm:py-8 lg:px-10 lg:py-10 rounded-2xl">
+            <div className="flex flex-col justify-between w-full h-full bg-gray-200 px-4 py-4 sm:px-6 sm:py-8 lg:px-10 lg:py-10 rounded-2xl">
               <p className="text-xs leading-relaxed sm:text-base lg:text-lg text-trueGray-700">
                 ti pa morem povedat, da so noge veliko boljše.{" "}
                 <Mark>Niso več boleče</Mark>, mravlinčenja na podpaltu ni več!
@@ -85,7 +85,7 @@ export const Testimonials = () => {
         </SwiperSlide>
         <SwiperSlide>
           <div className="h-full">
-            <div className="flex flex-col justify-between w-full h-full bg-gray-100 px-4 py-4 sm:px-6 sm:py-8 lg:px-10 lg:py-10 rounded-2xl">
+            <div className="flex flex-col justify-between w-full h-full bg-gray-200 px-4 py-4 sm:px-6 sm:py-8 lg:px-10 lg:py-10 rounded-2xl">
               <p className="text-xs leading-relaxed sm:text-base lg:text-lg text-trueGray-700">
                 Lucija jaz ne morem vrjet. Po 3 mesecih{" "}
                 <Mark>spet mirno spim!</Mark>
@@ -104,7 +104,7 @@ export const Testimonials = () => {
         </SwiperSlide>
         <SwiperSlide>
           <div className="h-full">
-            <div className="flex flex-col justify-between w-full h-full bg-gray-100 px-4 py-4 sm:px-6 sm:py-8 lg:px-10 lg:py-10 rounded-2xl">
+            <div className="flex flex-col justify-between w-full h-full bg-gray-200 px-4 py-4 sm:px-6 sm:py-8 lg:px-10 lg:py-10 rounded-2xl">
               <p className="text-xs leading-relaxed sm:text-base lg:text-lg text-trueGray-700">
                 Suuuper sem, ful <Mark>majn bolii</Mark>. Hvalaa ti. Mami je tut
                 ful bolje!
@@ -116,7 +116,7 @@ export const Testimonials = () => {
         </SwiperSlide>
         <SwiperSlide>
           <div className="h-full">
-            <div className="flex flex-col justify-between w-full h-full bg-gray-100 px-4 py-4 sm:px-6 sm:py-8 lg:px-10 lg:py-10 rounded-2xl">
+            <div className="flex flex-col justify-between w-full h-full bg-gray-200 px-4 py-4 sm:px-6 sm:py-8 lg:px-10 lg:py-10 rounded-2xl">
               <p className="text-xs leading-relaxed sm:text-base lg:text-lg text-trueGray-700">
                 Lucija jaz zdaj zaupam <Mark>samo še tebi</Mark>, mojih težav z
                 glavobolj in bolečinah v vratu po 5 letih sploh ni več. Nism si
@@ -133,7 +133,7 @@ export const Testimonials = () => {
         </SwiperSlide>
         <SwiperSlide>
           <div className="h-full">
-            <div className="flex flex-col justify-between w-full h-full bg-gray-100 px-4 py-4 sm:px-6 sm:py-8 lg:px-10 lg:py-10 rounded-2xl">
+            <div className="flex flex-col justify-between w-full h-full bg-gray-200 px-4 py-4 sm:px-6 sm:py-8 lg:px-10 lg:py-10 rounded-2xl">
               <p className="text-xs leading-relaxed sm:text-base lg:text-lg text-trueGray-700">
                 Ojjj Lucija☺️ so far, so good! Za enkrat je pocutje top. Vceri
                 me je sicer neki "stihnalo" v krizu, ampak je blo pomoje ker sm
@@ -148,7 +148,7 @@ export const Testimonials = () => {
         </SwiperSlide>
         <SwiperSlide>
           <div className="h-full">
-            <div className="flex flex-col justify-between w-full h-full bg-gray-100 px-4 py-4 sm:px-6 sm:py-8 lg:px-10 lg:py-10 rounded-2xl">
+            <div className="flex flex-col justify-between w-full h-full bg-gray-200 px-4 py-4 sm:px-6 sm:py-8 lg:px-10 lg:py-10 rounded-2xl">
               <p className="text-xs leading-relaxed sm:text-base lg:text-lg text-trueGray-700">
                 Lucija, zdravo. Kaj ste naredila mojemu kolenu..?{" "}
                 <Mark>Ni več bolečin</Mark>, nič ne pika in kljuva 🙂 Res sem
@@ -163,7 +163,7 @@ export const Testimonials = () => {
         </SwiperSlide>
         <SwiperSlide>
           <div className="h-full">
-            <div className="flex flex-col justify-between w-full h-full bg-gray-100 px-4 py-4 sm:px-6 sm:py-8 lg:px-10 lg:py-10 rounded-2xl">
+            <div className="flex flex-col justify-between w-full h-full bg-gray-200 px-4 py-4 sm:px-6 sm:py-8 lg:px-10 lg:py-10 rounded-2xl">
               <p className="text-xs leading-relaxed sm:text-base lg:text-lg text-trueGray-700">
                 nism si mislu da je lahk roka tok boljse, hvala ker si si vzela
                 čas in mi rešla še <Mark>teniški komolc</Mark> poleg hrbta. Bi
@@ -176,7 +176,7 @@ export const Testimonials = () => {
         </SwiperSlide>
         <SwiperSlide>
           <div className="h-full">
-            <div className="flex flex-col justify-between w-full h-full bg-gray-100 px-4 py-4 sm:px-6 sm:py-8 lg:px-10 lg:py-10 rounded-2xl">
+            <div className="flex flex-col justify-between w-full h-full bg-gray-200 px-4 py-4 sm:px-6 sm:py-8 lg:px-10 lg:py-10 rounded-2xl">
               <p className="text-xs leading-relaxed sm:text-base lg:text-lg text-trueGray-700">
                 Zdravo Lucija še enkrat hvala za <Mark>strokovno pomoč</Mark> v
                 prejšnjem tednu. Zelo si mi pomagala pri mojih težavah v križu.
@@ -190,7 +190,7 @@ export const Testimonials = () => {
         </SwiperSlide>
         <SwiperSlide>
           <div className="h-full">
-            <div className="flex flex-col justify-between w-full h-full bg-gray-100 px-4 py-4 sm:px-6 sm:py-8 lg:px-10 lg:py-10 rounded-2xl">
+            <div className="flex flex-col justify-between w-full h-full bg-gray-200 px-4 py-4 sm:px-6 sm:py-8 lg:px-10 lg:py-10 rounded-2xl">
               <p className="text-xs leading-relaxed sm:text-base lg:text-lg text-trueGray-700">
                 Zadnič je bil moj partner pri tebi na terapiji res HVALA!
                 Naslednji dan je bil veliko boljši! Sedaj pa bi jaz potrebovala

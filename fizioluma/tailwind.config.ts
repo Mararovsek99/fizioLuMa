@@ -14,10 +14,11 @@ const config: Config = {
     extend: {
       colors: {
         trueGray: colors.neutral,
-        navbg: "rgba(250, 248, 245, 0.95)",
+        navbg: "rgba(250, 248, 245, 0.5)",
         border: "rgba(226, 218, 207, 1)",
-        themecolor: "rgba(129, 95, 80, 1)",
-        themebg: "rgba(247, 247, 247, 1)",
+        themecolorV2: "rgba(129, 95, 80, 1)",
+        themecolor: "rgb(38, 99, 105)",
+        themebg: "rgb(247, 247, 247)",
         themecolorhover: "rgba(176, 133, 140, 1)",
         navbtn: "rgba(134, 114, 98, 1)",
         navbtnfocus: "rgba(87, 75, 65, 1)",

@@ -3,7 +3,7 @@
 import Image, { StaticImageData } from "next/image";
 import Link from "next/link";
 import { Container } from "@/components/Container";
-// slike za posamezne tile-e
+
 import tileOneImg from "../../public/img/frequentProblems.jpeg";
 import tileTwoImg from "../../public/img/courseOfTherapy.jpeg";
 import tileThreeImg from "../../public/img/approch.jpeg";
@@ -45,14 +45,15 @@ const items: LearnMoreItem[] = [
 
 export const LearnMoreSection = () => {
   return (
-    <Container>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+    <Container className="px-4 sm:px-6 mb-20">
+      <div className="mx-auto grid max-w-4xl grid-cols-1 gap-5 sm:gap-6 md:grid-cols-2">
         {items.map((item) => (
           <Link
             key={item.title}
             href={item.href}
-            className="group relative block min-h-[240px] overflow-hidden rounded-2xl shadow-lg"
+            className="group relative block h-[180px] overflow-hidden rounded-2xl shadow-lg sm:h-[260px] md:h-[240px]"
           >
+            {/* IMAGE */}
             <Image
               src={item.image}
               alt={item.title}
@@ -60,19 +61,23 @@ export const LearnMoreSection = () => {
               className="object-cover transition duration-500 group-hover:scale-105"
             />
 
-            <div className="absolute inset-0 bg-black/50 transition duration-300 group-hover:bg-black/45" />
+            {/* OVERLAY */}
+            <div className="absolute inset-0 bg-black/55 transition duration-300 group-hover:bg-black/45" />
 
-            <div className="absolute inset-0 flex flex-col p-6">
-              <h3 className="text-white text-3xl font-bold leading-tight ">
+            {/* CONTENT */}
+            <div className="absolute inset-0 flex flex-col p-4 sm:p-6">
+              <h3 className="text-xl font-bold leading-snug text-white sm:text-2xl lg:text-3xl">
                 {item.title}
               </h3>
 
-              <p className="text-white/90 text-base leading-relaxed mt-3 drop-shadow-sm">
+              <p className="mt-2 text-sm leading-relaxed text-white/90 sm:mt-3 sm:text-base">
                 {item.subtitle}
               </p>
 
-              <span className="mt-auto mb-2 mx-auto text-white text-lg font-semibold border-b border-white/70 pb-1 w-fit">
-                Preberi več
+              <span className="mt-auto text-center text-sm font-semibold text-white sm:text-base">
+                <span className="border-b border-white/70 pb-1">
+                  Preberi več
+                </span>
               </span>
             </div>
           </Link>

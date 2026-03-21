@@ -10,22 +10,24 @@ import { ChevronUpIcon } from "@heroicons/react/24/solid";
 
 export const Faq = () => {
   return (
-    <Container className="!p-0">
-      <div className="w-full max-w-2xl p-2 mx-auto rounded-2xl">
+    <Container className="px-4 sm:px-6">
+      <div className="mx-auto w-full max-w-2xl">
         {faqdata.map((item) => (
-          <div key={item.question} className="mb-5">
+          <div key={item.question} className="mb-4 sm:mb-5">
             <Disclosure>
               {({ open }) => (
                 <>
-                  <DisclosureButton className="flex items-center justify-between w-full px-4 py-4 text-lg text-left text-gray-800 rounded-lg bg-gray-50 hover:bg-gray-100 focus:outline-none focus-visible:ring focus-visible:ring-indigo-100 focus-visible:ring-opacity-75 shadow-md">
-                    <span>{item.question}</span>
+                  <DisclosureButton className="flex w-full items-center justify-between rounded-xl bg-gray-50 px-4 py-5 text-left text-base font-medium text-gray-800 shadow-sm transition-all duration-200 hover:bg-gray-100 hover:shadow-md focus:outline-none focus-visible:ring focus-visible:ring-indigo-100 sm:text-lg">
+                    <span className="pr-4 leading-snug">{item.question}</span>
+
                     <ChevronUpIcon
                       className={`${
-                        open ? "transform rotate-180" : ""
-                      } w-5 h-5 text-themecolor`}
+                        open ? "rotate-180" : ""
+                      } h-5 w-5 flex-shrink-0 text-themecolor transition-transform duration-300`}
                     />
                   </DisclosureButton>
-                  <DisclosurePanel className="px-4 pt-4 pb-2 text-gray-500">
+
+                  <DisclosurePanel className="px-4 pb-4 pt-3 text-sm leading-6 text-gray-500 sm:text-base sm:leading-7">
                     {item.answer}
                   </DisclosurePanel>
                 </>

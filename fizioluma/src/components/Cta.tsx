@@ -8,20 +8,24 @@ interface CtaProps {
 
 export const Cta = ({ onOpenPopup }: CtaProps) => {
   return (
-    <Container>
-      <div className="flex flex-wrap items-center justify-between w-full max-w-4xl gap-5 mx-auto text-white bg-themecolor px-7 py-7 lg:px-12 lg:py-12 lg:flex-nowrap rounded-xl">
+    <Container className="px-4 sm:px-6 my-12 sm:my-16 lg:my-20">
+      <div className="mx-auto flex w-full max-w-4xl flex-col items-center gap-6 rounded-2xl bg-themecolor px-6 py-8 text-white shadow-lg sm:px-8 sm:py-10 lg:flex-row lg:items-center lg:justify-between lg:px-12 lg:py-12">
+        {/* TEXT */}
         <div className="flex-grow text-center lg:text-left">
-          <h2 className="text-2xl font-medium lg:text-3xl">
+          <h2 className="text-xl font-semibold leading-snug sm:text-2xl lg:text-3xl">
             Imaš še kakšno vprašanje?
           </h2>
-          <p className="mt-2 font-medium text-white text-opacity-90 lg:text-xl">
+
+          <p className="mt-2 text-sm font-medium text-white/90 sm:text-base lg:text-xl">
             Odgovorim ti v enem dnevu!
           </p>
         </div>
-        <div className="flex-shrink-0 w-full text-center lg:w-auto">
+
+        {/* BUTTON */}
+        <div className="w-full flex-shrink-0 text-center lg:w-auto">
           <button
             onClick={onOpenPopup}
-            className="inline-block py-3 mx-auto text-lg font-medium text-center text-themecolor bg-white rounded-md px-7 lg:px-10 lg:py-5 "
+            className="inline-flex w-full items-center justify-center rounded-md bg-white px-6 py-3 text-base font-medium text-themecolor transition duration-200 hover:brightness-95 sm:w-auto sm:px-8 sm:py-4 sm:text-lg lg:px-10 lg:py-5"
           >
             Vprašaj me!
           </button>

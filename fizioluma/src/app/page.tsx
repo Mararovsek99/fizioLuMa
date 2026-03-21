@@ -81,7 +81,7 @@ export default function Home() {
 
         <Testimonials />
 
-        <section id="contact" className="bg-softgrey/20 pt-2 scroll-mt-5">
+        <section id="contact" className="bg-softgrey/20 pt-2 mt-10">
           <SectionTitle preTitle="kontakt" title="Kje me najdete">
             Fizioterapija LuMa se nahaja 2 minuti od avtocestnega izvoza Celje
             center. Nasproti pekarne Šmarjeta.

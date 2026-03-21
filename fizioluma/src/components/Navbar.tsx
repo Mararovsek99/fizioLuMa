@@ -75,7 +75,7 @@ export const Navbar = ({ onOpenPopup }: NavbarProps) => {
   }, [isHomePage]);
 
   return (
-    <div className="w-full bg-navbg border-b-2 border-border sticky top-0 z-50 backdrop-blur-sm">
+    <div className="fixed top-0 left-0 z-50 w-full bg-navbg border-b border-border backdrop-blur-sm">
       <nav className="container relative flex flex-wrap items-center justify-between p-4 mx-auto lg:justify-between xl:px-1">
         <Link href="/">
           <Image

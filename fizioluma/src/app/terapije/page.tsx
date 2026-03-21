@@ -129,7 +129,7 @@ export default function TerapijeInPristopiPage() {
             {therapies.map((therapy) => (
               <article
                 key={therapy.title}
-                className="overflow-hidden rounded-2xl border-2 border-black bg-[#f3ece4] shadow-sm"
+                className="overflow-hidden rounded-2xl border-2 border-black  shadow-sm"
               >
                 <div className="grid grid-cols-1 md:grid-cols-2">
                   <div className="p-6 md:p-8 lg:p-10 flex flex-col justify-center order-2 md:order-1">

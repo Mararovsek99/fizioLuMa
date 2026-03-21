@@ -76,11 +76,11 @@ export const Navbar = ({ onOpenPopup }: NavbarProps) => {
 
   return (
     <div className="w-full bg-navbg border-b-2 border-border sticky top-0 z-50 backdrop-blur-sm">
-      <nav className="container relative flex flex-wrap items-center justify-between p-5 mx-auto lg:justify-between xl:px-1">
+      <nav className="container relative flex flex-wrap items-center justify-between p-4 mx-auto lg:justify-between xl:px-1">
         <Link href="/">
           <Image
             src="/img/logo.png"
-            width={200}
+            width={150}
             height={50}
             alt="Fizio Luma Logo"
             className="h-auto"

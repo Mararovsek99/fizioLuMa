@@ -33,7 +33,7 @@ const experienceSections = [
   },
   {
     title: "Celosten pristop",
-    image: "/img/sample-holistic.jpeg",
+    image: "/img/approach.jpeg",
     description:
       "Pri svojem delu združujem manualne tehnike, specializirane terapije in vadbene programe. Moj pristop ni usmerjen le v kratkotrajno lajšanje težav, ampak v razumevanje vzroka, izboljšanje funkcionalnosti in podporo pri dolgoročnem okrevanju. Cilj je učinkovito zmanjšanje bolečin, oteklin in varnejša, hitrejša rehabilitacija.",
     points: [

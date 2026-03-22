@@ -92,6 +92,8 @@ export const Hero = ({ onOpenPopup }: HeroProps) => {
             priority
             placeholder="blur"
             fill
+            sizes="100vw"
+            quality={75}
             className="object-cover"
           />
           <div className="absolute inset-0 bg-black/45" />
@@ -99,18 +101,18 @@ export const Hero = ({ onOpenPopup }: HeroProps) => {
 
         {/* CONTENT */}
         <Container className="relative z-10 px-4 py-16 pt-40 sm:px-6 sm:py-20 lg:px-8 lg:py-0 lg:pt-40">
-          <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-14">
+          <div className="mx-auto grid max-w-6xl items-center gap-10 lg:grid-cols-[minmax(0,560px)_minmax(380px,480px)] lg:gap-12 xl:gap-16">
             {/* BESSEDILO */}
-            <div className="order-1 mx-auto flex w-full max-w-md min-w-0 flex-col items-center text-center lg:max-w-xl lg:items-start lg:text-left">
-              <h1 className="font-serif text-5xl font-bold leading-tight text-white sm:text-5xl lg:text-6xl lg:text-mainblack xl:text-7xl">
+            <div className="order-1 mx-auto flex w-full max-w-md min-w-0 flex-col items-center text-center lg:mx-0 lg:max-w-[560px] lg:items-start lg:text-left">
+              <h1 className="font-serif text-5xl font-bold leading-tight text-white sm:text-5xl lg:text-6xl lg:text-mainblack xl:text-[4.25rem]">
                 Vaša pot do{" "}
-                <span className={`${kaushan.className} text-5xl  `}>
+                <span className={`${kaushan.className} text-5xl lg:text-6xl`}>
                   boljšega
                 </span>{" "}
                 počutja
               </h1>
 
-              <p className="mx-auto mt-4 max-w-sm text-base leading-7 text-white/90 sm:mt-6 sm:max-w-lg sm:text-lg sm:leading-8 lg:mx-0 lg:text-xl lg:text-gray-500">
+              <p className="mx-auto mt-4 max-w-sm text-base leading-7 text-white/90 sm:mt-6 sm:max-w-lg sm:text-lg sm:leading-8 lg:mx-0 lg:max-w-[34rem] lg:text-xl lg:text-gray-500">
                 Individualen pristop k vašemu zdravju.
                 <br className="sm:hidden" />
                 Strokovne fizioterapevtske storitve v prijetnem
@@ -118,10 +120,10 @@ export const Hero = ({ onOpenPopup }: HeroProps) => {
                 in sproščenem okolju.
               </p>
 
-              <div className="mt-8 p-8 flex w-full max-w-sm flex-col gap-3 sm:mt-10 sm:max-w-none sm:flex-row sm:flex-wrap lg:justify-start">
+              <div className="mt-8 flex w-full max-w-sm flex-col gap-3 sm:mt-10 sm:max-w-none sm:flex-row sm:flex-wrap lg:w-auto">
                 <button
                   onClick={onOpenPopup}
-                  className="inline-flex min-h-[52px] items-center justify-center rounded-md bg-themecolor px-6 py-3 text-lg font-medium text-white transition duration-200 hover:brightness-110 sm:px-8 sm:py-4 sm:text-lg"
+                  className="inline-flex min-h-[52px] items-center justify-center rounded-md bg-themecolor px-6 py-3 text-lg font-medium text-white transition duration-200 hover:brightness-110 sm:px-8 sm:py-4"
                 >
                   Naroči se
                 </button>
@@ -138,14 +140,18 @@ export const Hero = ({ onOpenPopup }: HeroProps) => {
             </div>
 
             {/* DESKTOP IMAGE */}
-            <div className="order-2 hidden w-full justify-center lg:flex">
-              <div className="w-full max-w-[520px] overflow-hidden rounded-2xl shadow-2xl">
+            <div className="order-2 hidden w-full justify-end lg:flex">
+              <div className="w-full max-w-[460px] overflow-hidden rounded-2xl shadow-2xl xl:max-w-[500px]">
                 <Image
                   src={heroImg}
                   alt="Fizioterapevtska obravnava"
                   priority
                   placeholder="blur"
-                  className="h-[520px] w-full object-cover"
+                  width={500}
+                  height={620}
+                  sizes="(max-width: 1024px) 0px, (max-width: 1280px) 460px, 500px"
+                  quality={80}
+                  className="h-[520px] w-full object-cover xl:h-[580px]"
                 />
               </div>
             </div>
@@ -154,8 +160,8 @@ export const Hero = ({ onOpenPopup }: HeroProps) => {
       </section>
 
       {/* STATISTIKA */}
-      <Container className="px-4 pb-12 pt-8 sm:px-6 sm:pb-16 lg:pt-12 ">
-        <div className="shadow-2xl rounded-2xl bg-softgrey/20 px-4 py-8 sm:px-6 sm:py-10 lg:px-8">
+      <Container className="px-4 pb-12 pt-8 sm:px-6 sm:pb-16 lg:pt-12">
+        <div className="mx-auto max-w-6xl rounded-2xl bg-softgrey/20 px-4 py-8 shadow-2xl sm:px-6 sm:py-10 lg:px-8">
           <div className="text-center text-base text-gray-700 sm:text-lg md:text-xl">
             Več kot <span className="font-semibold text-themecolor">10+</span>{" "}
             certifikatov

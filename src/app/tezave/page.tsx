@@ -90,24 +90,25 @@ export default function TezavePage() {
 
           {/* CARDS */}
           <section className="mx-auto grid max-w-6xl grid-cols-1 gap-4 sm:gap-6 md:grid-cols-2 md:gap-8">
-            {issueGroups.map((group) => (
+            {issueGroups.map((group, index) => (
               <article
                 key={group.title}
-                className="relative overflow-hidden rounded-2xl shadow-lg min-h-[260px] sm:min-h-[300px] md:min-h-[360px]"
+                className="relative min-h-[260px] overflow-hidden rounded-2xl shadow-lg sm:min-h-[300px] md:min-h-[360px]"
               >
                 <Image
                   src={group.image}
                   alt={group.title}
                   fill
+                  priority={index < 2}
+                  quality={80}
+                  sizes="(max-width: 767px) 100vw, 50vw"
                   className="object-cover"
                 />
 
-                {/* OVERLAY */}
                 <div className="absolute inset-0 bg-black/60 sm:bg-black/55" />
 
-                {/* CONTENT */}
                 <div className="relative z-10 flex h-full flex-col p-5 sm:p-6 md:p-8">
-                  <h2 className="text-white text-xl sm:text-2xl md:text-3xl font-bold leading-tight">
+                  <h2 className="text-xl font-bold leading-tight text-white sm:text-2xl md:text-3xl">
                     {group.title}
                   </h2>
 
@@ -115,7 +116,7 @@ export default function TezavePage() {
                     {group.items.map((item) => (
                       <li
                         key={item}
-                        className="text-white/90 text-sm leading-6 sm:text-base md:text-lg md:leading-relaxed"
+                        className="text-sm leading-6 text-white/90 sm:text-base md:text-lg md:leading-relaxed"
                       >
                         • {item}
                       </li>

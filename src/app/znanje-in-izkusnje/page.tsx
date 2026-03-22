@@ -56,7 +56,7 @@ export default function ZnanjeInIzkusnjePage() {
       <Navbar onOpenPopup={handleOpenPopup} />
 
       <main className="bg-white pb-16">
-        <Container className=" sm:px-6">
+        <Container className="sm:px-6">
           <section className="py-8 sm:py-10 md:py-12">
             <SectionTitle
               preTitle="ZNANJE IN IZKUŠNJE"
@@ -77,9 +77,8 @@ export default function ZnanjeInIzkusnjePage() {
               return (
                 <article
                   key={section.title}
-                  className="grid grid-cols-1 md:grid-cols-2 items-center gap-6 md:gap-12"
+                  className="grid grid-cols-1 items-center gap-6 md:grid-cols-2 md:gap-12"
                 >
-                  {/* IMAGE - MOBILE FIRST */}
                   <div
                     className={`relative h-[220px] w-full overflow-hidden md:h-[380px] lg:h-[440px] ${
                       isReversed ? "md:order-1" : "md:order-2"
@@ -89,11 +88,13 @@ export default function ZnanjeInIzkusnjePage() {
                       src={section.image}
                       alt={section.title}
                       fill
+                      priority={index === 0}
+                      quality={80}
+                      sizes="(max-width: 767px) 100vw, 50vw"
                       className="object-cover object-center md:rounded-2xl"
                     />
                   </div>
 
-                  {/* TEXT */}
                   <div
                     className={`px-4 md:px-0 ${
                       isReversed ? "md:order-2" : "md:order-1"
@@ -138,7 +139,7 @@ export default function ZnanjeInIzkusnjePage() {
             </SectionTitle>
           </section>
 
-          <section className="p-5 mx-auto mt-12 max-w-6xl">
+          <section className="mx-auto mt-12 max-w-6xl p-5">
             <article className="grid grid-cols-1 items-center gap-5 sm:gap-8 md:grid-cols-2 md:gap-12">
               <div className="md:order-1">
                 <h2 className="text-2xl font-bold leading-tight text-gray-900 sm:text-2xl md:text-3xl">
@@ -183,6 +184,8 @@ export default function ZnanjeInIzkusnjePage() {
                   src="/img/aboutme.jpeg"
                   alt="Lucija Marovšek"
                   fill
+                  quality={80}
+                  sizes="(max-width: 767px) 100vw, 50vw"
                   className="object-cover object-center"
                 />
               </div>

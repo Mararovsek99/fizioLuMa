@@ -126,7 +126,7 @@ export default function TerapijeInPristopiPage() {
           </section>
 
           <section className="mx-auto max-w-6xl space-y-5 sm:space-y-8 md:space-y-10">
-            {therapies.map((therapy) => (
+            {therapies.map((therapy, index) => (
               <article
                 key={therapy.title}
                 className="overflow-hidden rounded-2xl border-2 border-black shadow-sm"
@@ -158,6 +158,9 @@ export default function TerapijeInPristopiPage() {
                       src={therapy.image}
                       alt={therapy.title}
                       fill
+                      priority={index === 0}
+                      quality={80}
+                      sizes="(max-width: 767px) 100vw, 50vw"
                       className="object-cover"
                     />
                   </div>

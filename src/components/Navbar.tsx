@@ -83,7 +83,7 @@ export const Navbar = ({ onOpenPopup }: NavbarProps) => {
             width={150}
             height={50}
             alt="Fizio Luma Logo"
-            className="h-auto"
+            className="h-auto w-auto"
           />
         </Link>
 

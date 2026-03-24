@@ -1,5 +1,6 @@
 "use client";
 
+import { type ElementType, type MouseEvent } from "react";
 import {
   AcademicCapIcon,
   UsersIcon,
@@ -8,6 +9,7 @@ import {
 } from "@heroicons/react/24/outline";
 import CountUp from "react-countup";
 import { useInView } from "react-intersection-observer";
+import { motion, useReducedMotion } from "motion/react";
 import Image from "next/image";
 import { Container } from "@/components/Container";
 import heroImg from "../../public/img/hero.jpeg";
@@ -22,48 +24,129 @@ interface StatCounterProps {
   endValue: number;
   label: string;
   suffix: string;
-  icon: React.ElementType;
+  icon: ElementType;
 }
 
 interface HeroProps {
   onOpenPopup: () => void;
 }
 
-const StatCounter: React.FC<StatCounterProps> = ({
+const ease = [0.22, 1, 0.36, 1] as const;
+
+const heroContainerVariants = {
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: 0.12,
+      delayChildren: 0.1,
+    },
+  },
+};
+
+const fadeUpVariants = {
+  hidden: {
+    opacity: 0,
+    y: 28,
+  },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.7,
+      ease,
+    },
+  },
+};
+
+const imageVariants = {
+  hidden: {
+    opacity: 0,
+    x: 24,
+    scale: 0.98,
+  },
+  visible: {
+    opacity: 1,
+    x: 0,
+    scale: 1,
+    transition: {
+      duration: 0.9,
+      ease,
+    },
+  },
+};
+
+const statsContainerVariants = {
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: 0.08,
+      delayChildren: 0.05,
+    },
+  },
+};
+
+const statItemVariants = {
+  hidden: {
+    opacity: 0,
+    y: 18,
+  },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.55,
+      ease,
+    },
+  },
+};
+
+const StatCounter = ({
   endValue,
   label,
   suffix,
   icon: Icon,
-}) => {
+}: StatCounterProps) => {
+  const shouldReduceMotion = useReducedMotion();
+
   const { ref, inView } = useInView({
     threshold: 0.3,
     triggerOnce: true,
   });
 
   return (
-    <div
+    <motion.div
+      variants={statItemVariants}
       ref={ref}
       className="flex flex-col items-center rounded-2xl px-4 py-6 text-center"
     >
-      <Icon className="mb-3 h-8 w-8 text-themecolor sm:h-10 sm:w-10 md:h-12 md:w-12" />
+      <motion.div
+        initial={shouldReduceMotion ? false : { opacity: 0, scale: 0.9 }}
+        whileInView={shouldReduceMotion ? undefined : { opacity: 1, scale: 1 }}
+        viewport={{ once: true, amount: 0.5 }}
+        transition={{ duration: 0.45, ease }}
+      >
+        <Icon className="mb-3 h-8 w-8 text-themecolor sm:h-10 sm:w-10 md:h-12 md:w-12" />
+      </motion.div>
 
       <div className="mb-2 text-4xl font-extrabold leading-none text-themecolor sm:text-5xl md:text-6xl">
         {inView ? (
           <CountUp start={0} end={endValue} duration={5} suffix={suffix} />
         ) : (
-          endValue.toLocaleString() + suffix
+          `${endValue}${suffix}`
         )}
       </div>
 
       <p className="max-w-[14ch] text-base font-medium leading-snug text-gray-700 sm:text-lg md:text-xl">
         {label}
       </p>
-    </div>
+    </motion.div>
   );
 };
 
 export const Hero = ({ onOpenPopup }: HeroProps) => {
-  const handleScrollToTherapy = (e: React.MouseEvent<HTMLAnchorElement>) => {
+  const shouldReduceMotion = useReducedMotion();
+
+  const handleScrollToTherapy = (e: MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
 
     const targetId = "therapy";
@@ -83,91 +166,161 @@ export const Hero = ({ onOpenPopup }: HeroProps) => {
 
   return (
     <>
-      <section className="relative overflow-hidden min-h-[100svh] lg:min-h-0">
+      <section className="relative min-h-[100svh] overflow-hidden lg:min-h-0">
         {/* MOBILE BACKGROUND IMAGE */}
         <div className="absolute inset-0 lg:hidden">
-          <Image
-            src={heroImg}
-            alt="Fizioterapevtska obravnava"
-            priority
-            placeholder="blur"
-            fill
-            sizes="100vw"
-            quality={75}
-            className="object-cover"
-          />
+          <motion.div
+            initial={shouldReduceMotion ? false : { scale: 1.04 }}
+            animate={shouldReduceMotion ? undefined : { scale: 1 }}
+            transition={{ duration: 1.1, ease }}
+            className="absolute inset-0"
+          >
+            <Image
+              src={heroImg}
+              alt="Fizioterapevtska obravnava"
+              priority
+              placeholder="blur"
+              fill
+              sizes="100vw"
+              quality={75}
+              className="object-cover"
+            />
+          </motion.div>
           <div className="absolute inset-0 bg-black/45" />
         </div>
 
         {/* CONTENT */}
         <Container className="relative z-10 px-4 py-16 pt-40 sm:px-6 sm:py-20 lg:px-8 lg:py-0 lg:pt-40">
-          <div className="mx-auto grid max-w-6xl items-center gap-10 lg:grid-cols-[minmax(0,560px)_minmax(380px,480px)] lg:gap-12 xl:gap-16">
+          <motion.div
+            className="mx-auto grid max-w-6xl items-center gap-10 lg:grid-cols-[minmax(0,560px)_minmax(380px,480px)] lg:gap-12 xl:gap-16"
+            variants={heroContainerVariants}
+            initial="hidden"
+            animate="visible"
+          >
             {/* BESSEDILO */}
-            <div className="order-1 mx-auto flex w-full max-w-md min-w-0 flex-col items-center text-center lg:mx-0 lg:max-w-[560px] lg:items-start lg:text-left">
-              <h1 className="font-serif text-5xl font-bold leading-tight text-white sm:text-5xl lg:text-6xl lg:text-mainblack xl:text-[4.25rem]">
+            <motion.div
+              variants={heroContainerVariants}
+              className="order-1 mx-auto flex w-full max-w-md min-w-0 flex-col items-center text-center lg:mx-0 lg:max-w-[560px] lg:items-start lg:text-left"
+            >
+              <motion.h1
+                variants={fadeUpVariants}
+                className="font-serif text-5xl font-bold leading-tight text-white sm:text-5xl lg:text-6xl lg:text-mainblack xl:text-[4.25rem]"
+              >
                 Vaša pot do{" "}
-                <span className={`${kaushan.className} text-5xl lg:text-6xl`}>
+                <motion.span
+                  initial={shouldReduceMotion ? false : { opacity: 0, y: 10 }}
+                  animate={
+                    shouldReduceMotion ? undefined : { opacity: 1, y: 0 }
+                  }
+                  transition={{ duration: 0.8, delay: 0.35, ease }}
+                  className={`${kaushan.className} text-5xl lg:text-6xl`}
+                >
                   boljšega
-                </span>{" "}
+                </motion.span>{" "}
                 počutja
-              </h1>
+              </motion.h1>
 
-              <p className="mx-auto mt-4 max-w-sm text-base leading-7 text-white/90 sm:mt-6 sm:max-w-lg sm:text-lg sm:leading-8 lg:mx-0 lg:max-w-[34rem] lg:text-xl lg:text-gray-500">
+              <motion.p
+                variants={fadeUpVariants}
+                className="mx-auto mt-4 max-w-sm text-base leading-7 text-white/90 sm:mt-6 sm:max-w-lg sm:text-lg sm:leading-8 lg:mx-0 lg:max-w-[34rem] lg:text-xl lg:text-gray-500"
+              >
                 Individualen pristop k vašemu zdravju.
                 <br className="sm:hidden" />
                 Strokovne fizioterapevtske storitve v prijetnem
                 <br className="sm:hidden" />
                 in sproščenem okolju.
-              </p>
+              </motion.p>
 
-              <div className="mt-8 flex w-full max-w-sm flex-col gap-3 sm:mt-10 sm:max-w-none sm:flex-row sm:flex-wrap lg:w-auto">
-                <button
+              <motion.div
+                variants={fadeUpVariants}
+                className="mt-8 flex w-full max-w-sm flex-col gap-3 sm:mt-10 sm:max-w-none sm:flex-row sm:flex-wrap lg:w-auto"
+              >
+                <motion.button
                   onClick={onOpenPopup}
+                  whileHover={
+                    shouldReduceMotion
+                      ? undefined
+                      : { y: -2, transition: { duration: 0.2 } }
+                  }
+                  whileTap={shouldReduceMotion ? undefined : { scale: 0.98 }}
                   className="inline-flex min-h-[52px] items-center justify-center rounded-md bg-themecolor px-6 py-3 text-lg font-medium text-white transition duration-200 hover:brightness-110 sm:px-8 sm:py-4"
                 >
                   Naroči se
-                </button>
+                </motion.button>
 
-                <a
+                <motion.a
                   href="#therapy"
                   onClick={handleScrollToTherapy}
                   rel="noopener"
+                  whileHover={
+                    shouldReduceMotion
+                      ? undefined
+                      : { y: -2, transition: { duration: 0.2 } }
+                  }
+                  whileTap={shouldReduceMotion ? undefined : { scale: 0.98 }}
                   className="inline-flex min-h-[52px] items-center justify-center rounded-md bg-white px-6 py-3 text-base font-medium text-themecolor ring-2 ring-inset ring-white/70 transition-colors duration-200 hover:bg-themecolor hover:text-white hover:ring-themecolor sm:px-8 sm:py-4 sm:text-lg lg:ring-themecolor"
                 >
                   Več o storitvah
-                </a>
-              </div>
-            </div>
+                </motion.a>
+              </motion.div>
+            </motion.div>
 
             {/* DESKTOP IMAGE */}
-            <div className="order-2 hidden w-full justify-end lg:flex">
+            <motion.div
+              variants={imageVariants}
+              className="order-2 hidden w-full justify-end lg:flex"
+            >
               <div className="w-full max-w-[460px] overflow-hidden rounded-2xl shadow-2xl xl:max-w-[500px]">
-                <Image
-                  src={heroImg}
-                  alt="Fizioterapevtska obravnava"
-                  priority
-                  placeholder="blur"
-                  width={500}
-                  height={620}
-                  sizes="(max-width: 1024px) 0px, (max-width: 1280px) 460px, 500px"
-                  quality={80}
-                  className="h-[520px] w-full object-cover xl:h-[580px]"
-                />
+                <motion.div
+                  initial={shouldReduceMotion ? false : { scale: 1.03 }}
+                  animate={shouldReduceMotion ? undefined : { scale: 1 }}
+                  transition={{ duration: 1.1, ease }}
+                >
+                  <Image
+                    src={heroImg}
+                    alt="Fizioterapevtska obravnava"
+                    priority
+                    placeholder="blur"
+                    width={500}
+                    height={620}
+                    sizes="(max-width: 1024px) 0px, (max-width: 1280px) 460px, 500px"
+                    quality={80}
+                    className="h-[520px] w-full object-cover xl:h-[580px]"
+                  />
+                </motion.div>
               </div>
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
         </Container>
       </section>
 
       {/* STATISTIKA */}
       <Container className="px-4 pb-12 pt-8 sm:px-6 sm:pb-16 lg:pt-12">
-        <div className="mx-auto max-w-6xl rounded-2xl bg-softgrey/20 px-4 py-8 shadow-2xl sm:px-6 sm:py-10 lg:px-8">
-          <div className="text-center text-base text-gray-700 sm:text-lg md:text-xl">
+        <motion.div
+          className="mx-auto max-w-6xl rounded-2xl bg-softgrey/20 px-4 py-8 shadow-2xl sm:px-6 sm:py-10 lg:px-8"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
+          variants={fadeUpVariants}
+        >
+          <motion.div
+            initial={shouldReduceMotion ? false : { opacity: 0, y: 14 }}
+            whileInView={shouldReduceMotion ? undefined : { opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.6 }}
+            transition={{ duration: 0.55, ease }}
+            className="text-center text-base text-gray-700 sm:text-lg md:text-xl"
+          >
             Več kot <span className="font-semibold text-themecolor">10+</span>{" "}
             certifikatov
-          </div>
+          </motion.div>
 
-          <div className="mt-8 grid grid-cols-2 gap-4 sm:mt-10 sm:gap-6 lg:grid-cols-4 lg:gap-8">
+          <motion.div
+            className="mt-8 grid grid-cols-2 gap-4 sm:mt-10 sm:gap-6 lg:grid-cols-4 lg:gap-8"
+            variants={statsContainerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.2 }}
+          >
             <StatCounter
               endValue={5}
               label="Let izkušenj"
@@ -195,8 +348,8 @@ export const Hero = ({ onOpenPopup }: HeroProps) => {
               suffix="+"
               icon={LightBulbIcon}
             />
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
       </Container>
     </>
   );

@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import Image from "next/image";
+import { motion, useReducedMotion } from "motion/react";
 import { Container } from "@/components/Container";
 import { Navbar } from "@/components/Navbar";
 import { SectionTitle } from "@/components/SectionTitle";
@@ -44,6 +45,287 @@ const experienceSections = [
   },
 ];
 
+const ease = [0.22, 1, 0.36, 1] as const;
+
+const fadeUpVariants = {
+  hidden: {
+    opacity: 0,
+    y: 34,
+  },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.9,
+      ease,
+    },
+  },
+};
+
+const sectionVariants = {
+  hidden: {
+    opacity: 0,
+    y: 36,
+  },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.9,
+      ease,
+    },
+  },
+};
+
+const imageVariants = {
+  hidden: {
+    opacity: 0,
+    y: 24,
+    scale: 0.985,
+  },
+  visible: {
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    transition: {
+      duration: 0.9,
+      ease,
+    },
+  },
+};
+
+const titleVariants = {
+  hidden: {
+    opacity: 0,
+    y: 20,
+  },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.75,
+      ease,
+    },
+  },
+};
+
+const paragraphVariants = {
+  hidden: {
+    opacity: 0,
+    y: 18,
+  },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.8,
+      ease,
+      delay: 0.06,
+    },
+  },
+};
+
+const pointVariants = {
+  hidden: {
+    opacity: 0,
+    y: 14,
+  },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.65,
+      ease,
+    },
+  },
+};
+
+function FadeInBlock({
+  children,
+  className,
+  delay = 0,
+}: {
+  children: React.ReactNode;
+  className?: string;
+  delay?: number;
+}) {
+  const shouldReduceMotion = useReducedMotion();
+
+  if (shouldReduceMotion) {
+    return <div className={className}>{children}</div>;
+  }
+
+  return (
+    <motion.div
+      className={className}
+      initial={{ opacity: 0, y: 34 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.3 }}
+      transition={{
+        duration: 0.9,
+        delay,
+        ease,
+      }}
+    >
+      {children}
+    </motion.div>
+  );
+}
+
+function ExperienceSectionCard({
+  section,
+  index,
+}: {
+  section: (typeof experienceSections)[number];
+  index: number;
+}) {
+  const shouldReduceMotion = useReducedMotion();
+  const isReversed = index % 2 === 1;
+
+  return (
+    <motion.article
+      initial={shouldReduceMotion ? false : "hidden"}
+      whileInView={shouldReduceMotion ? undefined : "visible"}
+      viewport={{ once: true, amount: 0.22 }}
+      variants={shouldReduceMotion ? undefined : sectionVariants}
+      transition={shouldReduceMotion ? undefined : { delay: index * 0.04 }}
+      className="grid grid-cols-1 items-center gap-6 md:grid-cols-2 md:gap-12"
+    >
+      <motion.div
+        initial={shouldReduceMotion ? false : "hidden"}
+        whileInView={shouldReduceMotion ? undefined : "visible"}
+        viewport={{ once: true, amount: 0.35 }}
+        variants={shouldReduceMotion ? undefined : imageVariants}
+        className={`relative h-[220px] w-full overflow-hidden md:h-[380px] lg:h-[440px] ${
+          isReversed ? "md:order-1" : "md:order-2"
+        }`}
+      >
+        <Image
+          src={section.image}
+          alt={section.title}
+          fill
+          priority={index === 0}
+          quality={80}
+          sizes="(max-width: 767px) 100vw, 50vw"
+          className="object-cover object-center md:rounded-2xl"
+        />
+      </motion.div>
+
+      <div
+        className={`px-4 md:px-0 ${isReversed ? "md:order-2" : "md:order-1"}`}
+      >
+        <motion.h2
+          initial={shouldReduceMotion ? false : "hidden"}
+          whileInView={shouldReduceMotion ? undefined : "visible"}
+          viewport={{ once: true, amount: 0.65 }}
+          variants={shouldReduceMotion ? undefined : titleVariants}
+          className="text-2xl font-bold text-gray-900 sm:text-2xl md:text-3xl"
+        >
+          {section.title}
+        </motion.h2>
+
+        <motion.p
+          initial={shouldReduceMotion ? false : "hidden"}
+          whileInView={shouldReduceMotion ? undefined : "visible"}
+          viewport={{ once: true, amount: 0.65 }}
+          variants={shouldReduceMotion ? undefined : paragraphVariants}
+          className="mt-4 text-base leading-7 text-gray-600 sm:text-base md:text-lg"
+        >
+          {section.description}
+        </motion.p>
+
+        <ul className="mt-5 space-y-2 sm:mt-6 sm:space-y-3">
+          {section.points.map((point, pointIndex) => (
+            <motion.li
+              key={point}
+              initial={shouldReduceMotion ? false : "hidden"}
+              whileInView={shouldReduceMotion ? undefined : "visible"}
+              viewport={{ once: true, amount: 0.85 }}
+              variants={shouldReduceMotion ? undefined : pointVariants}
+              transition={
+                shouldReduceMotion
+                  ? undefined
+                  : {
+                      duration: 0.65,
+                      delay: pointIndex * 0.08,
+                      ease,
+                    }
+              }
+              className="text-base leading-7 text-gray-700 sm:text-base md:text-lg"
+            >
+              • {point}
+            </motion.li>
+          ))}
+        </ul>
+      </div>
+    </motion.article>
+  );
+}
+
+function AboutMeArticle() {
+  const shouldReduceMotion = useReducedMotion();
+
+  return (
+    <article className="grid grid-cols-1 items-center gap-5 sm:gap-8 md:grid-cols-2 md:gap-12">
+      <div className="md:order-1">
+        <motion.h2
+          initial={shouldReduceMotion ? false : "hidden"}
+          whileInView={shouldReduceMotion ? undefined : "visible"}
+          viewport={{ once: true, amount: 0.6 }}
+          variants={shouldReduceMotion ? undefined : titleVariants}
+          className="text-2xl font-bold leading-tight text-gray-900 sm:text-2xl md:text-3xl"
+        >
+          Lucija Marovšek, diplomirana fizioterapevtka
+        </motion.h2>
+
+        {[
+          "Fizioterapijo sem študirala v Ljubljani, nato pa izkušnje pridobivala z delom v bolnišnicah, zdraviliščih in privatnih ambulantah. Prav ta raznolikost delovnega okolja mi je omogočila, da sem razvila širok spekter znanja in praktičnih veščin, ki jih danes združujem s sodobnimi terapijami in pripomočki.",
+          "Svoje znanje nenehno nadgrajujem z izobraževanji na visoki strokovni ravni, saj želim pacientom ponuditi najučinkovitejše pristope in celovite rešitve za njihove težave. Verjamem, da so strokovnost, izkušnje, predanost in iskrena želja po pomoči tisto, kar omogoča resnične rezultate.",
+          "V prostem času sem aktivna in rada preživljam čas v naravi – v hribih, pri plezanju ali smučanju. Uživam tudi v družbi živali, ko se želim umiriti pa pogosto posežem po knjigah ali dokumentarcih, velikokrat strokovnih, saj me učenje in širjenje znanja spremljata tako na profesionalni kot osebni poti.",
+          "Verjamem, da kombinacija strokovnosti, izkušenj, predanosti in strasti do dela pacientom prinese ne le olajšanje, temveč tudi več zaupanja v svoje telo, gibanje in proces okrevanja.",
+        ].map((text, index) => (
+          <motion.p
+            key={index}
+            initial={shouldReduceMotion ? false : "hidden"}
+            whileInView={shouldReduceMotion ? undefined : "visible"}
+            viewport={{ once: true, amount: 0.65 }}
+            variants={shouldReduceMotion ? undefined : paragraphVariants}
+            transition={
+              shouldReduceMotion
+                ? undefined
+                : {
+                    duration: 0.8,
+                    delay: index * 0.08,
+                    ease,
+                  }
+            }
+            className="mt-4 text-base leading-7 text-gray-600 sm:mt-5 sm:text-base md:text-lg md:leading-relaxed"
+          >
+            {text}
+          </motion.p>
+        ))}
+      </div>
+
+      <motion.div
+        initial={shouldReduceMotion ? false : "hidden"}
+        whileInView={shouldReduceMotion ? undefined : "visible"}
+        viewport={{ once: true, amount: 0.35 }}
+        variants={shouldReduceMotion ? undefined : imageVariants}
+        className="relative h-[280px] overflow-hidden rounded-2xl shadow-lg sm:h-[360px] md:order-2 md:h-[420px] lg:h-[650px]"
+      >
+        <Image
+          src="/img/aboutme.jpeg"
+          alt="Lucija Marovšek"
+          fill
+          quality={80}
+          sizes="(max-width: 767px) 100vw, 50vw"
+          className="object-cover object-center"
+        />
+      </motion.div>
+    </article>
+  );
+}
+
 export default function ZnanjeInIzkusnjePage() {
   const [isPopupOpen, setIsPopupOpen] = useState(false);
 
@@ -57,7 +339,7 @@ export default function ZnanjeInIzkusnjePage() {
 
       <main className="bg-white pb-16">
         <Container className="sm:px-6">
-          <section className="py-8 sm:py-10 md:py-12">
+          <FadeInBlock className="py-8 sm:py-10 md:py-12">
             <SectionTitle
               preTitle="ZNANJE IN IZKUŠNJE"
               title="Strokovno znanje, praktične izkušnje in stalno izpopolnjevanje"
@@ -68,63 +350,19 @@ export default function ZnanjeInIzkusnjePage() {
               obravnava temelji na razumevanju posameznika, strokovni podlagi in
               premišljeni izbiri metod, ki najbolje podprejo okrevanje.
             </SectionTitle>
-          </section>
+          </FadeInBlock>
 
           <section className="mx-auto max-w-6xl space-y-12 sm:space-y-16 md:space-y-20">
-            {experienceSections.map((section, index) => {
-              const isReversed = index % 2 === 1;
-
-              return (
-                <article
-                  key={section.title}
-                  className="grid grid-cols-1 items-center gap-6 md:grid-cols-2 md:gap-12"
-                >
-                  <div
-                    className={`relative h-[220px] w-full overflow-hidden md:h-[380px] lg:h-[440px] ${
-                      isReversed ? "md:order-1" : "md:order-2"
-                    }`}
-                  >
-                    <Image
-                      src={section.image}
-                      alt={section.title}
-                      fill
-                      priority={index === 0}
-                      quality={80}
-                      sizes="(max-width: 767px) 100vw, 50vw"
-                      className="object-cover object-center md:rounded-2xl"
-                    />
-                  </div>
-
-                  <div
-                    className={`px-4 md:px-0 ${
-                      isReversed ? "md:order-2" : "md:order-1"
-                    }`}
-                  >
-                    <h2 className="text-2xl font-bold text-gray-900 sm:text-2xl md:text-3xl">
-                      {section.title}
-                    </h2>
-
-                    <p className="mt-4 text-base leading-7 text-gray-600 sm:text-base md:text-lg">
-                      {section.description}
-                    </p>
-
-                    <ul className="mt-5 space-y-2 sm:mt-6 sm:space-y-3">
-                      {section.points.map((point) => (
-                        <li
-                          key={point}
-                          className="text-base leading-7 text-gray-700 sm:text-base md:text-lg"
-                        >
-                          • {point}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                </article>
-              );
-            })}
+            {experienceSections.map((section, index) => (
+              <ExperienceSectionCard
+                key={section.title}
+                section={section}
+                index={index}
+              />
+            ))}
           </section>
 
-          <section className="mt-14 rounded-2xl bg-softgrey/30 px-4 py-8 sm:mt-20 sm:px-6 sm:py-10 md:py-14">
+          <FadeInBlock className="mt-14 rounded-2xl bg-softgrey/30 px-4 py-8 sm:mt-20 sm:px-6 sm:py-10 md:py-14">
             <SectionTitle
               preTitle="O MENI"
               title="Kdo sem in kako pristopam k svojemu delu"
@@ -137,62 +375,13 @@ export default function ZnanjeInIzkusnjePage() {
               znanjem, predanostjo in izkušnjami se vedno potrudim poiskati
               najboljšo možno pot do boljšega počutja in večje gibljivosti.
             </SectionTitle>
-          </section>
+          </FadeInBlock>
 
           <section className="mx-auto mt-12 max-w-6xl p-5">
-            <article className="grid grid-cols-1 items-center gap-5 sm:gap-8 md:grid-cols-2 md:gap-12">
-              <div className="md:order-1">
-                <h2 className="text-2xl font-bold leading-tight text-gray-900 sm:text-2xl md:text-3xl">
-                  Lucija Marovšek, diplomirana fizioterapevtka
-                </h2>
-
-                <p className="mt-4 text-base leading-7 text-gray-600 sm:mt-5 sm:text-base md:text-lg md:leading-relaxed">
-                  Fizioterapijo sem študirala v Ljubljani, nato pa izkušnje
-                  pridobivala z delom v bolnišnicah, zdraviliščih in privatnih
-                  ambulantah. Prav ta raznolikost delovnega okolja mi je
-                  omogočila, da sem razvila širok spekter znanja in praktičnih
-                  veščin, ki jih danes združujem s sodobnimi terapijami in
-                  pripomočki.
-                </p>
-
-                <p className="mt-4 text-base leading-7 text-gray-600 sm:mt-5 sm:text-base md:text-lg md:leading-relaxed">
-                  Svoje znanje nenehno nadgrajujem z izobraževanji na visoki
-                  strokovni ravni, saj želim pacientom ponuditi najučinkovitejše
-                  pristope in celovite rešitve za njihove težave. Verjamem, da
-                  so strokovnost, izkušnje, predanost in iskrena želja po pomoči
-                  tisto, kar omogoča resnične rezultate.
-                </p>
-
-                <p className="mt-4 text-base leading-7 text-gray-600 sm:mt-5 sm:text-base md:text-lg md:leading-relaxed">
-                  V prostem času sem aktivna in rada preživljam čas v naravi – v
-                  hribih, pri plezanju ali smučanju. Uživam tudi v družbi
-                  živali, ko se želim umiriti pa pogosto posežem po knjigah ali
-                  dokumentarcih, velikokrat strokovnih, saj me učenje in
-                  širjenje znanja spremljata tako na profesionalni kot osebni
-                  poti.
-                </p>
-
-                <p className="mt-4 text-base leading-7 text-gray-600 sm:mt-5 sm:text-base md:text-lg md:leading-relaxed">
-                  Verjamem, da kombinacija strokovnosti, izkušenj, predanosti in
-                  strasti do dela pacientom prinese ne le olajšanje, temveč tudi
-                  več zaupanja v svoje telo, gibanje in proces okrevanja.
-                </p>
-              </div>
-
-              <div className="relative h-[280px] overflow-hidden rounded-2xl shadow-lg sm:h-[360px] md:order-2 md:h-[420px] lg:h-[650px]">
-                <Image
-                  src="/img/aboutme.jpeg"
-                  alt="Lucija Marovšek"
-                  fill
-                  quality={80}
-                  sizes="(max-width: 767px) 100vw, 50vw"
-                  className="object-cover object-center"
-                />
-              </div>
-            </article>
+            <AboutMeArticle />
           </section>
 
-          <section className="mt-12 rounded-2xl px-4 py-8 sm:px-6 sm:py-10">
+          <FadeInBlock className="mt-12 rounded-2xl px-4 py-8 sm:px-6 sm:py-10">
             <SectionTitle
               preTitle="MOJE DELO"
               title="Individualen pristop, strokovna podlaga in iskrena predanost"
@@ -202,14 +391,19 @@ export default function ZnanjeInIzkusnjePage() {
               praktične izkušnje in oseben pristop, s katerim skupaj gradimo pot
               do boljšega počutja, lažjega gibanja in dolgoročnih rezultatov.
             </SectionTitle>
-          </section>
+          </FadeInBlock>
 
           <section id="therapy" className="mt-14 sm:mt-16">
-            <SectionTitle preTitle="IZVEDITE VEČ" title="Terapije">
-              Izberite temo, ki vas zanima, in izvedite več o težavah,
-              terapijah, poteku obravnave ter mojem načinu dela.
-            </SectionTitle>
-            <LearnMoreSection />
+            <FadeInBlock>
+              <SectionTitle preTitle="IZVEDITE VEČ" title="Terapije">
+                Izberite temo, ki vas zanima, in izvedite več o težavah,
+                terapijah, poteku obravnave ter mojem načinu dela.
+              </SectionTitle>
+            </FadeInBlock>
+
+            <FadeInBlock delay={0.1}>
+              <LearnMoreSection />
+            </FadeInBlock>
           </section>
         </Container>
       </main>

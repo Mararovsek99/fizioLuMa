@@ -1,4 +1,5 @@
 "use client";
+
 import React from "react";
 import { Container } from "@/components/Container";
 import {
@@ -16,7 +17,7 @@ export const Faq = () => {
           <div key={item.question} className="mb-4 sm:mb-5">
             <Disclosure>
               {({ open }) => (
-                <>
+                <div>
                   <DisclosureButton className="flex w-full items-center justify-between rounded-xl bg-gray-50 px-4 py-5 text-left text-base font-medium text-gray-800 shadow-sm transition-all duration-200 hover:bg-gray-100 hover:shadow-md focus:outline-none focus-visible:ring focus-visible:ring-indigo-100 sm:text-lg">
                     <span className="pr-4 leading-snug">{item.question}</span>
 
@@ -30,7 +31,7 @@ export const Faq = () => {
                   <DisclosurePanel className="px-4 pb-4 pt-3 text-sm leading-6 text-gray-500 sm:text-base sm:leading-7">
                     {item.answer}
                   </DisclosurePanel>
-                </>
+                </div>
               )}
             </Disclosure>
           </div>

@@ -19,7 +19,7 @@ export function Footer() {
                 width={140}
                 height={45}
                 alt="Fizio Luma Logo"
-                className="h-auto"
+                className="h-auto w-auto"
               />
             </Link>
 
@@ -72,7 +72,7 @@ export function Footer() {
 
         {/* COPYRIGHT */}
         <div className="border-t border-gray-200 py-4 text-center text-xs text-gray-500">
-          © {new Date().getFullYear()} Fizio Luma · Made by{" "}
+          © 2026 Fizio Luma · Made by{" "}
           <a
             href="https://www.linkedin.com/in/andrej-marov%C5%A1ek-78b040206/"
             target="_blank"

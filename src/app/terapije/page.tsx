@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import Image from "next/image";
+import { motion, useReducedMotion } from "motion/react";
 import { Container } from "@/components/Container";
 import { Navbar } from "@/components/Navbar";
 import { SectionTitle } from "@/components/SectionTitle";
@@ -99,6 +100,220 @@ const therapies = [
   },
 ];
 
+const ease = [0.22, 1, 0.36, 1] as const;
+
+const fadeUpVariants = {
+  hidden: {
+    opacity: 0,
+    y: 34,
+  },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.9,
+      ease,
+    },
+  },
+};
+
+const cardVariants = {
+  hidden: {
+    opacity: 0,
+    y: 38,
+  },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.9,
+      ease,
+    },
+  },
+};
+
+const titleVariants = {
+  hidden: {
+    opacity: 0,
+    y: 22,
+  },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.75,
+      ease,
+    },
+  },
+};
+
+const descVariants = {
+  hidden: {
+    opacity: 0,
+    y: 20,
+  },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.8,
+      ease,
+      delay: 0.06,
+    },
+  },
+};
+
+const pointVariants = {
+  hidden: {
+    opacity: 0,
+    y: 16,
+  },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.65,
+      ease,
+    },
+  },
+};
+
+const imageVariants = {
+  hidden: {
+    opacity: 0,
+    y: 24,
+    scale: 0.985,
+  },
+  visible: {
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    transition: {
+      duration: 0.85,
+      ease,
+    },
+  },
+};
+
+function FadeInBlock({
+  children,
+  className,
+  delay = 0,
+}: {
+  children: React.ReactNode;
+  className?: string;
+  delay?: number;
+}) {
+  const shouldReduceMotion = useReducedMotion();
+
+  if (shouldReduceMotion) {
+    return <div className={className}>{children}</div>;
+  }
+
+  return (
+    <motion.div
+      className={className}
+      initial={{ opacity: 0, y: 34 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.3 }}
+      transition={{
+        duration: 0.9,
+        delay,
+        ease,
+      }}
+    >
+      {children}
+    </motion.div>
+  );
+}
+
+function TherapyCard({
+  therapy,
+  index,
+}: {
+  therapy: (typeof therapies)[number];
+  index: number;
+}) {
+  const shouldReduceMotion = useReducedMotion();
+
+  return (
+    <motion.article
+      initial={shouldReduceMotion ? false : "hidden"}
+      whileInView={shouldReduceMotion ? undefined : "visible"}
+      viewport={{ once: true, amount: 0.2 }}
+      variants={shouldReduceMotion ? undefined : cardVariants}
+      transition={shouldReduceMotion ? undefined : { delay: index * 0.03 }}
+      className="overflow-hidden rounded-2xl border-2 border-black shadow-sm"
+    >
+      <div className="grid grid-cols-1 md:grid-cols-2">
+        <div className="order-2 flex flex-col justify-center p-5 sm:p-6 md:order-1 md:p-8 lg:p-10">
+          <motion.h2
+            initial={shouldReduceMotion ? false : "hidden"}
+            whileInView={shouldReduceMotion ? undefined : "visible"}
+            viewport={{ once: true, amount: 0.7 }}
+            variants={shouldReduceMotion ? undefined : titleVariants}
+            className="text-xl font-bold leading-tight text-black sm:text-2xl md:text-3xl"
+          >
+            {therapy.title}
+          </motion.h2>
+
+          <motion.p
+            initial={shouldReduceMotion ? false : "hidden"}
+            whileInView={shouldReduceMotion ? undefined : "visible"}
+            viewport={{ once: true, amount: 0.65 }}
+            variants={shouldReduceMotion ? undefined : descVariants}
+            className="mt-4 text-sm leading-7 text-black/80 sm:mt-5 sm:text-base md:text-lg md:leading-relaxed"
+          >
+            {therapy.description}
+          </motion.p>
+
+          <ul className="mt-5 space-y-2 sm:mt-6 sm:space-y-3">
+            {therapy.points.map((point, pointIndex) => (
+              <motion.li
+                key={point}
+                initial={shouldReduceMotion ? false : "hidden"}
+                whileInView={shouldReduceMotion ? undefined : "visible"}
+                viewport={{ once: true, amount: 0.85 }}
+                variants={shouldReduceMotion ? undefined : pointVariants}
+                transition={
+                  shouldReduceMotion
+                    ? undefined
+                    : {
+                        duration: 0.65,
+                        delay: pointIndex * 0.08,
+                        ease,
+                      }
+                }
+                className="text-sm leading-7 text-black/85 sm:text-base md:text-lg md:leading-relaxed"
+              >
+                • {point}
+              </motion.li>
+            ))}
+          </ul>
+        </div>
+
+        <motion.div
+          initial={shouldReduceMotion ? false : "hidden"}
+          whileInView={shouldReduceMotion ? undefined : "visible"}
+          viewport={{ once: true, amount: 0.4 }}
+          variants={shouldReduceMotion ? undefined : imageVariants}
+          className="relative order-1 min-h-[220px] md:order-2 sm:min-h-[260px] md:min-h-full"
+        >
+          <Image
+            src={therapy.image}
+            alt={therapy.title}
+            fill
+            priority={index === 0}
+            quality={80}
+            sizes="(max-width: 767px) 100vw, 50vw"
+            className="object-cover"
+          />
+        </motion.div>
+      </div>
+    </motion.article>
+  );
+}
+
 export default function TerapijeInPristopiPage() {
   const [isPopupOpen, setIsPopupOpen] = useState(false);
 
@@ -112,7 +327,7 @@ export default function TerapijeInPristopiPage() {
 
       <main className="bg-white pb-16">
         <Container className="px-4 sm:px-6">
-          <section className="py-8 sm:py-10 md:py-12">
+          <FadeInBlock className="py-8 sm:py-10 md:py-12">
             <SectionTitle
               preTitle="TERAPIJE IN PRISTOPI"
               title="S katerimi terapijami vam lahko pomagam?"
@@ -123,53 +338,19 @@ export default function TerapijeInPristopiPage() {
               izboljšanje gibanja, funkcije ter kakovosti vsakodnevnega
               življenja.
             </SectionTitle>
-          </section>
+          </FadeInBlock>
 
           <section className="mx-auto max-w-6xl space-y-5 sm:space-y-8 md:space-y-10">
             {therapies.map((therapy, index) => (
-              <article
+              <TherapyCard
                 key={therapy.title}
-                className="overflow-hidden rounded-2xl border-2 border-black shadow-sm"
-              >
-                <div className="grid grid-cols-1 md:grid-cols-2">
-                  <div className="order-2 flex flex-col justify-center p-5 sm:p-6 md:order-1 md:p-8 lg:p-10">
-                    <h2 className="text-xl font-bold leading-tight text-black sm:text-2xl md:text-3xl">
-                      {therapy.title}
-                    </h2>
-
-                    <p className="mt-4 text-sm leading-7 text-black/80 sm:mt-5 sm:text-base md:text-lg md:leading-relaxed">
-                      {therapy.description}
-                    </p>
-
-                    <ul className="mt-5 space-y-2 sm:mt-6 sm:space-y-3">
-                      {therapy.points.map((point) => (
-                        <li
-                          key={point}
-                          className="text-sm leading-7 text-black/85 sm:text-base md:text-lg md:leading-relaxed"
-                        >
-                          • {point}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-
-                  <div className="relative order-1 min-h-[220px] sm:min-h-[260px] md:order-2 md:min-h-full">
-                    <Image
-                      src={therapy.image}
-                      alt={therapy.title}
-                      fill
-                      priority={index === 0}
-                      quality={80}
-                      sizes="(max-width: 767px) 100vw, 50vw"
-                      className="object-cover"
-                    />
-                  </div>
-                </div>
-              </article>
+                therapy={therapy}
+                index={index}
+              />
             ))}
           </section>
 
-          <section className="mt-14 rounded-2xl bg-softgrey/30 px-4 py-8 sm:mt-20 sm:px-6 sm:py-10 md:py-14">
+          <FadeInBlock className="mt-14 rounded-2xl bg-softgrey/30 px-4 py-8 sm:mt-20 sm:px-6 sm:py-10 md:py-14">
             <SectionTitle
               preTitle="INDIVIDUALEN PRISTOP"
               title="Vsaka obravnava je prilagojena vašim potrebam"
@@ -180,9 +361,12 @@ export default function TerapijeInPristopiPage() {
               rezultate dosežemo s premišljeno kombinacijo različnih pristopov,
               ki skupaj podprejo učinkovitejše okrevanje.
             </SectionTitle>
-          </section>
+          </FadeInBlock>
 
-          <section className="mt-8 rounded-2xl px-4 py-8 sm:mt-12 sm:px-6 sm:py-10">
+          <FadeInBlock
+            delay={0.06}
+            className="mt-8 rounded-2xl px-4 py-8 sm:mt-12 sm:px-6 sm:py-10"
+          >
             <SectionTitle
               preTitle="STROKOVNO IN CELOSTNO"
               title="Cilj je trajnejše izboljšanje, ne le kratkotrajno olajšanje"
@@ -193,14 +377,19 @@ export default function TerapijeInPristopiPage() {
               obravnavo pogosto dopolnjujem z vajami, usmeritvami in praktičnimi
               nasveti za vsakdan.
             </SectionTitle>
-          </section>
+          </FadeInBlock>
 
           <section id="therapy" className="mt-14 sm:mt-16">
-            <SectionTitle preTitle="IZVEDITE VEČ" title="Terapije">
-              Izberite temo, ki vas zanima, in izvedite več o težavah,
-              terapijah, poteku obravnave ter mojem načinu dela.
-            </SectionTitle>
-            <LearnMoreSection />
+            <FadeInBlock>
+              <SectionTitle preTitle="IZVEDITE VEČ" title="Terapije">
+                Izberite temo, ki vas zanima, in izvedite več o težavah,
+                terapijah, poteku obravnave ter mojem načinu dela.
+              </SectionTitle>
+            </FadeInBlock>
+
+            <FadeInBlock delay={0.1}>
+              <LearnMoreSection />
+            </FadeInBlock>
           </section>
         </Container>
       </main>

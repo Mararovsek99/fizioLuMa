@@ -100,6 +100,25 @@ const statItemVariants = {
   },
 };
 
+const floatingWordVariants = {
+  initial: {
+    y: 0,
+    scale: 1,
+    opacity: 1,
+  },
+  animate: {
+    y: [0, -7, 0],
+    scale: [1, 1.1, 1],
+    opacity: [0.9, 1, 0.9],
+    transition: {
+      duration: 3,
+      repeat: Infinity,
+      repeatType: "loop" as const,
+      ease: "easeInOut" as const,
+    },
+  },
+};
+
 const StatCounter = ({
   endValue,
   label,
@@ -115,8 +134,8 @@ const StatCounter = ({
 
   return (
     <motion.div
-      variants={statItemVariants}
       ref={ref}
+      variants={statItemVariants}
       className="flex flex-col items-center rounded-2xl px-4 py-6 text-center"
     >
       <motion.div
@@ -166,7 +185,7 @@ export const Hero = ({ onOpenPopup }: HeroProps) => {
 
   return (
     <>
-      <section className="relative min-h-[100svh] overflow-hidden lg:min-h-0">
+      <section className="relative min-h-screen overflow-hidden lg:min-h-0">
         {/* MOBILE BACKGROUND IMAGE */}
         <div className="absolute inset-0 lg:hidden">
           <motion.div
@@ -208,12 +227,31 @@ export const Hero = ({ onOpenPopup }: HeroProps) => {
               >
                 Vaša pot do{" "}
                 <motion.span
-                  initial={shouldReduceMotion ? false : { opacity: 0, y: 10 }}
-                  animate={
-                    shouldReduceMotion ? undefined : { opacity: 1, y: 0 }
+                  initial={
+                    shouldReduceMotion
+                      ? false
+                      : { opacity: 0, y: 10, scale: 0.98 }
                   }
-                  transition={{ duration: 0.8, delay: 0.35, ease }}
-                  className={`${kaushan.className} text-5xl lg:text-6xl`}
+                  animate={
+                    shouldReduceMotion ? undefined : ["visibleWord", "floating"]
+                  }
+                  variants={{
+                    visibleWord: {
+                      opacity: 1,
+                      y: 0,
+                      scale: 1,
+                      transition: {
+                        duration: 0.8,
+                        delay: 0.35,
+                        ease,
+                      },
+                    },
+                    floating: floatingWordVariants.animate,
+                  }}
+                  className={`${kaushan.className} inline-block text-5xl lg:text-6xl`}
+                  style={{
+                    textShadow: "0 0 18px rgba(255,255,255,0.18)",
+                  }}
                 >
                   boljšega
                 </motion.span>{" "}
@@ -300,7 +338,7 @@ export const Hero = ({ onOpenPopup }: HeroProps) => {
           className="mx-auto max-w-6xl rounded-2xl bg-softgrey/20 px-4 py-8 shadow-2xl sm:px-6 sm:py-10 lg:px-8"
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, amount: 0.2 }}
+          viewport={{ once: true, amount: 0.18 }}
           variants={fadeUpVariants}
         >
           <motion.div

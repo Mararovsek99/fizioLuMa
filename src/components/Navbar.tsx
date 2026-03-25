@@ -75,23 +75,24 @@ export const Navbar = ({ onOpenPopup }: NavbarProps) => {
   }, [isHomePage]);
 
   return (
-    <div className="fixed top-0 left-0 z-50 w-full bg-navbg border-b border-border backdrop-blur-sm">
-      <nav className="container relative flex flex-wrap items-center justify-between p-4 mx-auto lg:justify-between xl:px-1">
+    <div className="fixed left-0 top-0 z-50 w-full border-b border-border bg-navbg backdrop-blur-sm">
+      <nav className="container relative mx-auto flex flex-wrap items-center justify-between p-4 lg:justify-between xl:px-1">
         <Link href="/">
           <Image
             src="/img/logo.png"
             width={150}
             height={50}
             alt="Fizio Luma Logo"
+            loading="eager"
             className="h-auto w-auto"
           />
         </Link>
 
-        <div className="gap-3 nav__item mr-2 lg:flex ml-auto lg:ml-0 lg:order-2">
-          <div className="hidden mr-3 lg:flex nav__item">
+        <div className="nav__item ml-auto mr-2 gap-3 lg:order-2 lg:ml-0 lg:flex">
+          <div className="nav__item mr-3 hidden lg:flex">
             <button
               onClick={onOpenPopup}
-              className="px-6 py-2 text-white bg-themecolor rounded-md md:ml-5"
+              className="rounded-md bg-themecolor px-6 py-2 text-white md:ml-5"
             >
               Naroči se
             </button>
@@ -100,13 +101,13 @@ export const Navbar = ({ onOpenPopup }: NavbarProps) => {
 
         <Disclosure>
           {({ open, close }) => (
-            <>
+            <div className="lg:hidden">
               <Disclosure.Button
                 aria-label="Toggle Menu"
-                className="px-2 py-1 text-gray-500 rounded-md lg:hidden hover:text-themecolor focus:text-themecolor focus:bg-indigo-100 focus:outline-none"
+                className="rounded-md px-2 py-1 text-gray-500 hover:text-themecolor focus:bg-indigo-100 focus:text-themecolor focus:outline-none"
               >
                 <svg
-                  className="w-6 h-6 fill-current"
+                  className="h-6 w-6 fill-current"
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 24 24"
                 >
@@ -125,7 +126,7 @@ export const Navbar = ({ onOpenPopup }: NavbarProps) => {
                 </svg>
               </Disclosure.Button>
 
-              <Disclosure.Panel className="flex flex-wrap w-full my-5 lg:hidden">
+              <Disclosure.Panel className="my-5 flex w-full flex-wrap">
                 {navigation.map((item, index) => (
                   <Link
                     key={index}
@@ -136,9 +137,9 @@ export const Navbar = ({ onOpenPopup }: NavbarProps) => {
                       }
                       close();
                     }}
-                    className={`w-full px-4 py-2 -ml-4 rounded-md focus:outline-none hover:text-themecolor focus:text-themecolor ${
+                    className={`-ml-4 w-full rounded-md px-4 py-2 focus:outline-none hover:text-themecolor focus:text-themecolor ${
                       isHomePage && activeSection === item.sectionId
-                        ? "text-themecolor font-bold border-b-2 border-themecolor"
+                        ? "border-b-2 border-themecolor font-bold text-themecolor"
                         : "text-navbtn"
                     }`}
                   >
@@ -151,19 +152,19 @@ export const Navbar = ({ onOpenPopup }: NavbarProps) => {
                     onOpenPopup();
                     close();
                   }}
-                  className="w-full px-6 py-2 mt-3 text-center text-white bg-themecolor rounded-md lg:ml-5"
+                  className="mt-3 w-full rounded-md bg-themecolor px-6 py-2 text-center text-white"
                 >
                   Naroči se
                 </button>
               </Disclosure.Panel>
-            </>
+            </div>
           )}
         </Disclosure>
 
         <div className="hidden text-center lg:flex lg:items-center">
-          <ul className="items-center justify-end flex-1 pt-6 list-none lg:pt-0 lg:flex">
+          <ul className="flex-1 items-center justify-end pt-6 lg:flex lg:pt-0">
             {navigation.map((menu, index) => (
-              <li className="mr-3 nav__item" key={index}>
+              <li className="nav__item mr-3 list-none" key={index}>
                 <Link
                   href={menu.href}
                   onClick={(e) => {
@@ -171,9 +172,9 @@ export const Navbar = ({ onOpenPopup }: NavbarProps) => {
                       handleScrollClick(e, menu.sectionId);
                     }
                   }}
-                  className={`inline-block px-4 py-2 text-lg font-medium no-underline rounded-md hover:text-navbtnfocus focus:text-navbtnfocus ${
+                  className={`inline-block rounded-md px-4 py-2 text-lg font-medium no-underline hover:text-navbtnfocus focus:text-navbtnfocus ${
                     isHomePage && activeSection === menu.sectionId
-                      ? "text-themecolor border-b-2 border-themecolor bg-themecolor/10"
+                      ? "border-b-2 border-themecolor bg-themecolor/10 text-themecolor"
                       : "text-navbtn"
                   }`}
                 >

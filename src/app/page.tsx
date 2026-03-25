@@ -82,7 +82,7 @@ export default function Home() {
           <Benefits data={benefitOne} />
         </section>
 
-        <section id="benefits" className="scroll-mt-32 bg-softgrey/10">
+        <section id="benefits" className="scroll-mt-32 bg-softgrey/30">
           <Benefits imgPos="right" data={benefitTwo} />
         </section>
 

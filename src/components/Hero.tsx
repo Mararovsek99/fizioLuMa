@@ -107,8 +107,8 @@ const floatingWordVariants = {
     opacity: 1,
   },
   animate: {
-    y: [0, -7, 0],
-    scale: [1, 1.1, 1],
+    y: [0, -4, 0],
+    scale: [1, 1.05, 1],
     opacity: [0.9, 1, 0.9],
     transition: {
       duration: 3,

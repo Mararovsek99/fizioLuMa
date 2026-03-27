@@ -82,7 +82,7 @@ export default function Home() {
           <Benefits data={benefitOne} />
         </section>
 
-        <section id="benefits" className="scroll-mt-32 bg-softgrey/30">
+        <section id="benefits" className="scroll-mt-32 bg-softgrey/60">
           <Benefits imgPos="right" data={benefitTwo} />
         </section>
 
@@ -135,7 +135,7 @@ export default function Home() {
           <Testimonials />
         </FadeInBlock>
 
-        <section id="contact" className="mt-10 bg-softgrey/20 pt-2">
+        <section id="contact" className="mt-10 bg-softgrey/40 pt-2">
           <FadeInBlock>
             <SectionTitle preTitle="kontakt" title="Kje me najdete">
               Fizioterapija LuMa se nahaja 2 minuti od avtocestnega izvoza Celje

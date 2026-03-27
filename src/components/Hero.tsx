@@ -12,7 +12,7 @@ import { useInView } from "react-intersection-observer";
 import { motion, useReducedMotion } from "motion/react";
 import Image from "next/image";
 import { Container } from "@/components/Container";
-import heroImg from "../../public/img/hero.jpeg";
+import heroImg from "../../public/img/courseOfTherapy.jpeg";
 import { Kaushan_Script } from "next/font/google";
 
 const kaushan = Kaushan_Script({
@@ -185,7 +185,7 @@ export const Hero = ({ onOpenPopup }: HeroProps) => {
 
   return (
     <>
-      <section className="relative min-h-screen overflow-hidden lg:min-h-0">
+      <section className="relative min-h-screen overflow-hidden xl:h-[100svh] xl:min-h-[100svh]">
         {/* MOBILE BACKGROUND IMAGE */}
         <div className="absolute inset-0 lg:hidden">
           <motion.div
@@ -208,18 +208,53 @@ export const Hero = ({ onOpenPopup }: HeroProps) => {
           <div className="absolute inset-0 bg-black/45" />
         </div>
 
-        {/* CONTENT */}
-        <Container className="relative z-10 px-4 py-16 pt-40 sm:px-6 sm:py-20 lg:px-8 lg:py-0 lg:pt-40">
+        {/* XL DESKTOP RIGHT IMAGE */}
+        <motion.div
+          variants={imageVariants}
+          initial={shouldReduceMotion ? false : "hidden"}
+          animate={shouldReduceMotion ? undefined : "visible"}
+          className="absolute inset-y-0 right-0 hidden w-[46%] xl:block 2xl:w-[47%]"
+        >
           <motion.div
-            className="mx-auto grid max-w-6xl items-center gap-10 lg:grid-cols-[minmax(0,560px)_minmax(380px,480px)] lg:gap-12 xl:gap-16"
+            initial={shouldReduceMotion ? false : { scale: 1.03 }}
+            animate={shouldReduceMotion ? undefined : { scale: 1 }}
+            transition={{ duration: 1.1, ease }}
+            className="relative h-full w-full"
+          >
+            <Image
+              src={heroImg}
+              alt="Fizioterapevtska obravnava"
+              priority
+              placeholder="blur"
+              fill
+              sizes="46vw"
+              quality={80}
+              className="object-cover object-center"
+            />
+
+            {/* SOFT EDGE / BLEND */}
+            <div className="absolute inset-y-0 left-0 w-40 bg-gradient-to-r from-[#f3f3f1] via-[#f3f3f1] via-45% to-transparent xl:w-56 2xl:w-72" />
+
+            {/* dodatni mehak fade čez rob slike */}
+            <div className="absolute inset-y-0 left-0 w-20 bg-[#f3f3f1] blur-3xl xl:w-28 2xl:w-36" />
+
+            {/* še en ultra mehak sloj čez sam rob slike */}
+            <div className="absolute inset-y-0 left-4 w-12 bg-[#f3f3f1]/80 blur-2xl xl:left-6 xl:w-16" />
+          </motion.div>
+        </motion.div>
+
+        {/* CONTENT */}
+        <Container className="relative z-10 px-4 py-16 pt-48 sm:px-6 sm:py-20 lg:px-8 lg:py-0 lg:pt-40 xl:flex xl:h-[100svh] xl:items-center xl:pt-0">
+          <motion.div
+            className="mx-auto grid max-w-6xl items-center gap-10 lg:grid-cols-[minmax(0,560px)_minmax(380px,480px)] lg:gap-12 xl:h-full xl:w-full xl:grid-cols-[minmax(0,560px)_minmax(380px,480px)] xl:gap-16"
             variants={heroContainerVariants}
             initial="hidden"
             animate="visible"
           >
-            {/* BESSEDILO */}
+            {/* BESEDILO */}
             <motion.div
               variants={heroContainerVariants}
-              className="order-1 mx-auto flex w-full max-w-md min-w-0 flex-col items-center text-center lg:mx-0 lg:max-w-[560px] lg:items-start lg:text-left"
+              className="order-1 mx-auto flex w-full max-w-md min-w-0 flex-col items-center text-center lg:mx-0 sm:mt-40 lg:max-w-[560px] lg:items-start lg:text-left"
             >
               <motion.h1
                 variants={fadeUpVariants}
@@ -271,7 +306,7 @@ export const Hero = ({ onOpenPopup }: HeroProps) => {
 
               <motion.div
                 variants={fadeUpVariants}
-                className="mt-8 flex w-full max-w-sm flex-col gap-3 sm:mt-10 sm:max-w-none sm:flex-row sm:flex-wrap lg:w-auto"
+                className="mt-6 flex w-full max-w-sm flex-col gap-3 sm:mt-10 sm:max-w-none sm:flex-row sm:flex-wrap lg:w-auto"
               >
                 <motion.button
                   onClick={onOpenPopup}
@@ -303,10 +338,10 @@ export const Hero = ({ onOpenPopup }: HeroProps) => {
               </motion.div>
             </motion.div>
 
-            {/* DESKTOP IMAGE */}
+            {/* LG/TABLET ORIGINAL IMAGE */}
             <motion.div
               variants={imageVariants}
-              className="order-2 hidden w-full justify-end lg:flex"
+              className="order-2 hidden w-full justify-end lg:flex xl:hidden"
             >
               <div className="w-full max-w-[460px] overflow-hidden rounded-2xl shadow-2xl xl:max-w-[500px]">
                 <motion.div
@@ -328,67 +363,74 @@ export const Hero = ({ onOpenPopup }: HeroProps) => {
                 </motion.div>
               </div>
             </motion.div>
+
+            {/* XL IMAGE SPACER */}
+            <div className="order-2 hidden xl:block" />
           </motion.div>
         </Container>
       </section>
 
       {/* STATISTIKA */}
-      <Container className="px-4 pb-12 pt-8 sm:px-6 sm:pb-16 lg:pt-12">
-        <motion.div
-          className="mx-auto max-w-6xl rounded-2xl bg-softgrey/20 px-4 py-8 shadow-2xl sm:px-6 sm:py-10 lg:px-8"
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.18 }}
-          variants={fadeUpVariants}
-        >
+      <section className="w-full bg-softgrey/60 py-8 shadow-2xl sm:mt-10 sm:py-10 lg:py-12">
+        <Container className="px-4 sm:px-6">
           <motion.div
-            initial={shouldReduceMotion ? false : { opacity: 0, y: 14 }}
-            whileInView={shouldReduceMotion ? undefined : { opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.6 }}
-            transition={{ duration: 0.55, ease }}
-            className="text-center text-base text-gray-700 sm:text-lg md:text-xl"
-          >
-            Več kot <span className="font-semibold text-themecolor">10+</span>{" "}
-            certifikatov
-          </motion.div>
-
-          <motion.div
-            className="mt-8 grid grid-cols-2 gap-4 sm:mt-10 sm:gap-6 lg:grid-cols-4 lg:gap-8"
-            variants={statsContainerVariants}
+            className="mx-auto max-w-7xl"
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true, amount: 0.2 }}
+            viewport={{ once: true, amount: 0.18 }}
+            variants={fadeUpVariants}
           >
-            <StatCounter
-              endValue={5}
-              label="Let izkušenj"
-              suffix="+"
-              icon={AcademicCapIcon}
-            />
+            <motion.div
+              initial={shouldReduceMotion ? false : { opacity: 0, y: 14 }}
+              whileInView={
+                shouldReduceMotion ? undefined : { opacity: 1, y: 0 }
+              }
+              viewport={{ once: true, amount: 0.6 }}
+              transition={{ duration: 0.55, ease }}
+              className="text-center text-base text-gray-700 sm:text-lg md:text-xl"
+            >
+              Več kot <span className="font-semibold text-themecolor">10+</span>{" "}
+              certifikatov
+            </motion.div>
 
-            <StatCounter
-              endValue={350}
-              label="Zadovoljnih strank"
-              suffix="+"
-              icon={UsersIcon}
-            />
+            <motion.div
+              className="mt-8 grid grid-cols-2 gap-4 sm:mt-10 sm:gap-6 lg:grid-cols-4 lg:gap-8"
+              variants={statsContainerVariants}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.2 }}
+            >
+              <StatCounter
+                endValue={5}
+                label="Let izkušenj"
+                suffix="+"
+                icon={AcademicCapIcon}
+              />
 
-            <StatCounter
-              endValue={1180}
-              label="Uspešno obravnavanih pacientov"
-              suffix="+"
-              icon={CheckCircleIcon}
-            />
+              <StatCounter
+                endValue={350}
+                label="Zadovoljnih strank"
+                suffix="+"
+                icon={UsersIcon}
+              />
 
-            <StatCounter
-              endValue={12}
-              label="Različnih terapij"
-              suffix="+"
-              icon={LightBulbIcon}
-            />
+              <StatCounter
+                endValue={1180}
+                label="Uspešno obravnavanih pacientov"
+                suffix="+"
+                icon={CheckCircleIcon}
+              />
+
+              <StatCounter
+                endValue={12}
+                label="Različnih terapij"
+                suffix="+"
+                icon={LightBulbIcon}
+              />
+            </motion.div>
           </motion.div>
-        </motion.div>
-      </Container>
+        </Container>
+      </section>
     </>
   );
 };

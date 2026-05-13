@@ -1,7 +1,7 @@
 {
-  "name": "nextly-template",
+  "name": "fizioLuMa",
   "version": "2.0.0",
-  "description": "Nextly Landing Page Template",
+  "description": "Web page for physical therapy clinic",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -11,12 +11,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/web3templates/nextly-template"
+    "url": "https://github.com"
   },
   "keywords": [
     "nextjs",
-    "tailwindcss",
-    "free"
+    "tailwindcss"
   ],
   "author": "Surjith S M",
   "license": "ISC",
@@ -38,7 +37,6 @@
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
-    "baseline-browser-mapping": "^2.10.10",
     "eslint": "^9.39.4",
     "eslint-config-next": "^16.0.10",
     "postcss": "^8",

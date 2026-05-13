@@ -205,7 +205,7 @@ export const Hero = ({ onOpenPopup }: HeroProps) => {
               className="object-cover"
             />
           </motion.div>
-          <div className="absolute inset-0 bg-black/45" />
+          <div className="absolute inset-0 bg-black/30" />
         </div>
 
         {/* XL DESKTOP RIGHT IMAGE */}
@@ -295,18 +295,19 @@ export const Hero = ({ onOpenPopup }: HeroProps) => {
 
               <motion.p
                 variants={fadeUpVariants}
-                className="mx-auto mt-4 max-w-sm text-base leading-7 text-white/90 sm:mt-6 sm:max-w-lg sm:text-lg sm:leading-8 lg:mx-0 lg:max-w-[34rem] lg:text-xl lg:text-gray-500"
+                className="mx-auto mt-4 max-w-sm text-lg leading-7 text-white/90 sm:mt-6 sm:max-w-lg sm:text-lg sm:leading-8 lg:mx-0 lg:max-w-[34rem] lg:text-xl lg:text-gray-500"
               >
                 Individualen pristop k vašemu zdravju.
                 <br className="sm:hidden" />
-                Strokovne fizioterapevtske storitve v prijetnem
+                Strokovne fizioterapevtske storitve v
                 <br className="sm:hidden" />
-                in sproščenem okolju.
+                prijetnem in sproščenem okolju.
+                <br className="sm:hidden" />
               </motion.p>
 
               <motion.div
                 variants={fadeUpVariants}
-                className="mt-6 flex w-full max-w-sm flex-col gap-3 sm:mt-10 sm:max-w-none sm:flex-row sm:flex-wrap lg:w-auto"
+                className="mt-40 flex w-full max-w-sm flex-col gap-3 sm:mt-10 sm:max-w-none sm:flex-row sm:flex-wrap lg:w-auto"
               >
                 <motion.button
                   onClick={onOpenPopup}
@@ -316,7 +317,7 @@ export const Hero = ({ onOpenPopup }: HeroProps) => {
                       : { y: -2, transition: { duration: 0.2 } }
                   }
                   whileTap={shouldReduceMotion ? undefined : { scale: 0.98 }}
-                  className="inline-flex min-h-[52px] items-center justify-center rounded-md bg-themecolor px-6 py-3 text-lg font-medium text-white transition duration-200 hover:brightness-110 sm:px-8 sm:py-4"
+                  className="inline-flex min-h-[52px] items-center justify-center rounded-md bg-themecolor px-6 py-3 text-lg mb-2 font-medium text-white transition duration-200 hover:brightness-110 sm:px-8 sm:py-4"
                 >
                   Naroči se
                 </motion.button>

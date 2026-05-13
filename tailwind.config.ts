@@ -24,7 +24,7 @@ const config: Config = {
         themecolorhover: "rgba(176, 133, 140, 1)",
         navbtn: "rgba(134, 114, 98, 1)",
         navbtnfocus: "rgba(87, 75, 65, 1)",
-        softgrey: "rgba(203, 205, 181, 1)",
+        softgrey: "rgb(199, 199, 199)",
         softpink: "rgba(244,192,168,0.95)",
         mainblack: "rgba(46,37,31,1)",
       },

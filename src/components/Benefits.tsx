@@ -191,7 +191,7 @@ function Benefit({ title, icon, children, delay = 0 }: Readonly<BenefitProps>) {
       viewport={{ once: true, amount: 0.6 }}
       variants={shouldReduceMotion ? undefined : bulletVariants}
       transition={shouldReduceMotion ? undefined : { delay }}
-      className="mt-8 flex items-start space-x-3"
+      className="mt-8 flex items-start space-x-3 last:mb-5"
     >
       <div className="mt-1 flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-md bg-themecolor">
         {renderedIcon}

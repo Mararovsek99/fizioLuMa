@@ -75,7 +75,13 @@ export const Navbar = ({ onOpenPopup }: NavbarProps) => {
   }, [isHomePage]);
 
   return (
-    <div className="fixed left-0 top-0 z-50 w-full border-b border-border bg-navbg backdrop-blur-sm">
+    <div
+      className={`fixed left-0 top-0 z-50 w-full border-b border-border backdrop-blur-sm ${
+        isHomePage && activeSection === "home"
+          ? "bg-white/90 shadow-sm"
+          : "bg-navbg"
+      }`}
+    >
       <nav className="container relative mx-auto flex flex-wrap items-center justify-between p-4 lg:justify-between xl:px-1">
         <Link href="/">
           <Image
@@ -84,7 +90,7 @@ export const Navbar = ({ onOpenPopup }: NavbarProps) => {
             height={50}
             alt="Fizio Luma Logo"
             loading="eager"
-            className="h-auto w-auto"
+            className="h-auto w-[160px] md:w-[150px]"
           />
         </Link>
 
@@ -104,7 +110,11 @@ export const Navbar = ({ onOpenPopup }: NavbarProps) => {
             <div className="lg:hidden">
               <Disclosure.Button
                 aria-label="Toggle Menu"
-                className="rounded-md px-2 py-1 text-gray-500 hover:text-themecolor focus:bg-indigo-100 focus:text-themecolor focus:outline-none"
+                className={`rounded-md px-2 py-1 focus:outline-none ${
+                  open
+                    ? "fixed right-4 top-4 z-50 text-gray-700 hover:text-themecolor focus:bg-indigo-100 focus:text-themecolor"
+                    : "text-gray-500 hover:text-themecolor focus:bg-indigo-100 focus:text-themecolor"
+                }`}
               >
                 <svg
                   className="h-6 w-6 fill-current"
@@ -140,7 +150,7 @@ export const Navbar = ({ onOpenPopup }: NavbarProps) => {
                     className={`-ml-4 w-full rounded-md px-4 py-2 focus:outline-none hover:text-themecolor focus:text-themecolor ${
                       isHomePage && activeSection === item.sectionId
                         ? "border-b-2 border-themecolor font-bold text-themecolor"
-                        : "text-navbtn"
+                        : "text-black"
                     }`}
                   >
                     {item.name}

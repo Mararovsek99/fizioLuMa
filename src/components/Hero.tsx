@@ -244,7 +244,7 @@ export const Hero = ({ onOpenPopup }: HeroProps) => {
         </motion.div>
 
         {/* CONTENT */}
-        <Container className="relative z-10 px-4 py-16 pt-48 sm:px-6 sm:py-20 lg:px-8 lg:py-0 lg:pt-40 xl:flex xl:h-[100svh] xl:items-center xl:pt-0">
+        <Container className="relative z-10 px-4 py-16 pt-32 sm:px-6 sm:py-20 lg:px-8 lg:py-0 lg:pt-40 xl:flex xl:h-[100svh] xl:items-center xl:pt-0">
           <motion.div
             className="mx-auto grid max-w-6xl items-center gap-10 lg:grid-cols-[minmax(0,560px)_minmax(380px,480px)] lg:gap-12 xl:h-full xl:w-full xl:grid-cols-[minmax(0,560px)_minmax(380px,480px)] xl:gap-16"
             variants={heroContainerVariants}
@@ -256,6 +256,7 @@ export const Hero = ({ onOpenPopup }: HeroProps) => {
               variants={heroContainerVariants}
               className="order-1 mx-auto flex w-full max-w-md min-w-0 flex-col items-center text-center lg:mx-0 sm:mt-40 lg:max-w-[560px] lg:items-start lg:text-left"
             >
+              <motion.h1 className="text-md mb-5">FIZIOTERAPIJA LUMA</motion.h1>
               <motion.h1
                 variants={fadeUpVariants}
                 className="font-serif text-5xl font-bold leading-tight text-white sm:text-5xl lg:text-6xl lg:text-mainblack xl:text-[4.25rem]"

@@ -307,7 +307,7 @@ export const Hero = ({ onOpenPopup }: HeroProps) => {
 
               <motion.div
                 variants={fadeUpVariants}
-                className="mt-40 flex w-full max-w-sm flex-col gap-3 sm:mt-10 sm:max-w-none sm:flex-row sm:flex-wrap lg:w-auto"
+                className="mt-28 flex w-full max-w-sm flex-col gap-3 sm:mt-10 sm:max-w-none sm:flex-row sm:flex-wrap lg:w-auto"
               >
                 <motion.button
                   onClick={onOpenPopup}

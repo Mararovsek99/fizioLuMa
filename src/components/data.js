@@ -51,8 +51,8 @@ const benefitTwo = {
       icon: <ClockIcon />,
     },
     {
-      title: "Akcijski paket 5 + 1",
-      desc: "Ob nakupu paketa 5 terapij ali masaž prejmete eno dodatno terapijo brezplačno.",
+      title: "Akcijski paket 5 ali 10 terapij",
+      desc: "Ob nakupu paketa 5 ali 10 terapij prejmete popust na celoten znesek.",
       icon: <SparklesIcon />,
     },
     {

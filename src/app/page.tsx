@@ -74,7 +74,7 @@ export default function Home() {
           >
             Pri LuMa vam nudim individualno obravnavo, prilagojeno vašim
             težavam, naprednim terapijam ter realnim ciljem. Učinkovito,
-            strokovno in prijazno – za vaše boljše gibanje.
+            strokovno in prijazno, za vaše boljše gibanje.
           </SectionTitle>
         </FadeInBlock>
 
@@ -124,7 +124,7 @@ export default function Home() {
               preTitle="Mnenja strank"
               title="Kaj pravijo moje stranke"
             >
-              Preberite izkušnje mojih zadovoljnih strank — njihove zgodbe o
+              Preberite izkušnje mojih zadovoljnih strank. Njihove zgodbe o
               napredku, zaupanju in izboljšanem počutju. Resnične ocene, ki
               govorijo o strokovnosti in prijaznem pristopu.
             </SectionTitle>
@@ -151,7 +151,7 @@ export default function Home() {
         <FadeInBlock>
           <SectionTitle preTitle="HITRA POMOČ" title="Najpogostejša vprašanja">
             Tukaj so odgovori na najpogostejša vprašanja o storitvah, poteku
-            terapij in rezervacijah. Če ne najdete odgovora, me prosimo
+            terapij in rezervacijah. Če ne najdete odgovora, me prosim
             kontaktirajte, z veseljem pomagam.
           </SectionTitle>
         </FadeInBlock>

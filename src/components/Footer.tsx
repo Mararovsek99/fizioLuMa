@@ -24,7 +24,10 @@ export function Footer() {
             </Link>
 
             <p className="mx-auto mt-3 max-w-md text-sm leading-6 text-gray-500 lg:mx-0">
-              Kakršna koli vprašanja? Pišite mi na email ali me pokličite.
+              Kakršnakoli vprašanja?
+            </p>
+            <p className="mx-auto max-w-md text-sm leading-6 text-gray-500 lg:mx-0">
+              Pišite mi ali me pokličite.
             </p>
           </div>
 

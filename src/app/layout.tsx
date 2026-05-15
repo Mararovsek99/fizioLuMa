@@ -16,7 +16,9 @@ const cormorant = Cormorant_Garamond({
 });
 
 export const metadata: Metadata = {
-  title: "Fizioterapija LuMa",
+  title: "Fizioterapija LuMa | Fizioterapija in rehabilitacija v Celju",
+  description:
+    "Fizioterapija LuMa v Celju nudi fizioterapijo, rehabilitacijo, manualno terapijo in terapevtske storitve.",
 };
 
 export default function RootLayout({

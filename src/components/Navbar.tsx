@@ -18,7 +18,7 @@ export const Navbar = ({ onOpenPopup }: NavbarProps) => {
   const navigation = [
     { name: "Domov", href: "/#home", sectionId: "home" },
     { name: "O meni", href: "/#aboutme", sectionId: "aboutme" },
-    { name: "Ugodnosti", href: "/#benefits", sectionId: "benefits" },
+    { name: "Cenik", href: "/cenik", sectionId: "cenik" },
     { name: "Terapije", href: "/#therapy", sectionId: "therapy" },
     { name: "Kontakt", href: "/#contact", sectionId: "contact" },
   ];
@@ -142,7 +142,7 @@ export const Navbar = ({ onOpenPopup }: NavbarProps) => {
                     key={index}
                     href={item.href}
                     onClick={(e) => {
-                      if (isHomePage) {
+                      if (isHomePage && item.href.startsWith("/#")) {
                         handleScrollClick(e, item.sectionId);
                       }
                       close();
@@ -178,7 +178,7 @@ export const Navbar = ({ onOpenPopup }: NavbarProps) => {
                 <Link
                   href={menu.href}
                   onClick={(e) => {
-                    if (isHomePage) {
+                    if (isHomePage && menu.href.startsWith("/#")) {
                       handleScrollClick(e, menu.sectionId);
                     }
                   }}

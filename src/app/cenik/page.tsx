@@ -209,8 +209,8 @@ function FadeInBlock({
 
 function PriceTable() {
   return (
-    <div className="overflow-hidden rounded-2xl border-2 border-black bg-white text-black shadow-sm">
-      <div className="hidden grid-cols-3 border-b-2 border-black bg-softgrey/30 px-6 py-4 text-sm font-bold uppercase tracking-wide text-black md:grid">
+    <div className="w-full overflow-hidden rounded-2xl border-2 border-black bg-white text-black shadow-sm">
+      <div className="hidden grid-cols-3 border-b-2 border-black bg-softgrey/30 px-3 py-2 text-xs font-bold uppercase tracking-wide text-black sm:px-4 sm:py-3 sm:text-sm md:grid md:px-6 md:py-4">
         <div>Storitev</div>
         <div className="text-center">Trajanje</div>
         <div className="text-right">Cena</div>
@@ -224,25 +224,25 @@ function PriceTable() {
             amount={0.08}
           >
             <div className="border-b-2 border-black last:border-b-0">
-              <h2 className="border-t-2 border-black bg-black/5 px-4 py-3 text-center text-xl font-bold uppercase text-black md:px-6 md:py-4 md:text-2xl">
+              <h2 className="border-t-2 border-black bg-black/5 px-3 py-2 text-center text-lg font-bold uppercase text-black sm:px-4 sm:py-3 sm:text-xl md:px-6 md:py-4 md:text-2xl">
                 {section.category}
               </h2>
 
               {section.items.map((item) => (
                 <div
                   key={`${section.category}-${item.service}-${item.duration}`}
-                  className="border-b border-black/20 px-4 py-3 text-center text-black last:border-b-0 md:grid md:grid-cols-3 md:px-6 md:py-4 md:text-left"
+                  className="border-b border-black/20 px-3 py-2 text-center text-sm text-black last:border-b-0 sm:px-4 sm:py-3 sm:text-base md:grid md:grid-cols-3 md:px-6 md:py-4 md:text-left"
                 >
-                  <div className="text-lg font-medium text-black md:font-normal">
+                  <div className="break-words text-base font-medium text-black sm:text-lg md:font-normal">
                     {item.service}
                   </div>
 
-                  <div className="text-sm text-black/70 md:text-center md:text-base">
+                  <div className="text-xs text-black/70 sm:text-sm md:text-center md:text-base">
                     <span className="md:hidden">Trajanje: </span>
                     {item.duration}
                   </div>
 
-                  <div className="mt-2 font-semibold text-themecolor md:mt-0 md:text-right">
+                  <div className="mt-1 font-semibold text-themecolor sm:mt-2 md:mt-0 md:text-right">
                     <span className="md:hidden">Cena: </span>
                     {item.price}
                   </div>
@@ -276,7 +276,7 @@ export default function CenikPage() {
             </SectionTitle>
           </FadeInBlock>
 
-          <section className="mx-2 max-w-5xl">
+          <section className="mx-auto px-2 max-w-5xl sm:px-4">
             <PriceTable />
           </section>
 

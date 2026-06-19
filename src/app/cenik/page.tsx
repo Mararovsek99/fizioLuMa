@@ -1,13 +1,23 @@
 "use client";
 
 import React, { useState } from "react";
+import dynamic from "next/dynamic";
 import { motion, useReducedMotion } from "motion/react";
 import { Container } from "@/components/Container";
 import { Navbar } from "@/components/Navbar";
 import { SectionTitle } from "@/components/SectionTitle";
 import { PopupWidget } from "@/components/PopupWidget";
-import { Benefits } from "@/components/Benefits";
 import { benefitTwo } from "@/components/data";
+
+const Benefits = dynamic(
+  () => import("@/components/Benefits").then((mod) => mod.Benefits),
+  {
+    ssr: false,
+    loading: () => (
+      <div className="mt-20 min-h-[300px] rounded-2xl bg-softgrey/40" />
+    ),
+  },
+);
 
 const priceList = [
   {
@@ -60,7 +70,6 @@ const priceList = [
       },
     ],
   },
-
   {
     category: "Ročna limfna drenaža",
     items: [
@@ -86,7 +95,6 @@ const priceList = [
       },
     ],
   },
-
   {
     category: "Terapevtska masaža",
     items: [
@@ -112,7 +120,6 @@ const priceList = [
       },
     ],
   },
-
   {
     category: "Vadba",
     items: [
@@ -123,7 +130,6 @@ const priceList = [
       },
     ],
   },
-
   {
     category: "Izposoja naprav",
     items: [
@@ -144,7 +150,6 @@ const priceList = [
       },
     ],
   },
-
   {
     category: "Akcijski paketi",
     items: [
@@ -168,10 +173,12 @@ function FadeInBlock({
   children,
   className,
   delay = 0,
+  amount = 0.15,
 }: {
   children: React.ReactNode;
   className?: string;
   delay?: number;
+  amount?: number;
 }) {
   const shouldReduceMotion = useReducedMotion();
 
@@ -182,11 +189,15 @@ function FadeInBlock({
   return (
     <motion.div
       className={className}
-      initial={{ opacity: 0, y: 34 }}
+      initial={{ opacity: 0, y: 24 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.3 }}
+      viewport={{
+        once: true,
+        amount,
+        margin: "0px 0px -80px 0px",
+      }}
       transition={{
-        duration: 0.9,
+        duration: 0.55,
         delay,
         ease,
       }}
@@ -198,39 +209,47 @@ function FadeInBlock({
 
 function PriceTable() {
   return (
-    <div className="overflow-hidden rounded-2xl border-2 border-black shadow-sm">
-      <div className="hidden grid-cols-3 border-b-2 border-black bg-softgrey/30 px-4 py-4 text-sm font-bold uppercase tracking-wide text-black/70 md:grid md:px-6">
+    <div className="overflow-hidden rounded-2xl border-2 border-black bg-white text-black shadow-sm">
+      <div className="hidden grid-cols-3 border-b-2 border-black bg-softgrey/30 px-6 py-4 text-sm font-bold uppercase tracking-wide text-black md:grid">
         <div>Storitev</div>
         <div className="text-center">Trajanje</div>
         <div className="text-right">Cena</div>
       </div>
 
-      <div className="divide-y-2 divide-black">
-        {priceList.map((section) => (
-          <div className="text-black " key={section.category}>
-            <h2 className="border-b-2 border-black bg-black/5 px-4 py-3 text-center text-xl font-bold uppercase md:px-6 md:py-4 md:text-2xl">
-              {section.category}
-            </h2>
+      <div>
+        {priceList.map((section, index) => (
+          <FadeInBlock
+            key={section.category}
+            delay={Math.min(index * 0.025, 0.12)}
+            amount={0.08}
+          >
+            <div className="border-b-2 border-black last:border-b-0">
+              <h2 className="border-t-2 border-black bg-black/5 px-4 py-3 text-center text-xl font-bold uppercase text-black md:px-6 md:py-4 md:text-2xl">
+                {section.category}
+              </h2>
 
-            {section.items.map((item) => (
-              <div
-                key={`${item.service}-${item.duration}`}
-                className="border-b py-3 px-4 text-center md:grid md:grid-cols-3 md:py-4 md:px-6 md:text-left"
-              >
-                <div className="font-medium text-lg text-black md:font-normal">
-                  {item.service}
+              {section.items.map((item) => (
+                <div
+                  key={`${section.category}-${item.service}-${item.duration}`}
+                  className="border-b border-black/20 px-4 py-3 text-center text-black last:border-b-0 md:grid md:grid-cols-3 md:px-6 md:py-4 md:text-left"
+                >
+                  <div className="text-lg font-medium text-black md:font-normal">
+                    {item.service}
+                  </div>
+
+                  <div className="text-sm text-black/70 md:text-center md:text-base">
+                    <span className="md:hidden">Trajanje: </span>
+                    {item.duration}
+                  </div>
+
+                  <div className="mt-2 font-semibold text-themecolor md:mt-0 md:text-right">
+                    <span className="md:hidden">Cena: </span>
+                    {item.price}
+                  </div>
                 </div>
-                <div className="text-sm text-black/70 md:text-base md:text-center md:justify-self-center">
-                  <span className="md:hidden">Trajanje: </span>
-                  {item.duration}
-                </div>
-                <div className="mt-2 font-semibold text-themecolor md:mt-0 md:text-right">
-                  <span className="md:hidden">Cena: </span>
-                  {item.price}
-                </div>
-              </div>
-            ))}
-          </div>
+              ))}
+            </div>
+          </FadeInBlock>
         ))}
       </div>
     </div>
@@ -240,16 +259,12 @@ function PriceTable() {
 export default function CenikPage() {
   const [isPopupOpen, setIsPopupOpen] = useState(false);
 
-  const handleOpenPopup = () => {
-    setIsPopupOpen(true);
-  };
-
   return (
     <>
-      <Navbar onOpenPopup={handleOpenPopup} />
+      <Navbar onOpenPopup={() => setIsPopupOpen(true)} />
 
       <main className="bg-white pb-16">
-        <Container className="px-4 sm:px-6">
+        <Container>
           <FadeInBlock className="py-8 sm:py-10 md:py-12">
             <SectionTitle
               preTitle="CENIK"
@@ -261,11 +276,11 @@ export default function CenikPage() {
             </SectionTitle>
           </FadeInBlock>
 
-          <FadeInBlock className="mx-auto max-w-5xl">
+          <section className="mx-2 max-w-5xl">
             <PriceTable />
-          </FadeInBlock>
+          </section>
 
-          <section id="benefits" className="scroll-mt-32 bg-softgrey/60 mt-20">
+          <section id="benefits" className="mt-20 scroll-mt-32 bg-softgrey/60">
             <Benefits imgPos="right" data={benefitTwo} />
           </section>
 
@@ -281,7 +296,7 @@ export default function CenikPage() {
           </FadeInBlock>
 
           <FadeInBlock
-            delay={0.06}
+            delay={0.05}
             className="mt-8 rounded-2xl px-4 py-8 sm:mt-12 sm:px-6 sm:py-10"
           >
             <SectionTitle preTitle="NAROČANJE" title="Rezervirajte svoj termin">

@@ -109,7 +109,7 @@ export const Benefits = ({ data, imgPos }: Readonly<BenefitsProps>) => {
           whileInView={shouldReduceMotion ? undefined : "visible"}
           viewport={{ once: true, amount: 0.28 }}
           variants={shouldReduceMotion ? undefined : imageVariants}
-          className={`flex w-full items-center justify-center xl:w-1/2 ${
+          className={`mt-6 flex w-full items-center justify-center xl:w-1/2 ${
             imageRight ? "xl:order-2" : ""
           }`}
         >

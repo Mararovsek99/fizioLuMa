@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { motion, useReducedMotion } from "motion/react";
 import { Container } from "@/components/Container";
 import { Hero } from "@/components/Hero";
@@ -57,6 +57,47 @@ export default function Home() {
   const handleOpenPopup = () => {
     setIsPopupOpen(true);
   };
+
+  useEffect(() => {
+    let unlocked = false;
+
+    const unlockAutoplay = async () => {
+      if (unlocked) return;
+      unlocked = true;
+
+      const videos = document.querySelectorAll("video");
+      if (videos.length === 0) return;
+
+      try {
+        await Promise.all(
+          Array.from(videos).map(async (video) => {
+            video.muted = true;
+            const playPromise = video.play();
+            if (playPromise !== undefined) {
+              await playPromise.catch(() => undefined);
+            }
+            setTimeout(() => {
+              video.pause();
+              video.muted = false;
+            }, 100);
+          }),
+        );
+      } catch {
+        console.error("Autoplay unlock failed");
+      }
+
+      window.removeEventListener("scroll", unlockAutoplay);
+      window.removeEventListener("click", unlockAutoplay);
+    };
+
+    window.addEventListener("scroll", unlockAutoplay, { once: true });
+    window.addEventListener("click", unlockAutoplay, { once: true });
+
+    return () => {
+      window.removeEventListener("scroll", unlockAutoplay);
+      window.removeEventListener("click", unlockAutoplay);
+    };
+  }, []);
 
   return (
     <>

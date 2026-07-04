@@ -25,7 +25,7 @@ export function Video({ src, poster }: Readonly<VideoProps>) {
 
         if (entry.isIntersecting && entry.intersectionRatio >= 0.75) {
           if (!userPauseRef.current) {
-            video.muted = false;
+            video.muted = true;
             void video.play().catch(() => undefined);
           }
         } else {
@@ -52,10 +52,18 @@ export function Video({ src, poster }: Readonly<VideoProps>) {
 
     if (video.paused) {
       userPauseRef.current = false;
+      video.muted = false;
       void video.play().catch(() => undefined);
     } else {
       userPauseRef.current = true;
       video.pause();
+    }
+  };
+
+  const handlePlayStart = () => {
+    const video = videoRef.current;
+    if (video && !userPauseRef.current) {
+      video.muted = false;
     }
   };
 
@@ -68,9 +76,11 @@ export function Video({ src, poster }: Readonly<VideoProps>) {
             poster={poster}
             className="h-full w-full bg-black object-contain cursor-pointer"
             controls
+            muted
             playsInline
             preload="metadata"
             onClick={handleTogglePlay}
+            onPlay={handlePlayStart}
           >
             <source src={src} type="video/mp4" />
             Tvoj brskalnik ne podpira videa.

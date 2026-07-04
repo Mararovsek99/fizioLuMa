@@ -12,6 +12,7 @@ import {
 import aboutmeImg from "../../public/img/aboutme.jpeg";
 import couponsImg from "../../public/img/benefits.jpeg";
 
+/** @type {import("./Benefits").BenefitsData} */
 const benefitOne = {
   title: "O meni",
   desc: "Sem diplomirana fizioterapevtka s strastjo do pomoči ljudem pri doseganju boljšega počutja. Verjamem v celosten pristop k zdravljenju, ki upošteva tako fizične kot čustvene vidike zdravja.V svojem delu združujem sodobne terapevtske tehnike z empatijo in razumevanjem. Vsak pacient je edinstven, zato tudi obravnava vedno prilagojena njegovim potrebam.",
@@ -35,6 +36,7 @@ const benefitOne = {
   ],
 };
 
+/** @type {import("./Benefits").BenefitsData} */
 const benefitTwo = {
   title: "Ugodnosti in popusti",
   desc: "V fizioterapiji LuMa imajo pacienti na voljo več dodatnih ugodnosti, ki omogočajo boljšo obravnavo, več podpore med terapijo in boljše rezultate zdravljenja.",
@@ -68,9 +70,11 @@ const benefitTwo = {
   ],
 };
 
+/** @type {import("./Benefits").BenefitsData} */
 const benefitKinetek = {
   title: "Najem Kineteka",
   desc: "Kinetek je naprava za pasivno razgibavanje sklepa, ki se uporablja po operacijah in poškodbah za učinkovito obnovo gibljivosti in hitrejšo rehabilitacijo.",
+  mediaType: "video",
   videoSrc: "/video/KINETEK.mp4",
   bullets: [
     {

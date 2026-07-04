@@ -10,13 +10,13 @@ import React, {
 import { motion, useReducedMotion } from "motion/react";
 import { Container } from "@/components/Container";
 
-interface BenefitBullet {
+export interface BenefitBullet {
   title: string;
   desc: string;
   icon: ReactNode;
 }
 
-interface BenefitsData {
+export interface BenefitsData {
   imgPos?: "left" | "right";
   title: string;
   desc: string;

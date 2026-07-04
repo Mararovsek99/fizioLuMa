@@ -23,8 +23,9 @@ export function Video({ src, poster }: Readonly<VideoProps>) {
         const [entry] = entries;
         if (!entry) return;
 
-        if (entry.isIntersecting && entry.intersectionRatio >= 1) {
+        if (entry.isIntersecting && entry.intersectionRatio >= 0.75) {
           if (!userPauseRef.current) {
+            video.muted = false;
             void video.play().catch(() => undefined);
           }
         } else {
@@ -58,14 +59,6 @@ export function Video({ src, poster }: Readonly<VideoProps>) {
     }
   };
 
-  const handlePause = () => {
-    userPauseRef.current = true;
-  };
-
-  const handlePlay = () => {
-    userPauseRef.current = false;
-  };
-
   return (
     <Container className="px-4 sm:px-6">
       <div className="mx-auto mb-12 w-full max-w-sm sm:max-w-md lg:max-w-md xl:max-w-md">
@@ -75,12 +68,9 @@ export function Video({ src, poster }: Readonly<VideoProps>) {
             poster={poster}
             className="h-full w-full bg-black object-contain cursor-pointer"
             controls
-            muted
             playsInline
             preload="metadata"
             onClick={handleTogglePlay}
-            onPause={handlePause}
-            onPlay={handlePlay}
           >
             <source src={src} type="video/mp4" />
             Tvoj brskalnik ne podpira videa.

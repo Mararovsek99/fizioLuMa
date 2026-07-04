@@ -119,13 +119,14 @@ export const Benefits = ({ data, imgPos }: Readonly<BenefitsProps>) => {
         const [entry] = entries;
         if (!entry) return;
 
-        if (entry.isIntersecting && entry.intersectionRatio >= 1) {
+        if (entry.isIntersecting && entry.intersectionRatio >= 0.75) {
+          video.muted = false;
           void video.play().catch(() => undefined);
         } else {
           video.pause();
         }
       },
-      { threshold: 1 },
+      { threshold: 0.75 },
     );
 
     observer.observe(video);
@@ -152,7 +153,6 @@ export const Benefits = ({ data, imgPos }: Readonly<BenefitsProps>) => {
                 ref={videoRef}
                 src={data.videoSrc}
                 controls
-                muted
                 loop
                 playsInline
                 preload="metadata"

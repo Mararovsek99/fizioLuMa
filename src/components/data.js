@@ -71,7 +71,6 @@ const benefitTwo = {
 const benefitKinetek = {
   title: "Najem Kineteka",
   desc: "Kinetek je naprava za pasivno razgibavanje sklepa, ki se uporablja po operacijah in poškodbah za učinkovito obnovo gibljivosti in hitrejšo rehabilitacijo.",
-  mediaType: "video",
   videoSrc: "/video/KINETEK.mp4",
   bullets: [
     {

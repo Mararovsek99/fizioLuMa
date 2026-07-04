@@ -209,7 +209,7 @@ function FadeInBlock({
 
 function PriceTable() {
   return (
-    <div className="w-full overflow-hidden rounded-2xl border-2 border-black bg-white text-black shadow-sm">
+    <div className="overflow-hidden rounded-2xl border-2 border-black bg-white text-black shadow-sm">
       <div className="hidden grid-cols-3 border-b-2 border-black bg-softgrey/30 px-3 py-2 text-xs font-bold uppercase tracking-wide text-black sm:px-4 sm:py-3 sm:text-sm md:grid md:px-6 md:py-4">
         <div>Storitev</div>
         <div className="text-center">Trajanje</div>
@@ -233,7 +233,7 @@ function PriceTable() {
                   key={`${section.category}-${item.service}-${item.duration}`}
                   className="border-b border-black/20 px-3 py-2 text-center text-sm text-black last:border-b-0 sm:px-4 sm:py-3 sm:text-base md:grid md:grid-cols-3 md:px-6 md:py-4 md:text-left"
                 >
-                  <div className="break-words text-base font-medium text-black sm:text-lg md:font-normal">
+                  <div className="text-base font-medium text-black sm:text-lg md:font-normal">
                     {item.service}
                   </div>
 

@@ -68,4 +68,28 @@ const benefitTwo = {
   ],
 };
 
-export { benefitOne, benefitTwo };
+const benefitKinetek = {
+  title: "Najem Kineteka",
+  desc: "Kinetek je naprava za pasivno razgibavanje sklepa, ki se uporablja po operacijah in poškodbah za učinkovito obnovo gibljivosti in hitrejšo rehabilitacijo.",
+  mediaType: "video",
+  videoSrc: "/video/KINETEK.mp4",
+  bullets: [
+    {
+      title: "Po operaciji kolena",
+      desc: "Učinkovit je po vstavitvi kolenske proteze, rekonstrukciji ACL, artroskopiji in šivanju meniskusa.",
+      icon: <CheckBadgeIcon />,
+    },
+    {
+      title: "Po operaciji kolka in drugih ortopedskih posegih",
+      desc: "Podpira rehabilitacijo po operaciji kolka ter drugih ortopedskih posegih, kjer je potrebna hitrejša obnovitev gibljivosti.",
+      icon: <SparklesIcon />,
+    },
+    {
+      title: "Zakaj izbrati najem pri nas",
+      desc: "Ponujamo kakovostne in preverjene aparate, hitro dostavo ali prevzem, navodila v pisni in ustni obliki ter strokovno svetovanje fizioterapevta.",
+      icon: <ChatBubbleLeftRightIcon />,
+    },
+  ],
+};
+
+export { benefitOne, benefitTwo, benefitKinetek };

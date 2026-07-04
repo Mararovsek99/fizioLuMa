@@ -1,7 +1,12 @@
 "use client";
 
 import Image, { type StaticImageData } from "next/image";
-import React, { type ReactElement, type ReactNode } from "react";
+import React, {
+  useEffect,
+  useRef,
+  type ReactElement,
+  type ReactNode,
+} from "react";
 import { motion, useReducedMotion } from "motion/react";
 import { Container } from "@/components/Container";
 
@@ -15,7 +20,9 @@ interface BenefitsData {
   imgPos?: "left" | "right";
   title: string;
   desc: string;
-  image: StaticImageData | string;
+  image?: StaticImageData | string;
+  videoSrc?: string;
+  mediaType?: "image" | "video";
   bullets: BenefitBullet[];
 }
 
@@ -99,10 +106,36 @@ const bulletVariants = {
 export const Benefits = ({ data, imgPos }: Readonly<BenefitsProps>) => {
   const shouldReduceMotion = useReducedMotion();
   const imageRight = imgPos === "right" || data.imgPos === "right";
+  const videoRef = useRef<HTMLVideoElement | null>(null);
+
+  useEffect(() => {
+    if (data.mediaType !== "video" || !data.videoSrc) return;
+
+    const video = videoRef.current;
+    if (!video) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const [entry] = entries;
+        if (!entry) return;
+
+        if (entry.isIntersecting && entry.intersectionRatio >= 1) {
+          void video.play().catch(() => undefined);
+        } else {
+          video.pause();
+        }
+      },
+      { threshold: 1 },
+    );
+
+    observer.observe(video);
+
+    return () => observer.disconnect();
+  }, [data.mediaType, data.videoSrc]);
 
   return (
     <Container className="mb-20 px-4 sm:px-6 lg:p-8">
-      <div className="mx-auto flex max-w-6xl flex-col gap-10 lg:gap-12 xl:flex-row xl:items-start xl:gap-16">
+      <div className="mx-auto flex max-w-6xl flex-col gap-10 lg:gap-12 xl:flex-row xl:items-center xl:gap-16">
         {/* SLIKA */}
         <motion.div
           initial={shouldReduceMotion ? false : "hidden"}
@@ -113,17 +146,32 @@ export const Benefits = ({ data, imgPos }: Readonly<BenefitsProps>) => {
             imageRight ? "xl:order-2" : ""
           }`}
         >
-          <div className="w-full max-w-[520px] overflow-hidden rounded-2xl shadow-2xl">
-            <Image
-              src={data.image}
-              width={521}
-              height={521}
-              alt={data.title}
-              placeholder="blur"
-              sizes="(max-width: 640px) 100vw, (max-width: 1280px) 90vw, 521px"
-              quality={80}
-              className="h-auto w-full object-cover"
-            />
+          <div className="w-full max-w-[520px] overflow-hidden rounded-2xl shadow-2xl xl:max-w-[360px]">
+            {data.mediaType === "video" && data.videoSrc ? (
+              <video
+                ref={videoRef}
+                src={data.videoSrc}
+                controls
+                muted
+                loop
+                playsInline
+                preload="metadata"
+                className="h-auto w-full object-cover"
+              />
+            ) : (
+              data.image && (
+                <Image
+                  src={data.image}
+                  width={521}
+                  height={521}
+                  alt={data.title}
+                  placeholder="blur"
+                  sizes="(max-width: 640px) 100vw, (max-width: 1280px) 90vw, 521px"
+                  quality={80}
+                  className="h-auto w-full object-cover"
+                />
+              )
+            )}
           </div>
         </motion.div>
 
@@ -131,7 +179,7 @@ export const Benefits = ({ data, imgPos }: Readonly<BenefitsProps>) => {
         <div
           className={`flex w-full items-center ${
             imageRight ? "xl:order-1 xl:justify-start" : "xl:justify-start"
-          } xl:w-1/2`}
+          } md:justify-center xl:w-1/2`}
         >
           <div className="w-full min-w-0 max-w-[560px]">
             <div className="mt-4 flex w-full flex-col text-center xl:mt-0 xl:text-left">

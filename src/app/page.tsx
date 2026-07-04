@@ -15,7 +15,7 @@ import { Navbar } from "@/components/Navbar";
 import { PopupWidget } from "@/components/PopupWidget";
 import { LearnMoreSection } from "@/components/LearnMoreSection";
 
-import { benefitOne, benefitTwo } from "@/components/data";
+import { benefitKinetek, benefitOne, benefitTwo } from "@/components/data";
 
 const ease = [0.22, 1, 0.36, 1] as const;
 
@@ -81,9 +81,18 @@ export default function Home() {
         <section id="aboutme">
           <Benefits data={benefitOne} />
         </section>
+        <FadeInBlock>
+          <SectionTitle
+            preTitle="hitrejša in varnejša rehabilitacija"
+            title="Ponujamo tudi najem Kineteka"
+          ></SectionTitle>
+        </FadeInBlock>
+        <section id="kinetek" className="scroll-mt-32">
+          <Benefits imgPos="right" data={benefitKinetek} />
+        </section>
 
         <section id="benefits" className="scroll-mt-32 bg-softgrey/60">
-          <Benefits imgPos="right" data={benefitTwo} />
+          <Benefits data={benefitTwo} />
         </section>
 
         <section id="therapy">

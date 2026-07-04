@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, type MouseEvent } from "react";
 import { Container } from "@/components/Container";
 
 interface VideoProps {
@@ -9,17 +9,14 @@ interface VideoProps {
 }
 
 export function Video({ src, poster }: Readonly<VideoProps>) {
-  const [playVideo, setPlayVideo] = useState(false);
   const videoRef = useRef<HTMLVideoElement | null>(null);
-  const containerRef = useRef<HTMLDivElement | null>(null);
+  const userPauseRef = useRef(false);
 
   if (!src) return null;
 
   useEffect(() => {
-    const container = containerRef.current;
     const video = videoRef.current;
-
-    if (!container || !video) return;
+    if (!video) return;
 
     const observer = new IntersectionObserver(
       (entries) => {
@@ -27,68 +24,67 @@ export function Video({ src, poster }: Readonly<VideoProps>) {
         if (!entry) return;
 
         if (entry.isIntersecting && entry.intersectionRatio >= 1) {
-          setPlayVideo(true);
-          void video.play().catch(() => undefined);
+          if (!userPauseRef.current) {
+            void video.play().catch(() => undefined);
+          }
         } else {
-          setPlayVideo(false);
           video.pause();
         }
       },
-      { threshold: 1 },
+      { threshold: 0.75 },
     );
 
-    observer.observe(container);
+    observer.observe(video);
 
     return () => observer.disconnect();
   }, [src]);
 
+  const handleTogglePlay = (event: MouseEvent<HTMLVideoElement>) => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    if (event.target !== event.currentTarget) {
+      return;
+    }
+
+    event.preventDefault();
+
+    if (video.paused) {
+      userPauseRef.current = false;
+      void video.play().catch(() => undefined);
+    } else {
+      userPauseRef.current = true;
+      video.pause();
+    }
+  };
+
+  const handlePause = () => {
+    userPauseRef.current = true;
+  };
+
+  const handlePlay = () => {
+    userPauseRef.current = false;
+  };
+
   return (
     <Container className="px-4 sm:px-6">
-      <div
-        ref={containerRef}
-        className="mx-auto mb-12 w-full max-w-sm sm:max-w-md lg:max-w-lg"
-      >
+      <div className="mx-auto mb-12 w-full max-w-sm sm:max-w-md lg:max-w-md xl:max-w-md">
         <div className="relative aspect-[9/16] overflow-hidden rounded-2xl bg-black shadow-2xl">
-          {!playVideo ? (
-            <>
-              {poster ? (
-                <img
-                  src={poster}
-                  alt="Video preview"
-                  className="h-full w-full object-cover"
-                />
-              ) : (
-                <div className="h-full w-full bg-neutral-900" />
-              )}
-
-              <div className="absolute inset-0 bg-black/20" />
-            </>
-          ) : (
-            <video
-              ref={videoRef}
-              className="h-full w-full bg-black object-contain"
-              controls
-              muted
-              playsInline
-              preload="metadata"
-            >
-              <source src={src} type="video/mp4" />
-              Tvoj brskalnik ne podpira videa.
-            </video>
-          )}
-
-          {!playVideo && (
-            <video
-              ref={videoRef}
-              className="hidden h-full w-full bg-black object-contain"
-              muted
-              playsInline
-              preload="metadata"
-            >
-              <source src={src} type="video/mp4" />
-              Tvoj brskalnik ne podpira videa.
-            </video>
-          )}
+          <video
+            ref={videoRef}
+            poster={poster}
+            className="h-full w-full bg-black object-contain cursor-pointer"
+            controls
+            muted
+            playsInline
+            preload="metadata"
+            onClick={handleTogglePlay}
+            onPause={handlePause}
+            onPlay={handlePlay}
+          >
+            <source src={src} type="video/mp4" />
+            Tvoj brskalnik ne podpira videa.
+          </video>
         </div>
       </div>
     </Container>

@@ -11,10 +11,8 @@ import {
 interface FormInputs {
   name: string;
   email: string;
+  phone: string;
   message: string;
-  apikey: string;
-  subject: string;
-  from_name: string;
   botcheck?: boolean;
 }
 
@@ -44,45 +42,46 @@ export function PopupWidget({ open, setOpen }: PopupWidgetProps) {
 
   const submitForm = async (
     data: FormInputs,
-    e: React.BaseSyntheticEvent | undefined
+    e: React.BaseSyntheticEvent | undefined,
   ) => {
-    const fullData = {
-      ...data,
-      subject: `${userName} želi rezervirati termin`,
-      from_name: "FizioLuma Obrazec",
-      apikey: "df971b7e-5822-4964-998c-a8d8e8ad88cf",
-    };
-
-    await fetch("https://api.web3forms.com/submit", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-      body: JSON.stringify(fullData, null, 2),
-    })
-      .then(async (response) => {
-        let json = await response.json();
-        if (json.success) {
-          setIsSuccess(true);
-          setMessage(json.message);
-          e?.target.reset();
-          reset();
-
-          setTimeout(() => {
-            closeHandler();
-            setIsSuccess(false);
-          }, 3000);
-        } else {
-          setIsSuccess(false);
-          setMessage(json.message);
-        }
-      })
-      .catch((error) => {
-        setIsSuccess(false);
-        setMessage("Napaka na odjemalcu. Prosimo, poskusite znova.");
-        console.error(error);
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          ...data,
+          subject: `${userName} želi rezervirati termin`,
+          from_name: "FizioLuma Obrazec",
+        }),
       });
+
+      const json = await response.json();
+
+      if (response.ok && json.success) {
+        setIsSuccess(true);
+        setMessage(json.message);
+        reset();
+
+        const formElement = e?.target as HTMLFormElement | undefined;
+        formElement?.reset();
+
+        window.setTimeout(() => {
+          closeHandler();
+          setIsSuccess(false);
+          setMessage("");
+        }, 3000);
+      } else {
+        setIsSuccess(false);
+        setMessage(json.message || "Prišlo je do napake pri pošiljanju.");
+      }
+    } catch (error) {
+      setIsSuccess(false);
+      setMessage("Napaka na odjemalcu. Prosimo, poskusite znova.");
+      console.error(error);
+    }
   };
 
   return (
@@ -178,10 +177,10 @@ export function PopupWidget({ open, setOpen }: PopupWidgetProps) {
               <div className="flex flex-row items-center justify-between h-32 p-6 bg-themecolor">
                 <div>
                   <h3 className="text-2xl text-white font-semibold">
-                    Pošlji Vprašanje
+                    Rezerviraj termin ali vprašaj
                   </h3>
-                  <p className="text-white opacity-90">
-                    Običajno odgovorim v nekaj urah
+                  <p className="text-sm text-white/90 sm:text-base">
+                    Odgovorim v najkrajšem možnem času.
                   </p>
                 </div>
                 <button
@@ -213,21 +212,10 @@ export function PopupWidget({ open, setOpen }: PopupWidgetProps) {
                     }
                     noValidate
                   >
-                    <input
-                      type="hidden"
-                      value="5f660508-d5d5-45f4-927a-be6e851bf405"
-                      {...register("apikey")}
-                    />
-                    <input
-                      type="hidden"
-                      value={`${userName} želi rezervirati termin`}
-                      {...register("subject")}
-                    />
-                    <input
-                      type="hidden"
-                      value="FizioLuma Obrazec"
-                      {...register("from_name")}
-                    />
+                    <div className="mb-5 rounded-lg border border-gray-200 bg-gray-50 px-4 py-3 text-sm text-gray-600">
+                      Vsa polja so obvezna. Pošljite povpraševanje za termin ali
+                      dodatne informacije.
+                    </div>
                     <input
                       type="checkbox"
                       className="hidden"
@@ -238,9 +226,9 @@ export function PopupWidget({ open, setOpen }: PopupWidgetProps) {
                     <div className="mb-4">
                       <label
                         htmlFor="full_name"
-                        className="block mb-2 text-lg text-gray-700 font-medium"
+                        className="mb-2 block text-base font-medium text-gray-700"
                       >
-                        Ime Priimek:
+                        Ime in priimek
                       </label>
                       <input
                         type="text"
@@ -266,9 +254,9 @@ export function PopupWidget({ open, setOpen }: PopupWidgetProps) {
                     <div className="mb-4">
                       <label
                         htmlFor="email"
-                        className="block mb-2 text-lg text-gray-700 font-medium"
+                        className="mb-2 block text-base font-medium text-gray-700"
                       >
-                        Email:
+                        E-pošta
                       </label>
                       <input
                         type="email"
@@ -297,10 +285,42 @@ export function PopupWidget({ open, setOpen }: PopupWidgetProps) {
 
                     <div className="mb-4">
                       <label
-                        htmlFor="message"
-                        className="block mb-2 text-lg text-gray-700 font-medium"
+                        htmlFor="phone"
+                        className="mb-2 block text-base font-medium text-gray-700"
                       >
-                        Sporočilo:
+                        Telefonska številka
+                      </label>
+                      <input
+                        type="tel"
+                        id="phone"
+                        {...register("phone", {
+                          required: "Vnesite telefonsko številko",
+                          pattern: {
+                            value: /^[0-9+\s\-()]{6,20}$/,
+                            message: "Vnesite veljavno telefonsko številko",
+                          },
+                        })}
+                        placeholder="041 123 456"
+                        className={`w-full px-4 py-3 text-gray-800 placeholder-gray-400 bg-gray-50 border rounded-lg focus:outline-none focus:ring-2 transition-all duration-200 ${
+                          errors.phone
+                            ? "border-red-500 focus:border-red-500 ring-red-100"
+                            : "border-gray-300 focus:border-themecolor ring-themecolor/30"
+                        }`}
+                      />
+
+                      {errors.phone && (
+                        <div className="mt-1 text-sm text-red-500 invalid-feedback">
+                          {errors.phone.message as string}
+                        </div>
+                      )}
+                    </div>
+
+                    <div className="mb-4">
+                      <label
+                        htmlFor="message"
+                        className="mb-2 block text-base font-medium text-gray-700"
+                      >
+                        Sporočilo
                       </label>
 
                       <textarea
@@ -327,7 +347,7 @@ export function PopupWidget({ open, setOpen }: PopupWidgetProps) {
                       <button
                         type="submit"
                         disabled={isSubmitting}
-                        className="w-full px-4 py-3 text-white font-semibold bg-themecolor rounded-lg focus:bg-themecolor focus:outline-none transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed hover:brightness-110"
+                        className="w-full rounded-lg bg-themecolor px-4 py-3 font-semibold text-white transition-all duration-200 hover:brightness-110 focus:bg-themecolor focus:outline-none disabled:cursor-not-allowed disabled:opacity-50"
                       >
                         {isSubmitting ? (
                           <svg
@@ -351,7 +371,7 @@ export function PopupWidget({ open, setOpen }: PopupWidgetProps) {
                             ></path>
                           </svg>
                         ) : (
-                          "Pošlji sporočilo"
+                          "Pošlji povpraševanje"
                         )}
                       </button>
                     </div>

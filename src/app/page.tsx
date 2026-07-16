@@ -14,6 +14,7 @@ import { MapComponent } from "@/components/MapComponent";
 import { Navbar } from "@/components/Navbar";
 import { PopupWidget } from "@/components/PopupWidget";
 import { LearnMoreSection } from "@/components/LearnMoreSection";
+import { FreeQuestionnaire } from "@/components/FreeQuestionnaireStepByStep";
 
 import { benefitKinetek, benefitOne, benefitTwo } from "@/components/data";
 
@@ -214,7 +215,7 @@ export default function Home() {
           <Cta onOpenPopup={handleOpenPopup} />
         </FadeInBlock>
       </Container>
-
+      <FreeQuestionnaire />
       <PopupWidget open={isPopupOpen} setOpen={setIsPopupOpen} />
     </>
   );

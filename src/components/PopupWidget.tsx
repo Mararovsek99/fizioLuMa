@@ -40,46 +40,62 @@ export function PopupWidget({ open, setOpen }: PopupWidgetProps) {
     setOpen(false);
   };
 
-  const submitForm = async (
-    data: FormInputs,
-    e: React.BaseSyntheticEvent | undefined,
-  ) => {
+  const submitForm = async (data: FormInputs) => {
     try {
-      const response = await fetch("/api/contact", {
+      const accessKey = process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY;
+
+      if (!accessKey) {
+        throw new Error("Manjka NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY.");
+      }
+
+      const response = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
           Accept: "application/json",
         },
         body: JSON.stringify({
-          ...data,
+          access_key: accessKey,
+          name: data.name,
+          email: data.email,
+          phone: data.phone,
+          message: data.message,
+          botcheck: data.botcheck || "",
           subject: `${userName} želi rezervirati termin`,
           from_name: "FizioLuma Obrazec",
         }),
       });
 
-      const json = await response.json();
+      const contentType = response.headers.get("content-type") || "";
 
-      if (response.ok && json.success) {
-        setIsSuccess(true);
-        setMessage(json.message);
-        reset();
-
-        const formElement = e?.target as HTMLFormElement | undefined;
-        formElement?.reset();
-
-        window.setTimeout(() => {
-          closeHandler();
-          setIsSuccess(false);
-          setMessage("");
-        }, 3000);
-      } else {
-        setIsSuccess(false);
-        setMessage(json.message || "Prišlo je do napake pri pošiljanju.");
+      if (!contentType.includes("application/json")) {
+        throw new Error("Web3Forms ni vrnil veljavnega odgovora.");
       }
+
+      const result = await response.json();
+
+      if (!response.ok || !result.success) {
+        throw new Error(
+          result.message || "Prišlo je do napake pri pošiljanju.",
+        );
+      }
+
+      setIsSuccess(true);
+      setMessage(result.message || "Sporočilo je bilo uspešno poslano.");
+      reset();
+
+      window.setTimeout(() => {
+        closeHandler();
+        setIsSuccess(false);
+        setMessage("");
+      }, 3000);
     } catch (error) {
       setIsSuccess(false);
-      setMessage("Napaka na odjemalcu. Prosimo, poskusite znova.");
+      setMessage(
+        error instanceof Error
+          ? error.message
+          : "Prišlo je do napake. Prosimo, poskusite znova.",
+      );
       console.error(error);
     }
   };
@@ -206,12 +222,7 @@ export function PopupWidget({ open, setOpen }: PopupWidgetProps) {
 
               <div className="flex-grow h-full p-8 overflow-auto bg-white ">
                 {!isSubmitSuccessful && (
-                  <form
-                    onSubmit={(e) =>
-                      handleSubmit((data, event) => submitForm(data, event))(e)
-                    }
-                    noValidate
-                  >
+                  <form onSubmit={handleSubmit(submitForm)} noValidate>
                     <div className="mb-5 rounded-lg border border-gray-200 bg-gray-50 px-4 py-3 text-sm text-gray-600">
                       Vsa polja so obvezna. Pošljite povpraševanje za termin ali
                       dodatne informacije.
@@ -293,24 +304,23 @@ export function PopupWidget({ open, setOpen }: PopupWidgetProps) {
                       <input
                         type="tel"
                         id="phone"
+                        placeholder="041 123 456"
                         {...register("phone", {
                           required: "Vnesite telefonsko številko",
-                          pattern: {
-                            value: /^[0-9+\s\-()]{6,20}$/,
+                          minLength: {
+                            value: 6,
                             message: "Vnesite veljavno telefonsko številko",
                           },
                         })}
-                        placeholder="041 123 456"
                         className={`w-full px-4 py-3 text-gray-800 placeholder-gray-400 bg-gray-50 border rounded-lg focus:outline-none focus:ring-2 transition-all duration-200 ${
                           errors.phone
                             ? "border-red-500 focus:border-red-500 ring-red-100"
                             : "border-gray-300 focus:border-themecolor ring-themecolor/30"
                         }`}
                       />
-
                       {errors.phone && (
                         <div className="mt-1 text-sm text-red-500 invalid-feedback">
-                          {errors.phone.message as string}
+                          {errors.phone.message}
                         </div>
                       )}
                     </div>

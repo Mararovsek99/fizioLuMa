@@ -157,7 +157,7 @@ export function FreeQuestionnaire() {
   };
 
   return (
-    <section className="bg-gray-50 px-5 py-16 sm:px-8">
+    <section id="freequestionnare" className="bg-gray-50 px-5 py-16 sm:px-8">
       <div className="mx-auto max-w-2xl">
         <div className="mb-8 text-center">
           <p className="mb-2 text-sm font-semibold uppercase tracking-wide text-themecolor">

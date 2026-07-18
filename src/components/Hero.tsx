@@ -168,7 +168,7 @@ export const Hero = ({ onOpenPopup }: HeroProps) => {
   const handleScrollToTherapy = (e: MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
 
-    const targetId = "therapy";
+    const targetId = "freequestionnare";
     const targetElement = document.getElementById(targetId);
 
     if (targetElement) {
@@ -324,7 +324,7 @@ export const Hero = ({ onOpenPopup }: HeroProps) => {
                 </motion.button>
 
                 <motion.a
-                  href="#therapy"
+                  href="#freequestionnare"
                   onClick={handleScrollToTherapy}
                   rel="noopener"
                   whileHover={
@@ -335,7 +335,7 @@ export const Hero = ({ onOpenPopup }: HeroProps) => {
                   whileTap={shouldReduceMotion ? undefined : { scale: 0.98 }}
                   className="inline-flex min-h-[52px] items-center justify-center rounded-md bg-white px-6 py-3 text-base font-medium text-themecolor ring-2 ring-inset ring-white/70 transition-colors duration-200 hover:bg-themecolor hover:text-white hover:ring-themecolor sm:px-8 sm:py-4 sm:text-lg lg:ring-themecolor"
                 >
-                  Več o storitvah
+                  Brezplačni vprašalnik
                 </motion.a>
               </motion.div>
             </motion.div>

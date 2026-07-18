@@ -8,6 +8,7 @@ import { Navbar } from "@/components/Navbar";
 import { SectionTitle } from "@/components/SectionTitle";
 import { PopupWidget } from "@/components/PopupWidget";
 import { LearnMoreSection } from "@/components/LearnMoreSection";
+import { FreeQuestionnaire } from "@/components/FreeQuestionnaireStepByStep";
 
 const experienceSections = [
   {
@@ -407,7 +408,7 @@ export default function ZnanjeInIzkusnjePage() {
           </section>
         </Container>
       </main>
-
+      <FreeQuestionnaire />
       <PopupWidget open={isPopupOpen} setOpen={setIsPopupOpen} />
     </>
   );

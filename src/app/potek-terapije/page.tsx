@@ -7,6 +7,7 @@ import { Navbar } from "@/components/Navbar";
 import { SectionTitle } from "@/components/SectionTitle";
 import { PopupWidget } from "@/components/PopupWidget";
 import { LearnMoreSection } from "@/components/LearnMoreSection";
+import { FreeQuestionnaire } from "@/components/FreeQuestionnaireStepByStep";
 
 const therapySteps = [
   {
@@ -320,7 +321,7 @@ export default function PotekTerapijePage() {
           </section>
         </Container>
       </main>
-
+      <FreeQuestionnaire />
       <PopupWidget open={isPopupOpen} setOpen={setIsPopupOpen} />
     </>
   );

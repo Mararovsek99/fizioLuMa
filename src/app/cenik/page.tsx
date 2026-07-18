@@ -8,6 +8,7 @@ import { Navbar } from "@/components/Navbar";
 import { SectionTitle } from "@/components/SectionTitle";
 import { PopupWidget } from "@/components/PopupWidget";
 import { benefitTwo } from "@/components/data";
+import { FreeQuestionnaire } from "@/components/FreeQuestionnaireStepByStep";
 
 const Benefits = dynamic(
   () => import("@/components/Benefits").then((mod) => mod.Benefits),
@@ -307,7 +308,7 @@ export default function CenikPage() {
           </FadeInBlock>
         </Container>
       </main>
-
+      <FreeQuestionnaire />
       <PopupWidget open={isPopupOpen} setOpen={setIsPopupOpen} />
     </>
   );

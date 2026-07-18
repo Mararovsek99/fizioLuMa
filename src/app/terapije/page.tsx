@@ -8,6 +8,7 @@ import { Navbar } from "@/components/Navbar";
 import { SectionTitle } from "@/components/SectionTitle";
 import { PopupWidget } from "@/components/PopupWidget";
 import { LearnMoreSection } from "@/components/LearnMoreSection";
+import { FreeQuestionnaire } from "@/components/FreeQuestionnaireStepByStep";
 
 const therapies = [
   {
@@ -393,7 +394,7 @@ export default function TerapijeInPristopiPage() {
           </section>
         </Container>
       </main>
-
+      <FreeQuestionnaire />
       <PopupWidget open={isPopupOpen} setOpen={setIsPopupOpen} />
     </>
   );

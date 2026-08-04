@@ -289,10 +289,7 @@ export default function PotekTerapijePage() {
               fizioterapevtska obravnava in kakšen pristop uporabljam.
             </SectionTitle>
 
-            <Video
-              src="/video/potekFizioterapije.mp4"
-              poster="/img/VideoPreview.jpeg"
-            />
+            <Video src="/video/potekFizioterapije.mp4" />
           </FadeInBlock>
 
           <FadeInBlock className="mt-14 rounded-2xl bg-softgrey/30 px-4 py-8 sm:mt-20 sm:px-6 sm:py-10">

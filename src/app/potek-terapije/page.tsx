@@ -7,6 +7,7 @@ import { Navbar } from "@/components/Navbar";
 import { SectionTitle } from "@/components/SectionTitle";
 import { PopupWidget } from "@/components/PopupWidget";
 import { LearnMoreSection } from "@/components/LearnMoreSection";
+import { Video } from "@/components/Video";
 import { FreeQuestionnaire } from "@/components/FreeQuestionnaireStepByStep";
 
 const therapySteps = [
@@ -278,6 +279,21 @@ export default function PotekTerapijePage() {
               <TherapyStepCard key={step.number} step={step} index={index} />
             ))}
           </section>
+
+          <FadeInBlock className="mt-14 sm:mt-20">
+            <SectionTitle
+              preTitle="VIDEO PREDSTAVITEV"
+              title="Potek fizioterapije"
+            >
+              Oglejte si kratek predstavitveni video o tem, kako poteka
+              fizioterapevtska obravnava in kakšen pristop uporabljam.
+            </SectionTitle>
+
+            <Video
+              src="/video/potekFizioterapije.mp4"
+              poster="/img/VideoPreview.jpeg"
+            />
+          </FadeInBlock>
 
           <FadeInBlock className="mt-14 rounded-2xl bg-softgrey/30 px-4 py-8 sm:mt-20 sm:px-6 sm:py-10">
             <SectionTitle

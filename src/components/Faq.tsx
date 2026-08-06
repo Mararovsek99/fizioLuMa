@@ -55,7 +55,7 @@ const faqdata = [
   {
     question: "Kakšne so čakalne dobe?",
     answer:
-      "Čakalne dobe so odvisne od termina. Običajno lahko dobite termin v 2-4 dneh, za nujne primere pa tudi prej. Kontaktirajte me za trenutne razpoložljivosti.",
+      "Čakalne dobe so odvisne od termina. Običajno lahko dobite termin v 1-2 tednih, za nujne primere pa tudi prej. Kontaktirajte me za trenutne razpoložljivosti.",
   },
   {
     question: "Kako se naročim?",
@@ -65,6 +65,6 @@ const faqdata = [
   {
     question: "Koliko obravnav je potrebnih?",
     answer:
-      "Število obravnav je odvisno od vaše težave. Običajno priporočam 4-6 obiskov, vendar to določim po prvi oceni. Nekateri potrebujejo več, drugi manj.",
+      "Število obravnav je odvisno od vaše težave. Običajno priporočam 1-3 obiskov, vendar to določim po prvi oceni. Nekateri potrebujejo več, drugi manj.",
   },
 ];

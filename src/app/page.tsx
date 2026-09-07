@@ -165,7 +165,7 @@ export default function Home() {
         <FadeInBlock delay={0.2}>
           <Video
             src="/video/Presentation.mp4"
-            poster="/img/VideoPreview.jpeg"
+            poster="/img/VideoPreview.webp"
           />
         </FadeInBlock>
 

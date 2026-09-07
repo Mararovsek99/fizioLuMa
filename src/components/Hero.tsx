@@ -18,6 +18,7 @@ import { Kaushan_Script } from "next/font/google";
 const kaushan = Kaushan_Script({
   subsets: ["latin"],
   weight: "400",
+  display: "swap",
 });
 
 interface StatCounterProps {
@@ -248,7 +249,6 @@ export const Hero = ({ onOpenPopup }: HeroProps) => {
           <motion.div
             className="mx-auto grid max-w-6xl items-center gap-10 lg:grid-cols-[minmax(0,560px)_minmax(380px,480px)] lg:gap-12 xl:h-full xl:w-full xl:grid-cols-[minmax(0,560px)_minmax(380px,480px)] xl:gap-16"
             variants={heroContainerVariants}
-            initial="hidden"
             animate="visible"
           >
             {/* BESEDILO */}
@@ -258,15 +258,12 @@ export const Hero = ({ onOpenPopup }: HeroProps) => {
             >
               <motion.h1 className="text-md mb-5">FIZIOTERAPIJA LUMA</motion.h1>
               <motion.h1
-                variants={fadeUpVariants}
                 className="font-serif text-5xl font-bold leading-tight text-white sm:text-5xl lg:text-6xl lg:text-mainblack xl:text-[4.25rem]"
               >
                 Vaša pot do{" "}
                 <motion.span
                   initial={
-                    shouldReduceMotion
-                      ? false
-                      : { opacity: 0, y: 10, scale: 0.98 }
+                    false
                   }
                   animate={
                     shouldReduceMotion ? undefined : ["visibleWord", "floating"]

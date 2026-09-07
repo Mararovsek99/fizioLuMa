@@ -116,6 +116,7 @@ export function PopupWidget({ open, setOpen }: PopupWidgetProps) {
 
           <DisclosureButton
             onClick={() => setOpen(!open)}
+            aria-label={open ? "Zapri obrazec" : "Odpri obrazec za naročilo"}
             className={`fixed z-40 flex items-center justify-center transition duration-300 bg-themecolor shadow-lg right-5 bottom-5 focus:outline-none hover:bg-themecolor focus:bg-themecolor ease 
                         w-14 h-14 rounded-full 
                         sm:w-auto sm:h-auto sm:px-6 sm:py-3 sm:rounded-md`}

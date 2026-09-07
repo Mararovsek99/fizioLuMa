@@ -1,4 +1,5 @@
 "use client";
+import Image from "next/image";
 import { Container } from "@/components/Container";
 import {
   MapPinIcon,
@@ -73,6 +74,7 @@ export function MapComponent() {
         <div className="relative h-[260px] w-full overflow-hidden rounded-2xl border-4 border-themecolor shadow-xl sm:h-[360px] lg:h-[500px] lg:w-1/2">
           <iframe
             src={embedMapUrl}
+            title="Fizio Luma location map"
             className="h-full w-full border-0"
             loading="lazy"
             allowFullScreen
@@ -82,9 +84,12 @@ export function MapComponent() {
 
         {/* Photo */}
         <div className="relative h-[260px] w-full overflow-hidden rounded-2xl border-4 border-themecolor bg-gray-200 shadow-xl sm:h-[360px] lg:h-[500px] lg:w-1/2">
-          <img
-            src="/img/location_outside.jpeg"
+          <Image
+            src="/img/location_outside.webp"
             alt="Fizioterapija LuMa"
+            fill
+            sizes="(max-width: 1023px) 100vw, 50vw"
+            quality={80}
             className="h-full w-full object-cover"
           />
         </div>

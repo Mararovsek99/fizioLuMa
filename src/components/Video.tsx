@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, type MouseEvent } from "react";
+import { useEffect, useRef, useState, type MouseEvent } from "react";
 import { Container } from "@/components/Container";
 
 interface VideoProps {
@@ -10,6 +10,7 @@ interface VideoProps {
 
 export function Video({ src, poster }: Readonly<VideoProps>) {
   const videoRef = useRef<HTMLVideoElement | null>(null);
+  const [isNearViewport, setIsNearViewport] = useState(false);
   const userPauseRef = useRef(false);
 
   if (!src) return null;
@@ -35,10 +36,30 @@ export function Video({ src, poster }: Readonly<VideoProps>) {
       { threshold: 0.75 },
     );
 
+    const sourceObserver = new IntersectionObserver(
+      ([entry]) => {
+        if (entry?.isIntersecting) {
+          setIsNearViewport(true);
+          sourceObserver.disconnect();
+        }
+      },
+      { rootMargin: "200px" },
+    );
+
+    sourceObserver.observe(video);
     observer.observe(video);
 
-    return () => observer.disconnect();
+    return () => {
+      observer.disconnect();
+      sourceObserver.disconnect();
+    };
   }, [src]);
+
+  useEffect(() => {
+    if (isNearViewport) {
+      videoRef.current?.load();
+    }
+  }, [isNearViewport]);
 
   const handleTogglePlay = (event: MouseEvent<HTMLVideoElement>) => {
     const video = videoRef.current;
@@ -78,11 +99,11 @@ export function Video({ src, poster }: Readonly<VideoProps>) {
             controls
             muted
             playsInline
-            preload="metadata"
+            preload="none"
             onClick={handleTogglePlay}
             onPlay={handlePlayStart}
           >
-            <source src={src} type="video/mp4" />
+            {isNearViewport && <source src={src} type="video/mp4" />}
             Tvoj brskalnik ne podpira videa.
           </video>
         </div>

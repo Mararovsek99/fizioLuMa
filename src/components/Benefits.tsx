@@ -4,6 +4,7 @@ import Image, { type StaticImageData } from "next/image";
 import React, {
   useEffect,
   useRef,
+  useState,
   type ReactElement,
   type ReactNode,
 } from "react";
@@ -107,6 +108,7 @@ export const Benefits = ({ data, imgPos }: Readonly<BenefitsProps>) => {
   const shouldReduceMotion = useReducedMotion();
   const imageRight = imgPos === "right" || data.imgPos === "right";
   const videoRef = useRef<HTMLVideoElement | null>(null);
+  const [isNearViewport, setIsNearViewport] = useState(false);
 
   useEffect(() => {
     if (data.mediaType !== "video" || !data.videoSrc) return;
@@ -129,10 +131,30 @@ export const Benefits = ({ data, imgPos }: Readonly<BenefitsProps>) => {
       { threshold: 0.75 },
     );
 
+    const sourceObserver = new IntersectionObserver(
+      ([entry]) => {
+        if (entry?.isIntersecting) {
+          setIsNearViewport(true);
+          sourceObserver.disconnect();
+        }
+      },
+      { rootMargin: "200px" },
+    );
+
+    sourceObserver.observe(video);
     observer.observe(video);
 
-    return () => observer.disconnect();
+    return () => {
+      observer.disconnect();
+      sourceObserver.disconnect();
+    };
   }, [data.mediaType, data.videoSrc]);
+
+  useEffect(() => {
+    if (isNearViewport) {
+      videoRef.current?.load();
+    }
+  }, [isNearViewport]);
 
   return (
     <Container className="mb-20 px-4 sm:px-6 lg:p-8">
@@ -151,13 +173,16 @@ export const Benefits = ({ data, imgPos }: Readonly<BenefitsProps>) => {
             {data.mediaType === "video" && data.videoSrc ? (
               <video
                 ref={videoRef}
-                src={data.videoSrc}
                 controls
                 loop
                 playsInline
-                preload="metadata"
+                preload="none"
                 className="h-auto w-full object-cover"
-              />
+              >
+                {isNearViewport && (
+                  <source src={data.videoSrc} type="video/mp4" />
+                )}
+              </video>
             ) : (
               data.image && (
                 <Image

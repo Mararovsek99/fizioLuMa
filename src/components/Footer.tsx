@@ -23,10 +23,10 @@ export function Footer() {
               />
             </Link>
 
-            <p className="mx-auto mt-3 max-w-md text-sm leading-6 text-gray-500 lg:mx-0">
+            <p className="mx-auto mt-3 max-w-md text-sm leading-6 text-gray-600 lg:mx-0">
               Kakršnakoli vprašanja?
             </p>
-            <p className="mx-auto max-w-md text-sm leading-6 text-gray-500 lg:mx-0">
+            <p className="mx-auto max-w-md text-sm leading-6 text-gray-600 lg:mx-0">
               Pišite mi ali me pokličite.
             </p>
           </div>
@@ -37,7 +37,7 @@ export function Footer() {
               Podatki podjetja
             </h3>
 
-            <div className="text-sm leading-5 text-gray-500 space-y-0.5">
+            <div className="text-sm leading-5 text-gray-600 space-y-0.5">
               <p>Lucija Marovšek s.p.</p>
               <p>Davčna: 54149860</p>
               <p>Straža pri Novi Cerkvi 1</p>
@@ -51,11 +51,12 @@ export function Footer() {
               Sledi mi na socialnih omrežjih
             </h3>
 
-            <div className="flex items-center justify-center space-x-4 text-gray-500 lg:justify-start">
+            <div className="flex items-center justify-center space-x-4 text-gray-600 lg:justify-start">
               <a
                 href="https://www.facebook.com/p/Fizioterapija-LuMa-61553308209404/?locale=sl_SI"
                 target="_blank"
                 rel="noopener"
+                aria-label="Facebook"
                 className="rounded-full p-2 transition hover:bg-white hover:text-themecolor"
               >
                 <Facebook size={35} />
@@ -65,6 +66,7 @@ export function Footer() {
                 href="https://www.instagram.com/fizio_luma/"
                 target="_blank"
                 rel="noopener"
+                aria-label="Instagram"
                 className="rounded-full p-2 transition hover:bg-white hover:text-themecolor"
               >
                 <Instagram size={35} />
@@ -74,13 +76,13 @@ export function Footer() {
         </div>
 
         {/* COPYRIGHT */}
-        <div className="border-t border-gray-200 py-4 text-center text-xs text-gray-500">
+        <div className="border-t border-gray-200 py-4 text-center text-xs text-gray-600">
           © 2026 Fizio Luma · Made by{" "}
           <a
             href="https://www.linkedin.com/in/andrej-marov%C5%A1ek-78b040206/"
             target="_blank"
             rel="noopener"
-            className="text-themecolor hover:underline"
+            className="text-themecolor underline underline-offset-2 hover:no-underline"
           >
             Andrej Marovšek
           </a>

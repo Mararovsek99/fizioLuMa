@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, Cormorant_Garamond } from "next/font/google";
 import { ThemeProvider } from "next-themes";
+import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 
 // Footer ostane, ker ne potrebuje stanja iz Page
@@ -40,6 +41,7 @@ export default function RootLayout({
         <ThemeProvider attribute="class">
           <div>{children}</div>
           <Footer />
+          <Analytics />
         </ThemeProvider>
       </body>
     </html>

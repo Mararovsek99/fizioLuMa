@@ -151,8 +151,18 @@ const priceList = [
       },
       {
         service: "Normatec",
-        duration: "1 dan",
-        price: "5 €",
+        duration: "1-10 dni",
+        price: "7 €/dan",
+      },
+      {
+        service: "Normatec",
+        duration: "11-20 dni",
+        price: "6 €/dan",
+      },
+      {
+        service: "Normatec",
+        duration: "21+ dni",
+        price: "5 €/dan",
       },
       {
         service: "Elektrostimulator Globus",

@@ -40,8 +40,8 @@ export function Footer() {
             <div className="text-sm leading-5 text-gray-600 space-y-0.5">
               <p>Lucija Marovšek s.p.</p>
               <p>Davčna: 54149860</p>
-              <p>Straža pri Novi Cerkvi 1</p>
-              <p>3203 Nova Cerkev</p>
+              <p>Mariborska cesta 197</p>
+              <p>Škofja vas</p>
             </div>
           </div>
 

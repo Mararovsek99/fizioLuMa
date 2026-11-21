@@ -136,17 +136,7 @@ const priceList = [
     items: [
       {
         service: "Kinetek za razgibavanje kolena",
-        duration: "1-10 dni",
-        price: "7 €/dan",
-      },
-      {
-        service: "Kinetek za razgibavanje kolena",
-        duration: "11-20 dni",
-        price: "6 €/dan",
-      },
-      {
-        service: "Kinetek za razgibavanje kolena",
-        duration: "21+ dni",
+        duration: "NAJCENEJŠA AKCIJA!",
         price: "5 €/dan",
       },
       {
